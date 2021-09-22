@@ -6,7 +6,16 @@ import { FaRegQuestionCircle } from 'react-icons/fa';
 function Header() {
   return (
     <div className="header-container">
-
+      <div className="left-header">
+        <FaRegClock />
+      </div>
+      <div className="mid-header">
+        <input placeholder="Search"></input>
+        <FaSearch />
+      </div>
+      <div className="right-header">
+        <FaRegQuestionCircle />
+      </div>
     </div>
   );
 }
