@@ -4,22 +4,29 @@ import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
 
-function Header() {
+const HeaderComponents = (props) => {
+  return <div className={props.title}>{props.children}</div>
+}
+
+const Header = () => {
   return (
     <div className="header-container">
-      <div className="left-header">
+      <HeaderComponents title="left-header">
         <FaRegClock />
-      </div>
-      <div className="mid-header">
+      </HeaderComponents>
+
+      <HeaderComponents title="mid-header">
         <div>Search</div>
         <FaSearch />
-      </div>
-      <div className="right-header">
+      </HeaderComponents>
+
+      <HeaderComponents title="right-header">
         <FaRegQuestionCircle />
-      </div>
-      <div className="user-avi">
+      </HeaderComponents>
+
+      <HeaderComponents title="user-avi">
         <BsPersonFill />
-      </div>
+        </HeaderComponents>
     </div>
   );
 }
