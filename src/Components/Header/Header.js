@@ -2,6 +2,7 @@ import './Header.css';
 import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
+import { BsPersonFill } from 'react-icons/bs';
 
 function Header() {
   return (
@@ -10,11 +11,14 @@ function Header() {
         <FaRegClock />
       </div>
       <div className="mid-header">
-        <input placeholder="Search"></input>
+        <div>Search</div>
         <FaSearch />
       </div>
       <div className="right-header">
         <FaRegQuestionCircle />
+      </div>
+      <div className="user-avi">
+        <BsPersonFill />
       </div>
     </div>
   );
