@@ -24,7 +24,17 @@ export default function Sidebar() {
                    </li>
                </ul>
            </nav>
+           <Switch>
+               <Route path="/directmessages">
+                   <DirectMessages />
+               <Route path="/addchannel">
+                   <AddChannel />
+               </Route>
+               <Route path="/channels">
+                   <Channels />
+               </Route>
+           </Switch>
         </div>
         </Router>
-    )
+    );
 }
