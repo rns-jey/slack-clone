@@ -1,8 +1,13 @@
 import React from "react";
+import Header from '../Components/Header/Header'
+import Sidebar from '../Components/Sidebar/Sidebar';
 
 function Home() {
   return (
-    <h1>Home</h1>
+    <div className="Main">
+      <Header />
+      <Sidebar/>
+    </div>
   );
 }
 
