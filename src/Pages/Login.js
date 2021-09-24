@@ -1,5 +1,7 @@
 import LoginForm from "../Components/Login/LoginForm";
 import React, {useState} from "react";
+import CreateUser from "../Pages/CreateUser";
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 export default function LogUser(){
   const adminUser = {
@@ -28,7 +30,20 @@ export default function LogUser(){
       SetUser({name:"", email:""});
   }
 
+  function handleCreateUserbtn() {
+    return(
+      <>
+        <Router>
+          <Switch>
+            <Route exact path="/CreateUser" component={CreateUser} />
+          </Switch>
+        </Router>
+      </>
+    )
+  }
+
   return (
+    <>
       <div className="App">
          {(user.email !="") ? (
              <div className="welcome">
@@ -40,7 +55,12 @@ export default function LogUser(){
          ) : (
           <LoginForm Login={Login} error={error}/>
          )}
+          <div className="linktoCreateUser">
+              <span>New to Slack?</span>
+              <a href="./register">Create an account</a>
+          </div>
       </div>
+    </>
       );
 }
 
