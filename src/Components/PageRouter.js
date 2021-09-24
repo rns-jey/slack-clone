@@ -14,8 +14,6 @@ function PageRoute() {
     setLogin(prevLog => (user.length > 0 ? true : false))
   }, []);
 
-  console.log(isLogged)
-  
   return (
     <Router>
       <Switch>
