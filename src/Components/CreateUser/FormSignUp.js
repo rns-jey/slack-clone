@@ -1,8 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import "./signUp.css";
+import img from './slackLogo.png'
+import {Form, Card} from 'react-bootstrap';
 
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
+
 
 function FormSignUp(){
     const history = useHistory();
@@ -75,49 +79,76 @@ function FormSignUp(){
         return null
     } else {
     return (
+    <>
         <div className="FormSignUp">
-            <h1>First, enter your email</h1>
-            <p>We suggest using the <b>email address you use at work.</b></p>
+            <img src={img} id="slackLogo"/>
+            <h1>Create your Slack Account</h1>
+            <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
         <form onSubmit={handleSubmit}>
+            
             <div className="form-inputs">
-                <label htmlFor="email" className="form-label">
-                </label>Email
-                <input 
-                type="email" className="form-input" id="email" 
-                name="email" placeholder="name@work-email.com"
+                <Form.Label htmlFor="email" className="form-label">
+                Email
+                </Form.Label>
+                <Form.Control 
+                type="email" className="form-input" 
+                name="email"
                 value={values.email}
                 onChange={handleChange}
+                placeholder="name@work-email.com"
+                required
                 />
-                {errors.email && <p>{errors.email}</p>}
+                {errors.email && <p className="errorinput">{errors.email}</p>}
             </div>
 
             <div className="form-inputs">
-                <label htmlFor="password" className="form-label">
-                </label>Password
-                <input type="password" className="form-input" id="password" 
+                <Form.Label htmlFor="password" className="form-label">
+                Password
+                </Form.Label>
+                <Form.Control type="password" className="form-input" id="password" 
                 name="password" placeholder="Enter your password"
                 value={values.password}
                 onChange={handleChange}
+                required
                 />
-                {errors.password && <p>{errors.password}</p>}
+                {errors.password && <p className="errorinput">{errors.password}</p>}
             </div>
 
             <div className="form-inputs">
-                <label htmlFor="password_confirmation" className="form-label">
-                </label>Confirm password
-                <input type="password" className="form-input" id="password_confirmation" 
-                name="password_confirmation" placeholder="Confirm your password"
+                <Form.Label htmlFor="password_confirmation" className="form-label">
+                Confirm password
+                </Form.Label>
+                <Form.Control type="password" className="form-input" id="password_confirmation" 
+                name="password_confirmation" placeholder="Re-type your password"
                 value={values.password_confirmation}
                 onChange={handleChange}
                 />
-                {errors.password_confirmation && <p>{errors.password_confirmation}</p>}
+                {errors.password_confirmation && <p className="errorinput">{errors.password_confirmation}</p>}
             </div>
-            <button className="signUpBtn" type="submit">Sign Up</button>
-            <span className="linktoLogin">
-                Already have an account? Login <a href='/login'>here</a>
-            </span>
+
+            <button  className="signUpBtn" type="submit">Sign Up</button>
+
+            <div className="emailBox">
+            <Form.Check 
+                    type='Checkbox'
+                    id="Checkbox"
+                    label={` It's okay to send me email about Slack`}
+                    />
+            </div>
+            <div className="terms">
+            By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
+            </div>
+
             </form>
         </div>
+        <span className="linktoLogin">
+            <p>Already have an account?</p><a href="./login" id="signinLink">Sign in instead</a> 
+        </span>
+        <div className="bottomlinks">
+            <a href="#" className="bLinks">Privacy & Terms</a>
+            <a href="#" className="bLinks">Contact Us</a>
+        </div>
+    </>
     )};
 };
 
