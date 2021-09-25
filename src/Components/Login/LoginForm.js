@@ -1,11 +1,30 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 export default function LoginForm(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const baseURL = "http://206.189.91.54//api/v1/auth/sign_in";
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {email: email, password: password}
+
+    axios
+      .post(baseURL, data)
+      .then((resp) => {
+        localStorage.setItem('at', resp.headers["access-token"]);
+        localStorage.setItem('client', resp.headers["client"]);
+        localStorage.setItem('expiry', resp.headers["expiry"]);
+        localStorage.setItem('uid', resp.headers["uid"]);
+      })
+      .catch((err) => {
+      });
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
       <div className="error"></div>
       <div className="form-inner">
