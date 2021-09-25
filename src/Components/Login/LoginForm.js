@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function LoginForm(){
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
     <form>
       <h2>Login</h2>
@@ -12,6 +15,7 @@ export default function LoginForm(){
             type="text" 
             name="email" 
             id="email"
+            onChange={e => setEmail(e.target.value)} value={email}
           />
         </div>
         <div className="form-group">
@@ -20,6 +24,7 @@ export default function LoginForm(){
             type="password" 
             name="password"
             id="password"
+            onChange={e => setPassword(e.target.value)} value={password}
           />
         </div>
         <input type="submit" value="LOGIN"/>
