@@ -1,6 +1,6 @@
 import LoginForm from "../Components/Login/LoginForm";
 import React, {useState} from "react";
-import CreateUser from "../Pages/CreateUser";
+import Register from "./Register";
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 export default function LogUser(){

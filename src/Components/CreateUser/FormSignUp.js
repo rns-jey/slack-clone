@@ -5,7 +5,7 @@ import axios from 'axios';
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
 
 function FormSignUp(){
-    let history = useHistory();
+    const history = useHistory();
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -13,6 +13,12 @@ function FormSignUp(){
     })
     const [errors, setErrors] = useState({})
     const [verified, setVerify] = useState(false)
+    const [commit, setCommit] = useState(false)
+    
+    useEffect(() => {
+       CreateUser()
+    }, [verified === true])
+
     function handleChange(e){
         const {name,value} = e.target
         setValues({
@@ -20,16 +26,11 @@ function FormSignUp(){
             [name]: value
         })
     }
-    let uploadUser;
-    const [post, setPost] = useState(null);
-    const [error, setError] = useState(null)
-
 
     const handleSubmit = e => {
         e.preventDefault();
         let setofErrors = validateInfo(values)
         setErrors(setofErrors)
-        CreateUser();
     }
 
     function validateInfo(values) {
@@ -49,46 +50,26 @@ function FormSignUp(){
             errors.password_confirmation = "Passwords do not match"
         } else {
             setVerify(true)
-            uploadUser = JSON.stringify(values)
         }
         return errors;
     };
-    useEffect(() =>{
-        axios.get(`${baseUrl}/1`).then((response) =>{
-            setPost(response.data)
-            console.log(response.data)
-        })
-    },[]);
 
     function CreateUser() {
-        // const api = axios.create(baseUrl)
-        function testing(uploadUser) {
+            console.log(baseUrl, values)
             axios
             .post(baseUrl, values)
             .then((response) =>{
-                setPost(response.data)
-                testing2()
+                console.log('then', response)
+                setCommit(true)
             }).catch(error =>{
-                setError(error);
-                console.log(error);
+                console.log('catch', error.response)
             });
-        }
-    
-        function testing2() {
-            if (!post) {return console.log("no post")}
-            else {return console.log("with post")}
-        }
-    if (verified){
-    testing(uploadUser);
-    testing2()} else {
-        console.log(verified)
-    }
-    }
+        };
 
-
-    // if (verified){
-    //     history.push('./login')
-    // } else {
+    if (commit){
+        history.push('./login')
+        return null
+    } else {
     return (
         <div className="FormSignUp">
             <h1>First, enter your email</h1>
@@ -133,7 +114,7 @@ function FormSignUp(){
             </span>
             </form>
         </div>
-    );
+    )};
 };
 
 export default FormSignUp;
