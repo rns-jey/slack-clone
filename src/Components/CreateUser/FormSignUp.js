@@ -33,6 +33,7 @@ function FormSignUp(){
         setErrors(setofErrors)
     }
 
+//check if the input values follow correct syntax, show error on html
     function validateInfo(values) {
         let errors = {}
         if(!values.email){
@@ -54,6 +55,7 @@ function FormSignUp(){
         return errors;
     };
 
+//post the user values to API, change value of commit to true
     function CreateUser() {
             console.log(baseUrl, values)
             axios
@@ -66,6 +68,8 @@ function FormSignUp(){
             });
         };
 
+
+//switch to LogIn page, once the user values pushed/posted to API
     if (commit){
         history.push('./login')
         return null
