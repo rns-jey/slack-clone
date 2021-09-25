@@ -108,3 +108,12 @@ body{
   text-decoration: underline;
   color:dodgerblue;
 }
+.catch{
+  width: 100%;
+  color:rgb(114, 6, 6);
+  font-size: 2rem;
+  font-weight: 500;
+  align-self: center;
+  text-align: center;
+  margin: 0;
+}

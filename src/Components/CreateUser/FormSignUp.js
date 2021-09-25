@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import "./signUp.css";
 import img from './slackLogo.png'
-import {Form, Card} from 'react-bootstrap';
+
 
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
 
@@ -15,14 +15,10 @@ function FormSignUp(){
         password: '',
         password_confirmation:'',
     })
+    const [verify, setVerify] = useState(false)
     const [errors, setErrors] = useState({})
-    const [verified, setVerify] = useState(false)
     const [commit, setCommit] = useState(false)
-    
-    useEffect(() => {
-       CreateUser()
-    }, [verified === true])
-
+    const apiCatch = "This email is taken"
     function handleChange(e){
         const {name,value} = e.target
         setValues({
@@ -42,37 +38,42 @@ function FormSignUp(){
         let errors = {}
         if(!values.email){
             errors.email = "Email required"
-        }else if (!/(.).*?\1/.test(values.email)){
+        }else if (!/\S+@\S+\.\S+/.test(values.email)){
             errors.email = "Email address is invalid"
         }else if (!values.password){
             errors.password = "Password is required"
         }else if (values.password.length < 6){
             errors.password = "Passwords needs to be 6 characters or more"
-        }
-        else if (!values.password_confirmation){
+        } else if (!values.password_confirmation){
             errors.password_confirmation = "Password is required"
-        }else if (values.password_confirmation !== values.password){
+        } else if (values.password_confirmation !== values.password){
             errors.password_confirmation = "Passwords do not match"
         } else {
             setVerify(true)
+            CreateUser()
         }
         return errors;
     };
-
+    
+    useEffect(()=>{
+        setTimeout(function() {
+            setVerify(false)
+        },8000)
+    }, [verify === true])
+    
 //post the user values to API, change value of commit to true
     function CreateUser() {
-            console.log(baseUrl, values)
-            axios
-            .post(baseUrl, values)
-            .then((response) =>{
-                console.log('then', response)
-                setCommit(true)
-            }).catch(error =>{
-                console.log('catch', error.response)
-            });
-        };
-
-
+        console.log(baseUrl, values)
+        axios
+        .post(baseUrl, values)
+        .then((response) =>{
+            setCommit(true)
+            console.log('then', response)
+        }).catch(error =>{
+            console.log(error, "catch");
+        });
+    };
+    
 //switch to LogIn page, once the user values pushed/posted to API
     if (commit){
         history.push('./login')
@@ -85,40 +86,39 @@ function FormSignUp(){
             <h1>Create your Slack Account</h1>
             <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
         <form onSubmit={handleSubmit}>
-            
+            {verify?<div className="catch">{`${apiCatch}`}</div>:null}
             <div className="form-inputs">
-                <Form.Label htmlFor="email" className="form-label">
+                <label htmlFor="email" className="form-label">
                 Email
-                </Form.Label>
-                <Form.Control 
-                type="email" className="form-input" 
+                </label>
+                <input 
+                className="form-input" 
                 name="email"
                 value={values.email}
                 onChange={handleChange}
                 placeholder="name@work-email.com"
-                required
                 />
-                {errors.email && <p className="errorinput">{errors.email}</p>}
+                <p className="errorinput">{errors.email}</p>
             </div>
 
             <div className="form-inputs">
-                <Form.Label htmlFor="password" className="form-label">
+                <label htmlFor="password" className="form-label">
                 Password
-                </Form.Label>
-                <Form.Control type="password" className="form-input" id="password" 
+                </label>
+                <input type="password" className="form-input" id="password" 
                 name="password" placeholder="Enter your password"
                 value={values.password}
                 onChange={handleChange}
-                required
+                
                 />
                 {errors.password && <p className="errorinput">{errors.password}</p>}
             </div>
 
             <div className="form-inputs">
-                <Form.Label htmlFor="password_confirmation" className="form-label">
+                <label htmlFor="password_confirmation" className="form-label">
                 Confirm password
-                </Form.Label>
-                <Form.Control type="password" className="form-input" id="password_confirmation" 
+                </label>
+                <input type="password" className="form-input" id="password_confirmation" 
                 name="password_confirmation" placeholder="Re-type your password"
                 value={values.password_confirmation}
                 onChange={handleChange}
@@ -129,11 +129,12 @@ function FormSignUp(){
             <button  className="signUpBtn" type="submit">Sign Up</button>
 
             <div className="emailBox">
-            <Form.Check 
+                    <input 
                     type='Checkbox'
                     id="Checkbox"
-                    label={` It's okay to send me email about Slack`}
+                    name="Checkbox"
                     />
+                    <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
             </div>
             <div className="terms">
             By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
