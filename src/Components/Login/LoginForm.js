@@ -6,6 +6,7 @@ export default function LoginForm(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [logErr, setErr] = useState(null)
+  const history = useHistory();
 
   const baseURL = "http://206.189.91.54//api/v1/auth/sign_in";
 
