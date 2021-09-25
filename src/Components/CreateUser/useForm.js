@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import validateInfo from './validateInfo';
 
 function useForm() {
@@ -17,21 +17,16 @@ function useForm() {
         })
     }
 
+    
     const handleSubmit = e => {
         e.preventDefault();
         let setofErrors = validateInfo(values)
         setErrors(setofErrors)
         setUserSubmit(true)
+        console.log(errors)
+        console.log(values)
     }
 
-    // useEffect(
-    //     () => {
-    //       if (Object.keys(errors).length === 0 && userSubmit) {
-    //         callback();
-    //       }
-    //     },
-    //     [errors]
-    //   );
 
     return {handleChange, values, handleSubmit, errors};
 }
