@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 export default function LoginForm(){
   const [email, setEmail] = useState('')
@@ -20,6 +21,7 @@ export default function LoginForm(){
         localStorage.setItem('expiry', resp.headers["expiry"]);
         localStorage.setItem('uid', resp.headers["uid"]);
         setErr(prevErr => null)
+        history.push("/home");
       })
       .catch((err) => {
         setErr(prevErr => "Invalid username or password!")
