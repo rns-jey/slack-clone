@@ -9,7 +9,7 @@ function Home() {
     <div className="Main">
       <RedirectToLogin />
       <Header />
-      <Sidebar/>
+      <Sidebar />
       <Chat />
     </div>
   );
