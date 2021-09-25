@@ -44,6 +44,35 @@ div.header-container {
   font-size: 5rem;
 }
 
+.tooltiptext {
+  visibility: hidden;
+  font-size: 1.5rem;
+  background-color: black;
+  color: #fff;
+  text-align: right;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 115%;
+  left: -305%;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 90%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.user-avi:hover .tooltiptext {
+  visibility: visible;
+}
+
 .left-header,
 .mid-header,
 .right-header,

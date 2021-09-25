@@ -9,6 +9,8 @@ const HeaderComponents = (props) => {
 }
 
 const Header = () => {
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+
   return (
     <div className="header-container">
       <HeaderComponents title="left-header">
@@ -26,7 +28,8 @@ const Header = () => {
 
       <HeaderComponents title="user-avi">
         <BsPersonFill />
-        </HeaderComponents>
+        <span class="tooltiptext">{user}</span>
+      </HeaderComponents>
     </div>
   );
 }
