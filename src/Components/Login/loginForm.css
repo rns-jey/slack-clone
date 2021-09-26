@@ -7,16 +7,36 @@ body{
     height: 100vh;
     width: 100vw;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(242, 242, 255);
+}
+.error{
+    color:darkred;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top:5px;
+    margin-bottom: 0;
+    text-align: center;
 }
 .LoginCard{
     position: relative;
     margin-top: 50px;
     width: 300px;
-}
-.FormLogin{
+    padding: 20px;
+    display: flex;
+    height: fit-content;
+    background-color: rgb(255, 255, 255);
     align-content: center;
     justify-content: center;
-    padding: 5%;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px -1px rgba(0,0,0,0.62);
+}
+.FormLogin{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 90%;
 }
 .form-group{
     display: flex;
@@ -24,16 +44,68 @@ body{
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.form-input{
-    width: 100%;
-    height: 25px;
+.forminput{
+    height: 35px;
     border-radius: 5px;
-    border:1px solid rgb(12, 12, 12);
+    border:1px solid rgb(194, 192, 192);
+}
+.forminput:focus{
+    outline: none !important;
+    border:1px solid blueviolet;
+    box-shadow: 0 0 10px #719ECE;
+  }
+.Sideheading{
+    width: 75%;
+    font-size: 3rem;
+}
+.loginbtn{
+    background-color: #49274b;
+    border-radius: 5px;
+    border: none;
+    color:cornsilk;
+    font-size: 1.8rem;
+    width: 101%;
+    height: 35px;
+}
+.loginbtn:hover{
+    background-color: #611f69;
+  }
+.line{
+    height: 1px;
+    width: 100%;
+    background-color: rgb(68, 68, 68);
+    border: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.linktoCreateUser{
+    font-size: 1.5rem;
+    align-self: center;
+}
+.toRegisterlink{
+    text-decoration: none;
+    font-weight: 650;
+}
+.toRegisterlink:hover{
+    text-decoration: underline;
+}
+.SideMod{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+#slacklogo{
+    width: 25rem;
 }
 
 @media screen and (max-width: 800px){
-.LoginPg{
-    display: flex;
+.loginPage{
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.LoginCard{
+    align-self: center;
 }
 }

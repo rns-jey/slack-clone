@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./loginForm.css";
 import SideModule from './sideModule';
-
+import { Link } from "react-router-dom";
 export default function LoginForm(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -40,7 +40,7 @@ export default function LoginForm(){
       <div className="form-inner">
         <div className="form-group">
           <input
-            className="form-input"
+            className="forminput"
             type="text" 
             name="email" 
             id="email"
@@ -50,7 +50,7 @@ export default function LoginForm(){
         </div>
         <div className="form-group">
           <input 
-            className="form-input"
+            className="forminput"
             type="password" 
             name="password"
             id="password"
@@ -58,7 +58,12 @@ export default function LoginForm(){
             onChange={e => setPassword(e.target.value)} value={password}
           />
         </div>
-        <input type="submit" value="LOGIN"/>
+        <input className="loginbtn"type="submit" value="Sign in"/>
+      </div>
+      <hr className="line"/>
+      <div className="linktoCreateUser">
+          <span>New to Slack? </span>
+          <Link to="/register" className="toRegisterlink">Create an account</Link>
       </div>
     </form>
     </div>

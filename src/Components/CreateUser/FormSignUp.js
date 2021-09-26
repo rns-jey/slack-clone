@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import "./signUp.css";
-import img from './slackLogo.png'
+import img from '../assets/slackLogo.png';
 
 
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
