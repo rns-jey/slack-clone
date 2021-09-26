@@ -18,7 +18,7 @@ function FormSignUp(){
     const [verify, setVerify] = useState(false)
     const [errors, setErrors] = useState({})
     const [commit, setCommit] = useState(false)
-    const apiCatch = "This email is taken"
+    const apiCatch = "This email already has an account"
     function handleChange(e){
         const {name,value} = e.target
         setValues({
@@ -92,49 +92,52 @@ function FormSignUp(){
                 Email
                 </label>
                 <input 
-                className="form-input" 
+                className={`form-input ${errors.email ? 'errorValue':null }`}
                 name="email"
                 value={values.email}
                 onChange={handleChange}
                 placeholder="name@work-email.com"
                 />
-                <p className="errorinput">{errors.email}</p>
+                {errors.email && <p className="errorMsg">{errors.email}</p>}
             </div>
 
             <div className="form-inputs">
                 <label htmlFor="password" className="form-label">
                 Password
                 </label>
-                <input type="password" className="form-input" id="password" 
-                name="password" placeholder="Enter your password"
+                <input type="password" 
+                className={`form-input ${errors.password ? 'errorValue':null }`}
+                id="password" 
+                name="password" 
+                placeholder="Enter your password"
                 value={values.password}
                 onChange={handleChange}
                 
                 />
-                {errors.password && <p className="errorinput">{errors.password}</p>}
+                {errors.password && <p className="errorMsg">{errors.password}</p>}
             </div>
 
             <div className="form-inputs">
                 <label htmlFor="password_confirmation" className="form-label">
                 Confirm password
                 </label>
-                <input type="password" className="form-input" id="password_confirmation" 
-                name="password_confirmation" placeholder="Re-type your password"
+                <input type="password" 
+                className={`form-input ${errors.password_confirmation ? 'errorValue':null }`}
+                id="password_confirmation" 
+                name="password_confirmation" 
+                placeholder="Re-type your password"
                 value={values.password_confirmation}
                 onChange={handleChange}
                 />
-                {errors.password_confirmation && <p className="errorinput">{errors.password_confirmation}</p>}
+                {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
             </div>
 
             <button  className="signUpBtn" type="submit">Sign Up</button>
 
             <div className="emailBox">
-                    <input 
-                    type='Checkbox'
-                    id="Checkbox"
-                    name="Checkbox"
-                    />
-                    <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
+                <input 
+                type='Checkbox' id="Checkbox" name="Checkbox"/>
+                <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
             </div>
             <div className="terms">
             By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
