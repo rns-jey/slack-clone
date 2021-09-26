@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import "./loginForm.css";
+import SideModule from './sideModule';
 
 export default function LoginForm(){
   const [email, setEmail] = useState('')
@@ -30,31 +32,37 @@ export default function LoginForm(){
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+    <div className="loginPage">
+    <SideModule/>
+    <div className="LoginCard">
+    <form onSubmit={handleSubmit} className='FormLogin'>
       {logErr ? (<div className="error">{logErr}</div>) : ""}
       <div className="form-inner">
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input 
+          <input
+            className="form-input"
             type="text" 
             name="email" 
             id="email"
+            placeholder="name@work-email.com"
             onChange={e => setEmail(e.target.value)} value={email}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
           <input 
+            className="form-input"
             type="password" 
             name="password"
             id="password"
+            placeholder="Password"
             onChange={e => setPassword(e.target.value)} value={password}
           />
         </div>
         <input type="submit" value="LOGIN"/>
       </div>
     </form>
+    </div>
+    </div>
   )
 };
 

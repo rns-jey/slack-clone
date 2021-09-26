@@ -19,6 +19,7 @@ function FormSignUp(){
     const [errors, setErrors] = useState({})
     const [commit, setCommit] = useState(false)
     const apiCatch = "This email already has an account"
+
     function handleChange(e){
         const {name,value} = e.target
         setValues({
@@ -132,7 +133,7 @@ function FormSignUp(){
                 {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
             </div>
 
-            <button  className="signUpBtn" type="submit">Sign Up</button>
+            <button  className="signUpBtn" type="submit">Continue</button>
 
             <div className="emailBox">
                 <input 

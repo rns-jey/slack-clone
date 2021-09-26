@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+.loginPage{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.LoginCard{
+    position: relative;
+    margin-top: 50px;
+    width: 300px;
+}
+.FormLogin{
+    align-content: center;
+    justify-content: center;
+    padding: 5%;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.form-input{
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    border:1px solid rgb(12, 12, 12);
+}
+
+@media screen and (max-width: 800px){
+.LoginPg{
+    display: flex;
+    flex-direction: column;
+}
+}
