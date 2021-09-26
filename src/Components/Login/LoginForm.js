@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./loginForm.css";
@@ -11,6 +11,12 @@ export default function LoginForm(){
   const history = useHistory();
 
   const baseURL = "http://206.189.91.54//api/v1/auth/sign_in";
+
+  useEffect(()=>{
+    setTimeout(function() {
+        setErr(prevErr => null)
+    },8000)
+}, [logErr == true])
 
   const handleSubmit = (e) => {
     e.preventDefault();

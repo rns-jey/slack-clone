@@ -5,6 +5,7 @@ import "./signUp.css";
 import img from '../assets/slackLogo.png';
 
 
+
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
 
 
@@ -143,16 +144,11 @@ function FormSignUp(){
             <div className="terms">
             By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
             </div>
-
             </form>
         </div>
         <span className="linktoLogin">
             <p>Already have an account?</p><a href="./login" id="signinLink">Sign in instead</a> 
         </span>
-        <div className="bottomlinks">
-            <a href="#" className="bLinks">Privacy & Terms</a>
-            <a href="#" className="bLinks">Contact Us</a>
-        </div>
     </>
     )};
 };
