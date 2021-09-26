@@ -9,7 +9,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-
+    background-color: rgb(242, 242, 255);
 }
 .error{
     color:darkred;
