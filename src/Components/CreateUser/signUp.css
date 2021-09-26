@@ -1,7 +1,7 @@
 body{
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  background-color: rgb(242, 242, 255);
 }
 .form-input:focus{
   outline: none !important;
@@ -9,22 +9,32 @@ body{
   box-shadow: 0 0 10px #719ECE;
 }
 .form-input{
-  width: 100%;
+  width: 95%;
   height: 25px;
   border-radius: 5px;
-  border:1px solid rgb(12, 12, 12);
+  border:1px solid rgb(194, 192, 192);
 }
+.errorValue{
+  border:1px solid rgb(138, 4, 4);
+  box-shadow: 0 0 10px #e62929;
+}
+
 .FormSignUp{
   position: relative;
-  margin-top: 25px;
+  margin-top: 50px;
   height: 60%;
   width: 60%;
-  top: 5%;
+  top: 4%;
   left: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding:1%;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 2px 5px -1px rgba(0,0,0,0.62);
 }
 .form-inputs{
   display: flex;
@@ -35,12 +45,14 @@ body{
 .FormSignUp h1 {
     font-size: 5rem;
     text-align: center;
-    width: 100%;
+    width: 95%;
+    margin-top: 0;
     margin-bottom: 1rem;
     color: rgb(12, 12, 12);
   }
 .form-label{
   font-size: 2rem;
+  margin-bottom: 5px;
 }
 #slackLogo{
     width: 15rem;
@@ -51,7 +63,8 @@ body{
   border-radius: 5px;
   border: none;
   color:cornsilk;
-  width: 101%;
+  font-size: 1.8rem;
+  width: 96%;
   height: 30px;
 }
 .signUpBtn:hover{
@@ -65,7 +78,8 @@ body{
 .terms{
   margin-top: 10px;
   font-size: 1.5rem;
-  color:rgb(70, 70, 70)
+  color:rgb(70, 70, 70);
+  margin-bottom: 10px;
 }
 
 .linktoLogin{
@@ -81,13 +95,18 @@ body{
   font-weight: 500;
 }
 
-.errorinput{
+.errorMsg{
   color:darkred;
   font-size: 1.5rem;
+  font-weight: 500;
+  margin-top:5px;
+  margin-bottom: 0;
 }
 
 .subheading{
   font-size: 1.5rem;
+  margin:0;
+  text-align: center;
 }
 .bottomlinks{
   position: absolute;
@@ -116,4 +135,26 @@ body{
   align-self: center;
   text-align: center;
   margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+  body{
+    height: 100%;
+    overflow: scroll;
+  }
+  .bottomlinks{
+    position: relative;
+    padding-top: 25px;
+  }
+  .linktoLogin{
+    right:25%;
+    left: 25%;
+    top:5px;
+    text-align: center;
+    display: flex;
+  }
+  #signinLink {
+    align-self: center;
+    margin-left: 5px;
+  }
 }
