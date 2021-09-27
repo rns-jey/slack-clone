@@ -3,6 +3,7 @@ import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
+import { useHistory } from "react-router-dom";
 
 const HeaderComponents = (props) => {
   return <div className={props.title}>{props.children}</div>
@@ -10,6 +11,17 @@ const HeaderComponents = (props) => {
 
 export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+  const history = useHistory();
+
+  const logOut = (e) => {
+    e.preventDefault();
+    localStorage.setItem('at', '');
+    localStorage.setItem('client', '');
+    localStorage.setItem('expiry', '');
+    localStorage.setItem('uid', '');
+    console.log(history)
+    history.replace("/login");
+  }
 
   return (
     <div className="header-container">
@@ -38,7 +50,7 @@ export default function Header() {
               <div className="user-status">Active</div>
             </div>
           </div>
-          <div className="signout-container">
+          <div className="signout-container" onClick={logOut}>
             <span id="sign-out">Sign out</span>
           </div>
         </div>
