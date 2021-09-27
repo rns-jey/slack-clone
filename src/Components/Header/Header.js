@@ -8,7 +8,7 @@ const HeaderComponents = (props) => {
   return <div className={props.title}>{props.children}</div>
 }
 
-const Header = () => {
+export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
 
   return (
@@ -46,5 +46,3 @@ const Header = () => {
     </div>
   );
 }
-
-export default Header;
