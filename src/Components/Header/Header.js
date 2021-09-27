@@ -28,7 +28,20 @@ const Header = () => {
 
       <HeaderComponents title="user-avi">
         <BsPersonFill />
-        <span class="tooltiptext">{user}</span>
+        <div className="user-menu">
+          <div className="user-details">
+            <div className="user-image">
+              <BsPersonFill />
+            </div>
+            <div className="user-name-status">
+              <div className="user-name">{user}</div>
+              <div className="user-status">Active</div>
+            </div>
+          </div>
+          <div className="signout-container">
+            <span id="sign-out">Sign out</span>
+          </div>
+        </div>
       </HeaderComponents>
     </div>
   );
