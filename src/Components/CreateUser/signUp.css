@@ -1,4 +1,6 @@
-
+body{
+  overflow-y: scroll;
+}
 .SignUpPage{
   background-color: rgb(242, 242, 255);
   height:100vh;
