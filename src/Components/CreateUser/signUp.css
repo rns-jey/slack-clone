@@ -1,12 +1,10 @@
-body{
-  height: 100vh;
-  width: 100vw;
 
-}
 .SignUpPage{
   background-color: rgb(242, 242, 255);
-  height: 100vh;
+  height:100vh;
   width: 100vw;
+  padding-top:1px;
+  padding-bottom:1px;
   z-index: -1;
 }
 .form-input:focus{
@@ -28,9 +26,8 @@ body{
 .FormSignUp{
   position: relative;
   margin-top: 50px;
-  height: 60%;
+  height: max-content;
   width: 60%;
-  top: 4%;
   left: 20%;
   display: flex;
   flex-direction: column;
@@ -144,9 +141,9 @@ body{
 }
 
 @media screen and (max-width: 800px) {
-  body{
-    height: 100%;
-    overflow: scroll;
+  .FormSignUp{
+    width:90%;
+    left:2%;
   }
   .bottomlinks{
     position: relative;
@@ -154,7 +151,7 @@ body{
   }
   .linktoLogin{
     right:25%;
-    left: 25%;
+    left: auto;
     top:5px;
     text-align: center;
     display: flex;
@@ -163,4 +160,14 @@ body{
     align-self: center;
     margin-left: 5px;
   }
+  .FormSignUp h1 {
+    font-size: calc(30px + (29 - 30) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .subheading{
+    font-size: calc(15px + (10 - 15) * ((100vw - 300px) / (1600 - 300)));
+  }
+  .terms{
+    font-size: calc(15px + (5 - 15) * ((100vw - 300px) / (1600 - 300)));
+  }
 }
+
