@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import RedirectToLogin from "../Components/Router/RedirectToLogin";
-import Home from  '../Pages/Home';
-import Login from  '../Pages/Login';
-import Register from '../Pages/Register';
+import RedirectToLogin from "./RedirectToLogin";
+import Home from  '../../Pages/Home';
+import Login from  '../../Pages/Login';
+import Register from '../../Pages/Register';
 
 
 function PageRoute() {
