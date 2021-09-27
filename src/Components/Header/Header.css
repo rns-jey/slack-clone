@@ -50,7 +50,7 @@ div.header-container {
   background-color: black;
   color: #fff;
   text-align: right;
-  border-radius: 6px;
+  border-radius: 5px;
   padding: 10px;
   position: absolute;
   z-index: 1;
@@ -69,13 +69,58 @@ div.header-container {
   border-color: transparent transparent black transparent;
 }
 
-.user-avi:hover .tooltiptext {
-  visibility: visible;
-}
-
 .left-header,
 .mid-header,
 .right-header,
-.user-avi {
+.user-avi,
+.signout-container {
   cursor: pointer;
+}
+
+.user-menu {
+  visibility: hidden;
+  font-size: 1.5rem;
+  background-color: white;
+  color: black;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  z-index: 1;
+  border: solid 1px gray;
+  border-radius: 5px;
+}
+
+.user-details {
+  display: flex;
+  padding-bottom: 10px;
+  border-bottom: solid 1px black;
+}
+
+.user-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+}
+
+.user-name-status {
+  font-size: 2rem;
+}
+
+.signout-container {
+  padding: 10px 5px 10px;
+  font-size: 2rem;
+  background-color: white;
+  color: black;
+}
+
+.signout-container:hover {
+  background-color: #126483;
+  color: white;
+}
+
+.user-avi:hover .user-menu {
+  visibility: visible;
 }

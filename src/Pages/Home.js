@@ -1,3 +1,4 @@
+import './Home.css'
 import React from "react";
 import RedirectToLogin from "../Components/Router/RedirectToLogin";
 import Header from '../Components/Header/Header'

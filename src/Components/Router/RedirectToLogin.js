@@ -6,7 +6,7 @@ export default function RedirectToLogin() {
 
   return (
     <>
-      {user ? <Redirect to="/home" /> : <Redirect to="/login" />}
+      {user.length > 0 ? <Redirect to="/home" /> : <Redirect to="/login" />}
     </>
   )
 }
