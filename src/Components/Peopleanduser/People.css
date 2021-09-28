@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&display=swap');
 
 body {
@@ -13,16 +14,21 @@ body {
     border-bottom: 1px solid lightgray;
     display: flex;
     font-size: 12px;
+    font-family: 'Source Sans Pro', sans-serif;
     padding-left: 10px;
 }
 .people_subheader > h3 {
     cursor: pointer;
+    text-decoration-line: underline;
+    text-underline-offset: 80%;
+    text-decoration-color:green;
+    text-decoration-thickness: 2px;
 }
 .people_search {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 17px;
 }
 input {
     font-size: 15px;

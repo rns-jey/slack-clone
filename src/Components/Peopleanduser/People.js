@@ -43,6 +43,8 @@ export default function getUsersChannel () {
                     <input type="text"
                     placeholder="Search by name, role or team"></input>
                 </div>
+                <div className="people_users">
+                </div>
             </div>
         </Router>
     );
