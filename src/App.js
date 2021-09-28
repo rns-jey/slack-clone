@@ -3,6 +3,7 @@ import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
+import CreateIcon from "@material-ui/icons/Create";
 
 const HeaderComponents = (props) => {
   return <div className={props.title}>{props.children}</div>
@@ -45,7 +46,12 @@ function App() {
       </div>
       <div className="workspace">
         <div className="sidebar">
-
+            <div className="sidebar_header">
+                <div className="sidebar_info">
+                    <h2>Avion School</h2>
+                </div>
+                <CreateIcon />
+            </div>
         </div>
         <div className="chat-container">
           <div className="chat-header"></div>
