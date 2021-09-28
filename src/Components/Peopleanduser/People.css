@@ -1,0 +1,21 @@
+body {
+    background-color: whitesmoke;
+}
+.people_header {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    padding: 4.2px;
+    padding-left: 10px;
+}
+.people_subheader {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    font-size: 12px;
+    padding-left: 10px;
+}
+.people_search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
