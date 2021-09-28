@@ -1,13 +1,10 @@
 import './Header.css';
-import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
 import { useHistory } from "react-router-dom";
 
-const HeaderComponents = (props) => {
-  return <div className={props.title}>{props.children}</div>
-}
+
 
 export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
@@ -25,9 +22,6 @@ export default function Header() {
 
   return (
     <div className="header-container">
-      <HeaderComponents title="left-header">
-        <FaRegClock />
-      </HeaderComponents>
 
       <HeaderComponents title="mid-header">
         <div>Search</div>

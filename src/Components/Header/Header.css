@@ -12,38 +12,6 @@ div.header-container {
   font-size: 1.5rem;
 }
 
-.left-header {
-  margin-right: 15px;
-}
-
-.mid-header {
-  display: flex;
-  justify-content: space-between;
-  width: 40%;
-  background-color: rgb(93, 61, 94);
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.right-header {
-  margin-left: 15px;
-}
-
-.user-avi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  padding: 2px;
-  height: 35px;
-  width: 35px;
-  margin: 10px;
-  background-color: #920e95;
-  right: 0;
-  border-radius: 5px;
-  font-size: 5rem;
-}
-
 .tooltiptext {
   visibility: hidden;
   font-size: 1.5rem;
