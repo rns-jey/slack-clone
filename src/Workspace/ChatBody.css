@@ -15,7 +15,11 @@
 }
 
 .chat-body {
+  padding-left: 13px;
   height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .chat-box-container {
