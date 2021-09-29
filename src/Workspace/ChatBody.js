@@ -2,6 +2,7 @@
 import './ChatBody.css'
 import { Switch, Route } from 'react-router-dom';
 import { arrChannels } from './SideNavOpt';
+import TextareaAutosize from 'react-textarea-autosize';
 
 export default function ChatBody() {
   return ( 
@@ -20,7 +21,11 @@ function Page({ title }) {
     <div className="chat-container">
       <div className="chat-header">{title}</div>
       <div className="chat-body"></div>
-      <div className="chat-box"></div>
+      <div className="chat-box-container">
+        <div className="chat-box">
+          <TextareaAutosize />
+        </div>
+      </div>
     </div>
   )
 }
