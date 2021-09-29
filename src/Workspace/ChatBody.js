@@ -1,5 +1,5 @@
 
-import './Chatbody.css'
+import './ChatBody.css'
 import { Switch, Route } from 'react-router-dom';
 
 export default function ChatBody() {
