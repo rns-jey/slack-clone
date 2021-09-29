@@ -1,19 +1,16 @@
 
 import './ChatBody.css'
 import { Switch, Route } from 'react-router-dom';
+import { arrChannels } from './SideNavOpt';
 
 export default function ChatBody() {
   return ( 
     <Switch>
-      <Route path="/channel1">
-        <Page title="Channel1" />
-      </Route>
-      <Route path="/channel2">
-        <Page title="Channel2" />
-      </Route>
-      <Route path="/channel3">
-        <Page title="Channel3" />
-      </Route>
+      {arrChannels.map(({ cID, cName }) => (
+        <Route path={`/C${cID}`}>
+          <Page title={cName} />
+        </Route>
+      ))}
     </Switch>
   )
 }
