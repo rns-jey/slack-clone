@@ -1,12 +1,22 @@
 import './App.css';
+import React from "react";
 import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
 import CreateIcon from "@material-ui/icons/Create";
+import { Link, useLocation, Switch, Route, Redirect } from 'react-router-dom';
 
 const HeaderComponents = (props) => {
   return <div className={props.title}>{props.children}</div>
+}
+
+function NavLink({ to, activeClassName, inactiveClassName, className, ...rest }) {
+  let location = useLocation();
+  let isActive = location.pathname === to;
+  let allClassNames = (isActive ? `${className} ${activeClassName}` : ` ${className}`)
+
+  return <Link className={allClassNames} to={to} {...rest} />;
 }
 
 function App() {
@@ -18,31 +28,31 @@ function App() {
         </HeaderComponents>
 
         <HeaderComponents title="mid-header">
-        <div>Search</div>
-        <FaSearch />
-      </HeaderComponents>
+          <div>Search</div>
+          
+        </HeaderComponents>
 
-      <HeaderComponents title="right-header">
-        <FaRegQuestionCircle />
-      </HeaderComponents>
+        <HeaderComponents title="right-header">
+          <FaRegQuestionCircle />
+        </HeaderComponents>
 
-      <HeaderComponents title="user-avi">
-        <BsPersonFill />
-        <div className="user-menu">
-          <div className="user-details">
-            <div className="user-image">
-              <BsPersonFill />
+        <HeaderComponents title="user-avi">
+          <BsPersonFill />
+          <div className="user-menu">
+            <div className="user-details">
+              <div className="user-image">
+                <BsPersonFill />
+              </div>
+              <div className="user-name-status">
+                <div className="user-name">jmarenas@gmail.com</div>
+                <div className="user-status">Active</div>
+              </div>
             </div>
-            <div className="user-name-status">
-              <div className="user-name">jmarenas@gmail.com</div>
-              <div className="user-status">Active</div>
+            <div className="signout-container">
+              <span id="sign-out">Sign out</span>
             </div>
           </div>
-          <div className="signout-container">
-            <span id="sign-out">Sign out</span>
-          </div>
-        </div>
-      </HeaderComponents>
+        </HeaderComponents>
       </div>
       <div className="workspace">
         <div className="sidebar">
@@ -52,15 +62,43 @@ function App() {
                 </div>
                 <CreateIcon />
             </div>
+            <div className="sidebar_options">
+                <NavLink activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to="/channel1">
+                  Channel1
+                </NavLink>
+                <NavLink activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to="/channel2">
+                  Channel2
+                </NavLink>
+                <NavLink activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to="/channel3">
+                  Channel3
+                </NavLink>
+            </div>
         </div>
-        <div className="chat-container">
-          <div className="chat-header"></div>
-          <div className="chat-body"></div>
-          <div className="chat-box"></div>
-        </div>
+
+        <Switch>
+          <Route path="/channel1">
+            <Page title="Channel1" />
+          </Route>
+          <Route path="/channel2">
+            <Page title="Channel2" />
+          </Route>
+          <Route path="/channel3">
+            <Page title="Channel3" />
+          </Route>
+        </Switch>
       </div>
     </div>
   );
+}
+
+function Page({ title }) {
+  return (
+    <div className="chat-container">
+      <div className="chat-header">{title}</div>
+      <div className="chat-body"></div>
+      <div className="chat-box"></div>
+    </div>
+  )
 }
 
 export default App;
