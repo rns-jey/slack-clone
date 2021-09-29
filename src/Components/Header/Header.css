@@ -1,48 +1,43 @@
-html {
-  font-size: 10px;
-}
-
-div.header-container {
-  background-color: #3f0e40;
+.header-container {
+  width: 100%;
+  background-color: #350e36;
+  color: white;
   display: flex;
-  padding: 10px;
   justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 1.5rem;
+  min-height: 40px;
+  user-select: none;
 }
 
-.tooltiptext {
-  visibility: hidden;
-  font-size: 1.5rem;
-  background-color: black;
-  color: #fff;
-  text-align: right;
+.left-header {
+  margin-right: 15px;
+}
+
+.right-header {
+  margin-left: 15px;
+}
+
+.user-avi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 2px;
+  height: 25px;
+  width: 25px;
+  background-color: #920e95;
+  right: 20px;
   border-radius: 5px;
-  padding: 10px;
-  position: absolute;
-  z-index: 1;
-  top: 115%;
-  left: -305%;
+  font-size: 5rem;
 }
 
-.tooltiptext::after {
-  content: "";
-  position: absolute;
-  bottom: 100%;
-  left: 90%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent black transparent;
-}
-
-.left-header,
-.mid-header,
-.right-header,
-.user-avi,
-.signout-container {
-  cursor: pointer;
+.mid-header {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  background-color: rgb(93, 61, 94);
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .user-menu {
@@ -53,8 +48,8 @@ div.header-container {
   border-radius: 6px;
   padding: 10px;
   position: absolute;
-  top: 45px;
-  right: 10px;
+  top: 35px;
+  right: 1px;
   z-index: 1;
   border: solid 1px gray;
   border-radius: 5px;
@@ -70,16 +65,16 @@ div.header-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .user-name-status {
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 .signout-container {
   padding: 10px 5px 10px;
-  font-size: 2rem;
+  font-size: 1.25rem;
   background-color: white;
   color: black;
 }
@@ -91,4 +86,12 @@ div.header-container {
 
 .user-avi:hover .user-menu {
   visibility: visible;
+}
+
+.left-header,
+.mid-header,
+.right-header,
+.user-avi,
+.signout-container {
+  cursor: pointer;
 }
