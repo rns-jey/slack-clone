@@ -1,5 +1,5 @@
-import React from "react";
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./People.css"
 import {
     BrowserRouter as Router,
@@ -9,26 +9,33 @@ import {
 } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search"
 
-export default function getUsersChannel () {
-    const baseURL = "http://206.189.91.54//api/v1/channels";
+export default function GetUsers () {
+  const [users,setUsers] = useState([]);
+  const userExpiry = localStorage.getItem('expiry');
+  const userUID = localStorage.getItem('uid');
+  const userAt = localStorage.getItem('at');
+  const userClient = localStorage.getItem('client');
+  const baseURL = "http://206.189.91.54//api/v1/users";
   const config = {
     headers : {
-      "access-token": "haXWCLr264GN4T2F5qSSug",
-      client: "_690jUPp79Ik24mMmKlQJA",
-      expiry: "haXWCLr264GN4T2F5qSSug",
-      uid: "user1@example.com"
+      "access-token": userAt,
+      client: userClient,
+      expiry: userExpiry,
+      uid: userUID
     }
   }
-
-  axios
+  
+  useEffect(() => {
+    axios
     .get(baseURL, config)
-    .then((response) => {
-      console.log(response)
+    .then((res) => {
+      setUsers(res.data.data);
     })
     .catch((err) => {
       console.log(err)  
     });
-
+  })
+  
     return (
         <Router>
             <div className="people_container">
@@ -44,6 +51,9 @@ export default function getUsersChannel () {
                     placeholder="Search by name, role or team"></input>
                 </div>
                 <div className="people_users">
+                {users.map(({ email }) => (
+                    <div>{email}</div>
+                    ))}
                 </div>
             </div>
         </Router>
