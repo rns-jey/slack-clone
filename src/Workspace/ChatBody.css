@@ -1,0 +1,24 @@
+.chat-container {
+  background-color: wheat;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-header {
+  background-color: red;
+  min-height: 47px;
+  width: 100%;
+  border-bottom: solid 1px gray;
+}
+
+.chat-body {
+  background-color: orange;
+  height: 100%;
+}
+
+.chat-box {
+  background-color: yellow;
+  min-height: 75px;
+}
