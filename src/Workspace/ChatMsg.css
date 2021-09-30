@@ -16,10 +16,47 @@
 
 .chat-body {
   padding-left: 13px;
+  padding-right: 13px;
   height: 100%;
   overflow: auto;
   display: flex;
   flex-direction: column-reverse;
+}
+
+.bubble {
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+}
+
+.msg-sender {
+  font-size: 0.7rem;
+  padding-bottom: 2px;
+}
+
+.msg-content {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+}
+
+.bubble.you {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.bubble.you > .msg-wrap > .msg-sender {
+  display: none;
+}
+
+.bubble.you > .msg-wrap > .msg-content {
+  background-color: rgb(140, 175, 240);
+  color: rgb(36, 80, 160);
+}
+
+.msg-content {
+  font-weight: 300;
 }
 
 .chat-box-container {

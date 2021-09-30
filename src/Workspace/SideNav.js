@@ -1,9 +1,7 @@
-
 import './SideNav.css'
 import CreateIcon from "@material-ui/icons/Create";
-import SideNavOpt from './SideNavOpt';
 
-export default function SideNav() {
+export default function SideNav(props) {
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -12,7 +10,7 @@ export default function SideNav() {
           </div>
           <CreateIcon />
       </div>
-      <SideNavOpt />
+      {props.children}
     </div>
   )
 }
