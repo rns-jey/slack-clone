@@ -8,7 +8,7 @@ export default function ChatBody( { Channels, Recents }) {
         <HomePage />
       </Route>
       {Channels.map(({ id, name }) => (
-        <Route path={`/C${id}`}>
+        <Route key={id} path={`/C${id}`}>
           <ChatMsg type="Channel" title={name} convoID={id} />
         </Route>
       ))}
