@@ -5,6 +5,7 @@ import axios from 'axios';
 
 export default function ChatMsg({ type, title, convoID }) {
   const [chat, setChat] = useState([])
+  const [message, setMessage] = useState("")
 
   function reverseChat(arr) {
     let chatMsgs = []
@@ -52,7 +53,11 @@ export default function ChatMsg({ type, title, convoID }) {
       </div>
       <div className="chat-box-container">
         <div className="chat-box">
-          <TextareaAutosize />
+          <form>
+            <TextareaAutosize 
+            onChange={e => setMessage(e.target.value)} 
+            value={message} />
+          </form>
         </div>
       </div>
     </div>
