@@ -75,9 +75,9 @@ export default function Workspace() {
   return (
     <div className="workspace">
       <SideNav>
-        <SideNavOpt Channels={arrChannels} />
+        <SideNavOpt Channels={arrChannels} Recents={arrRecent} />
       </SideNav>
-      <ChatBody Channels={arrChannels} />
+      <ChatBody Channels={arrChannels} Recents={arrRecent} />
     </div>
   )
 }
