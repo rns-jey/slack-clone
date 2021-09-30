@@ -3,6 +3,7 @@ import SideNav from './SideNav';
 import ChatBody from './ChatBody';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import SideNavOpt from './SideNavOpt';
 
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
@@ -34,7 +35,9 @@ export default function Workspace() {
 
   return (
     <div className="workspace">
-      <SideNav />
+      <SideNav>
+        <SideNavOpt Channels={arrChannels} />
+      </SideNav>
       <ChatBody />
     </div>
   )
