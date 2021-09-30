@@ -1,7 +1,36 @@
 import './ChatMsg.css'
 import TextareaAutosize from 'react-textarea-autosize';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
-export default function ChatMsg({ title }) {
+export default function ChatMsg({ type, title, convoID }) {
+
+  useEffect(() => {
+    let isMounted = true; 
+    const baseURL = `http://206.189.91.54//api/v1/messages?receiver_class=${type}&receiver_id=${convoID}`;
+    const config = {
+      headers : {
+        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
+        client: "4QtfzQRef-071r-TyjFR2w",
+        expiry: "1627305480",
+        uid: "postman@test.com"
+      }
+    }
+
+    axios
+      .get(baseURL, config)
+      .then((response) => {
+        if (isMounted) {
+          console.log(response.data.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+
+    return () => { isMounted = false }
+  });
+
   return (
     <div className="chat-container">
       <div className="chat-header">{title}</div>

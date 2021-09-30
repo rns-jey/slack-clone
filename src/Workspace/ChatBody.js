@@ -9,7 +9,7 @@ export default function ChatBody( { Channels, Recents }) {
       </Route>
       {Channels.map(({ id, name }) => (
         <Route path={`/C${id}`}>
-          <ChatMsg title={name} />
+          <ChatMsg type="Channel" title={name} convoID={id} />
         </Route>
       ))}
       {Recents.map(({ id, uid }) => (
