@@ -29,8 +29,30 @@ export default function Workspace() {
       });
   }
 
+  function getRecent() {
+    const baseURL = "http://206.189.91.54//api/v1/users/recent";
+    const config = {
+      headers : {
+        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
+        client: "4QtfzQRef-071r-TyjFR2w",
+        expiry: "1627305480",
+        uid: "postman@test.com"
+      }
+    }
+
+    axios
+      .get(baseURL, config)
+      .then((response) => {
+        console.log(response.data.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
+
   useEffect(() => {
     getChannels();
+    getRecent()
   }, []);
 
   return (
