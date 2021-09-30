@@ -46,7 +46,9 @@ export default function ChatMsg({ type, title, convoID }) {
     <div className="chat-container">
       <div className="chat-header">{title}</div>
       <div className="chat-body">
-        
+        {chat.map(({ id, body, sender }) => (
+          <ChatBubble msgContent={body} sender={sender} />
+        ))}
       </div>
       <div className="chat-box-container">
         <div className="chat-box">
