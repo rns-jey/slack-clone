@@ -1,3 +1,4 @@
+import './ChatBody.css'
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function ChatMsg({ title }) {
