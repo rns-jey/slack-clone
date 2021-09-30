@@ -1,10 +1,11 @@
 import './Workspace.css'
 import SideNav from './SideNav';
 import ChatBody from './ChatBody';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Workspace() {
+  const [arrChannels, setChannels] = useState([])
 
   function getChannels() {
     const baseURL = "http://206.189.91.54//api/v1/channels";
@@ -20,7 +21,7 @@ export default function Workspace() {
     axios
       .get(baseURL, config)
       .then((response) => {
-        console.log(response.data.data)
+        setChannels(response.data.data)
       })
       .catch((err) => {
         console.log(err)
