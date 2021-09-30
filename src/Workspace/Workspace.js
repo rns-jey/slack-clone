@@ -38,7 +38,7 @@ export default function Workspace() {
       <SideNav>
         <SideNavOpt Channels={arrChannels} />
       </SideNav>
-      <ChatBody />
+      <ChatBody Channels={arrChannels} />
     </div>
   )
 }
