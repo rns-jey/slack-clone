@@ -43,6 +43,14 @@ export default function ChatMsg({ type, title, convoID }) {
     return () => { isMounted = false }
   });
 
+  function handleKeyPress(e) {
+    const { key } = e;
+
+    if (key === "Enter") {
+      
+    }
+  }
+
   return (
     <div className="chat-container">
       <div className="chat-header">{title}</div>
@@ -56,7 +64,8 @@ export default function ChatMsg({ type, title, convoID }) {
           <form>
             <TextareaAutosize 
             onChange={e => setMessage(e.target.value)} 
-            value={message} />
+            value={message} 
+            onKeyPress={e => handleKeyPress(e)} />
           </form>
         </div>
       </div>
