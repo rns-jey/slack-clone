@@ -22,7 +22,7 @@ function SidebarOption({Icon, title, id, addChannelOption}) {
             </span>{title}</h3>)
         }
     </div>
-    )
-}
+    );
+  }
 
 export default SidebarOption;

@@ -4,6 +4,7 @@ import RedirectToLogin from "../Components/Router/RedirectToLogin";
 import Header from '../Components/Header/Header'
 import Sidebar from '../Components/Sidebar/Sidebar';
 import Chat from '../Components/Chat/Chat';
+import People from '../Components/Peopleanduser/People'
 
 function Home() {
   return (
@@ -11,7 +12,8 @@ function Home() {
       <RedirectToLogin />
       <Header />
       <Sidebar />
-      <Chat />
+      <People />
+      {/* <Chat /> */}
     </div>
   );
 }
