@@ -23,12 +23,12 @@ function NavLink({ to, activeClassName, inactiveClassName, className, ...rest })
   return <Link className={allClassNames} to={`/C${to}`} {...rest} />;
 }
 
-export default function SideNaveOpt() {
+export default function SideNavOpt( { Channels }) {
   return (
     <div className="sidebar_options">
-      {arrChannels.map(({ cID, cName }) => (
-        <NavLink activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to={cID}>
-          {cName}
+      {Channels.map(({ id, name }) => (
+        <NavLink key={id} activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to={id}>
+          {name}
         </NavLink>
       ))}
     </div>
