@@ -1,9 +1,10 @@
 import './ChatMsg.css'
 import TextareaAutosize from 'react-textarea-autosize';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function ChatMsg({ type, title, convoID }) {
+  const [chat, setChat] = useState([])
 
   function reverseChat(arr) {
     let chatMsgs = []
@@ -31,7 +32,7 @@ export default function ChatMsg({ type, title, convoID }) {
       .get(baseURL, config)
       .then((response) => {
         if (isMounted) {
-          console.log(reverseChat(response.data.data))
+          setChat(reverseChat(response.data.data))
         }
       })
       .catch((err) => {
