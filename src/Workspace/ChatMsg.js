@@ -56,3 +56,18 @@ export default function ChatMsg({ type, title, convoID }) {
     </div>
   )
 }
+
+function ChatBubble({ msgContent, sender }) {
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+  const { email } = sender;
+  let bubbleClass = user === email ? "bubble you" : "bubble";
+
+  return(
+    <div className={bubbleClass}>
+      <div className="msg-wrap">
+        <div className="msg-sender">{email}</div>
+        <div className="msg-content">{msgContent}</div>
+      </div>
+    </div>
+  )
+}
