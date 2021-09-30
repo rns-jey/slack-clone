@@ -7,6 +7,7 @@ import SideNavOpt from './SideNavOpt';
 
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
+  const [arrRecent, setRecent] = useState([])
 
   function getChannels() {
     const baseURL = "http://206.189.91.54//api/v1/channels";
@@ -29,6 +30,22 @@ export default function Workspace() {
       });
   }
 
+  function removeRedundant(users) {
+    let arr = [];
+    let newUsers = [];
+  
+    for (const user of users) {
+      let found = arr.find(uid => user.uid === uid)
+  
+      if (!found) {
+        arr.push(user.uid)
+        newUsers.push(user)
+      }
+    }
+  
+    return newUsers;
+  }
+
   function getRecent() {
     const baseURL = "http://206.189.91.54//api/v1/users/recent";
     const config = {
@@ -43,7 +60,7 @@ export default function Workspace() {
     axios
       .get(baseURL, config)
       .then((response) => {
-        console.log(response.data.data)
+        setRecent(removeRedundant(response.data.data))
       })
       .catch((err) => {
         console.log(err)
