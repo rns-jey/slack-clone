@@ -43,11 +43,37 @@ export default function ChatMsg({ type, title, convoID }) {
     return () => { isMounted = false }
   });
 
+  function sendMsg() {
+    const baseURL = "http://206.189.91.54//api/v1/messages";
+    const config = {
+      headers : {
+        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
+        client: "4QtfzQRef-071r-TyjFR2w",
+        expiry: "1627305480",
+        uid: "postman@test.com"
+      }
+    }
+    const data = {
+      receiver_id: convoID, 
+      receiver_class: type, 
+      body: message
+    }
+
+    axios
+      .post(baseURL, data, config)
+      .then((response) => {
+        setMessage("")
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  }
+
   function handleKeyPress(e) {
     const { key } = e;
 
     if (key === "Enter") {
-      
+      sendMsg()
     }
   }
 
