@@ -5,6 +5,16 @@ import axios from 'axios';
 
 export default function ChatMsg({ type, title, convoID }) {
 
+  function reverseChat(arr) {
+    let chatMsgs = []
+
+    while (arr.length > 0) {
+      chatMsgs.push(arr.pop())
+    }
+    
+    return chatMsgs;
+  }
+
   useEffect(() => {
     let isMounted = true; 
     const baseURL = `http://206.189.91.54//api/v1/messages?receiver_class=${type}&receiver_id=${convoID}`;
@@ -21,7 +31,7 @@ export default function ChatMsg({ type, title, convoID }) {
       .get(baseURL, config)
       .then((response) => {
         if (isMounted) {
-          console.log(response.data.data)
+          console.log(reverseChat(response.data.data))
         }
       })
       .catch((err) => {
