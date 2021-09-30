@@ -15,7 +15,7 @@ export default function ChatBody( { Channels, Recents }) {
       ))}
       {Recents.map(({ id, uid }) => (
         <Route key={id} exact path={`/D${id}`}>
-          <Page type="User" title={uid} convoID={id} />
+          <ChatMsg type="User" title={uid} convoID={id} />
         </Route>
       ))}
       <Redirect from="/" to="/home" />
