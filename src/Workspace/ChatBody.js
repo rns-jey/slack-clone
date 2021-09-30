@@ -1,4 +1,3 @@
-import './ChatBody.css'
 import { Switch, Route, Redirect } from 'react-router-dom';
 import ChatMsg from './ChatMsg';
 
