@@ -27,6 +27,7 @@ function FormSignUp(){
             ...values, 
             [name]: value
         })
+        setVerify(false)
     }
 
     const handleSubmit = e => {
@@ -82,7 +83,7 @@ function FormSignUp(){
         return null
     } else {
     return (
-    <>
+    <div className="SignUpPage">
         <div className="FormSignUp">
             <img src={img} id="slackLogo"/>
             <h1>Create your Slack Account</h1>
@@ -149,7 +150,7 @@ function FormSignUp(){
         <span className="linktoLogin">
             <p>Already have an account?</p><a href="./login" id="signinLink">Sign in instead</a> 
         </span>
-    </>
+    </div>
     )};
 };
 

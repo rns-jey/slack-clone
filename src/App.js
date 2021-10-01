@@ -1,9 +1,14 @@
 import './App.css';
-import PageRoute from './Components/Router/PageRouter';
+import React from "react";
+import Header from './Components/Header/Header';
+import Workspace from './Workspace/Workspace';
 
 function App() {
   return (
-    <PageRoute />
+    <div className="Main">
+      <Header />
+      <Workspace />
+    </div>
   );
 }
 
