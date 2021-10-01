@@ -1,0 +1,166 @@
+.CCBg{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: rgba(17, 17, 17, 0.7);
+    z-index: 1000;
+}
+.CCTitleSubCont{
+    margin:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.CCContainer{
+    padding:15px;
+    width: 25%;
+    border-radius: 5px;
+    background-color: white;
+}
+.CCFormGroup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.CCTitle{
+    font-size: 2rem;
+    font-weight: 700;
+    margin:0;
+    width: 50%;
+}
+.CCSubtitle{
+    font-size: 1.2rem;
+    color:rgb(95, 95, 95);
+    font-weight: 600;
+}
+.CCinput #userIDsTxtbx{
+    height: 2rem;
+}
+.CCLabel{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+#userIDsTxtbx{
+    resize: vertical;
+    max-height: 4rem;
+    min-height: 2rem;
+}
+.CCcloseBtn{
+    background-color: transparent;
+    border: none;
+    font-weight: 900;
+    color:maroon;
+}
+.slider-group{
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+}
+.slider-group input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+.slider-group input:checked + .slider {
+    background-color: #2196F3;
+}
+
+.slider-group input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+.slider-group input:checked + .slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+.CCSubLabel{
+    font-size: 1.2rem;
+    color:rgb(151, 151, 151);
+    font-weight: 500;
+    width: 80%;
+}
+.CCSubFormGroup, .CCBottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shareOthers{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 30%;
+}
+.noWrap{
+    white-space: nowrap;
+}
+.CreateBtn{
+    background-color: #49274b;
+    border-radius: 5px;
+    border: none;
+    color: cornsilk;
+    font-size: 1.8rem;
+    width: 25%;
+    height: 35px;
+}
+.CreateBtn:hover{
+    background-color: #611f69;
+}
+.hide{
+    visibility: hidden;
+}
+.show{
+    visibility: visible;
+}
+@media screen and (max-width: 700px){
+.CCContainer{
+    width: 80%;
+}
+.CreateBtn{
+    font-size: calc(15px + (10 - 15) * ((100vw - 300px) / (1600 - 300)));
+}
+}
