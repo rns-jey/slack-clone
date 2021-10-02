@@ -4,22 +4,13 @@ import ChatBody from './ChatBody';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SideNavOpt from './SideNavOpt';
+import configAPI from '../Components/assets/config';
 
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
   const [arrRecent, setRecent] = useState([])
-  const userExpiry = localStorage.getItem('expiry');
-  const userUID = localStorage.getItem('uid');
-  const userAt = localStorage.getItem('at');
-  const userClient = localStorage.getItem('client');
-  const config = {
-    headers : {
-      "access-token": `${userAt}`,
-      client: `${userClient}`,
-      expiry: `${userExpiry}`,
-      uid: `${userUID}`
-    }
-  }
+  const config = configAPI();
+
   function getChannels() {
     const baseURL = "http://206.189.91.54//api/v1/channels";
 
