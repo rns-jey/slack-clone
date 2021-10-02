@@ -8,17 +8,20 @@ import SideNavOpt from './SideNavOpt';
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
   const [arrRecent, setRecent] = useState([])
-
+  const userExpiry = localStorage.getItem('expiry');
+  const userUID = localStorage.getItem('uid');
+  const userAt = localStorage.getItem('at');
+  const userClient = localStorage.getItem('client');
+  const config = {
+    headers : {
+      "access-token": `${userAt}`,
+      client: `${userClient}`,
+      expiry: `${userExpiry}`,
+      uid: `${userUID}`
+    }
+  }
   function getChannels() {
     const baseURL = "http://206.189.91.54//api/v1/channels";
-    const config = {
-      headers : {
-        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
-        client: "4QtfzQRef-071r-TyjFR2w",
-        expiry: "1627305480",
-        uid: "postman@test.com"
-      }
-    }
 
     axios
       .get(baseURL, config)
@@ -48,14 +51,6 @@ export default function Workspace() {
 
   function getRecent() {
     const baseURL = "http://206.189.91.54//api/v1/users/recent";
-    const config = {
-      headers : {
-        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
-        client: "4QtfzQRef-071r-TyjFR2w",
-        expiry: "1627305480",
-        uid: "postman@test.com"
-      }
-    }
 
     axios
       .get(baseURL, config)

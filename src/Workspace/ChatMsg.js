@@ -2,10 +2,23 @@ import './ChatMsg.css'
 import TextareaAutosize from 'react-textarea-autosize';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import configAPI from '../Components/assets/config';
 
 export default function ChatMsg({ type, title, convoID }) {
   const [chat, setChat] = useState([])
   const [message, setMessage] = useState("")
+  const userExpiry = localStorage.getItem('expiry');
+  const userUID = localStorage.getItem('uid');
+  const userAt = localStorage.getItem('at');
+  const userClient = localStorage.getItem('client');
+  const config = {
+    headers : {
+      "access-token": `${userAt}`,
+      client: `${userClient}`,
+      expiry: `${userExpiry}`,
+      uid: `${userUID}`
+    }
+  }
 
   function reverseChat(arr) {
     let chatMsgs = []
@@ -20,14 +33,6 @@ export default function ChatMsg({ type, title, convoID }) {
   useEffect(() => {
     let isMounted = true; 
     const baseURL = `http://206.189.91.54//api/v1/messages?receiver_class=${type}&receiver_id=${convoID}`;
-    const config = {
-      headers : {
-        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
-        client: "4QtfzQRef-071r-TyjFR2w",
-        expiry: "1627305480",
-        uid: "postman@test.com"
-      }
-    }
 
     axios
       .get(baseURL, config)
@@ -45,14 +50,7 @@ export default function ChatMsg({ type, title, convoID }) {
 
   function sendMsg() {
     const baseURL = "http://206.189.91.54//api/v1/messages";
-    const config = {
-      headers : {
-        "access-token": "kDumw8TgSqAch9IZi1AK5Q",
-        client: "4QtfzQRef-071r-TyjFR2w",
-        expiry: "1627305480",
-        uid: "postman@test.com"
-      }
-    }
+
     const data = {
       receiver_id: convoID, 
       receiver_class: type, 
@@ -65,7 +63,7 @@ export default function ChatMsg({ type, title, convoID }) {
         setMessage("")
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err, `sendmsg`)
       });
   }
 
