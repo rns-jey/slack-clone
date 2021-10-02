@@ -5,12 +5,12 @@ export default function configAPI(){
     const userAt = localStorage.getItem('at');
     const userClient = localStorage.getItem('client');
     const config = {
-        headers : {
-          "access-token": userAt,
-          client: userClient,
-          expiry: userExpiry,
-          uid: userUID
-        }
+      headers : {
+        "access-token": `${userAt}`,
+        client: `${userClient}`,
+        expiry: `${userExpiry}`,
+        uid: `${userUID}`
       }
+    }
     return(config);
 }
