@@ -1,4 +1,5 @@
 import React, { useRef, useState} from "react";
+import configAPI from "../assets/config";
 import axios from 'axios';
 import './addChannel.css';
 
@@ -10,6 +11,7 @@ export default function CreateChannel({isCCModalopen}) {
     const [nCName, setChannelName] = useState();
     const [nCIDs, setChannelIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
+    const config = configAPI();
     // const [CCModal, setCCModal] = useState(true)
 
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
@@ -25,19 +27,7 @@ export default function CreateChannel({isCCModalopen}) {
 
     //get tokens from local storage, add channel post to API
     function AddChannel() {
-        const userExpiry = localStorage.getItem('expiry');
-        const userUID = localStorage.getItem('uid');
-        const userAt = localStorage.getItem('at');
-        const userClient = localStorage.getItem('client');
         const baseURL = 'http://206.189.91.54//api/v1/channels';
-        const config = {
-            headers : {
-              "access-token": userAt,
-              client: userClient,
-              expiry: userExpiry,
-              uid: userUID
-            }
-          }
         const nCData = {
             name: nCName,
             user_ids:nCIDs
