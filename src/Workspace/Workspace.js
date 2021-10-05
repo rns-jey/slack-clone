@@ -9,6 +9,7 @@ import configAPI from '../Components/assets/config';
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
   const [arrRecent, setRecent] = useState([])
+  const [toggle, setToggle] = useState(true)
   const config = configAPI();
 
   function getChannels() {
@@ -61,7 +62,7 @@ export default function Workspace() {
   return (
     <div className="workspace">
       <SideNav>
-        <SideNavOpt Channels={arrChannels} Recents={arrRecent} />
+        <SideNavOpt Channels={arrChannels} Recents={arrRecent}/>
       </SideNav>
       <ChatBody Channels={arrChannels} Recents={arrRecent} />
     </div>
