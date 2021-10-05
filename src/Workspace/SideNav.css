@@ -48,9 +48,6 @@
   background-color: #1164a3;
 }
 
-.sidebarOptionInActive {
-}
-
 .sidebarOption:hover {
   opacity: 0.9;
   background-color: #340e36;
@@ -62,4 +59,3 @@
 .sidebarOption.sidebarOptionActive:hover {
   background-color: #1164a3;
 }
-
