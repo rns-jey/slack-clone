@@ -9,7 +9,6 @@ import configAPI from '../Components/assets/config';
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])
   const [arrRecent, setRecent] = useState([])
-  const [toggle, setToggle] = useState(true)
   const config = configAPI();
 
   function getChannels() {
