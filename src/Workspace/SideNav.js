@@ -36,8 +36,8 @@ export default function SideNav(props) {
         <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
         {toggle && <>{props.children}</>}
-        <SidebarOption Icon={AddIcon} title="Add Channels" />
-
+        <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
+        {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages"/>
       </nav>
     </div>
