@@ -1,5 +1,15 @@
 import './SideNav.css'
+import SideNavOpt from './SideNavOpt';
+import SidebarOption from '../Components/Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
+import InsertCommentIcon from "@material-ui/icons/InsertComment"
+import MoreVertIcon from "@material-ui/icons/MoreVert"
+import InboxIcon from "@material-ui/icons/Inbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AddIcon from "@material-ui/icons/Add";
 
 export default function SideNav(props) {
   return (
@@ -10,7 +20,20 @@ export default function SideNav(props) {
           </div>
           <CreateIcon />
       </div>
-      {props.children}
+      <nav className="sidebar_options">
+        <SidebarOption Icon={InsertCommentIcon} title="Threads"/>
+        <SidebarOption Icon={MoreVertIcon} title="More"/>
+        <ul className="sub_menu">
+          <SidebarOption Icon={InboxIcon} title="Mentions & Reactions"/>
+          <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
+          <SidebarOption Icon={FileCopyIcon} title="File browser"/>
+        </ul>
+        <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
+        <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
+        {props.children}
+        <SidebarOption Icon={AddIcon} title="Add Channels"/>
+        <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages"/>
+      </nav>
     </div>
   )
 }
