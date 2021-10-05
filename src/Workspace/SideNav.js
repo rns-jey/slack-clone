@@ -10,8 +10,13 @@ import FileCopyIcon from "@material-ui/icons/FileCopy";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
+import React, {useState} from 'react';
+import CreateChannel from '../Components/addChannel/addChannel';
 
 export default function SideNav(props) {
+ const [toggle, setToggle] = useState(true)
+ const [CCModal, setCCModal] = useState(false)
+
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -29,9 +34,10 @@ export default function SideNav(props) {
           <SidebarOption Icon={FileCopyIcon} title="File browser"/>
         </ul>
         <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
-        <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
-        {props.children}
-        <SidebarOption Icon={AddIcon} title="Add Channels"/>
+        <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
+        {toggle && <>{props.children}</>}
+        <SidebarOption Icon={AddIcon} title="Add Channels" />
+
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages"/>
       </nav>
     </div>
