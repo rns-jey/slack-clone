@@ -3,7 +3,7 @@ import RedirectToLogin from "./RedirectToLogin";
 import Home from  '../../Pages/Home';
 import Login from  '../../Pages/Login';
 import Register from '../../Pages/Register';
-import Test from '../addChannel/Test';
+import Test from '../../Pages/Test';
 
 
 function PageRoute() {
