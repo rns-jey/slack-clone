@@ -31,14 +31,15 @@
 
 .sidebar_options {
   height: 100%;
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   flex-direction: column;
+  line-height: 10px;
 }
 
 .sidebarOption {
-  color: white;
-  padding: 10px;
+  color: whitesmoke;
+  padding: 6px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -54,7 +55,11 @@
   opacity: 0.9;
   background-color: #340e36;
 }
+.sidebarOption:hover {
+  border-left: 5px solid cyan;
+}
 
 .sidebarOption.sidebarOptionActive:hover {
   background-color: #1164a3;
 }
+
