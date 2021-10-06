@@ -4,7 +4,7 @@ import ChatBody from './ChatBody';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SideNavOpt from './SideNavOpt';
-import configAPI from '../Components/assets/config';
+import configAPI from '../assets/config';
 
 export default function Workspace() {
   const [arrChannels, setChannels] = useState([])

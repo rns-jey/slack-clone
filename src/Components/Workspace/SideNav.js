@@ -1,6 +1,6 @@
 import './SideNav.css'
 import SideNavOpt from './SideNavOpt';
-import SidebarOption from '../Components/Sidebar/SidebarOption';
+import SidebarOption from '../Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
@@ -11,7 +11,7 @@ import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import React, {useState} from 'react';
-import CreateChannel from '../Components/addChannel/addChannel';
+import CreateChannel from '../addChannel/addChannel';
 
 export default function SideNav(props) {
  const [toggle, setToggle] = useState(true)
