@@ -1,14 +1,11 @@
 import './App.css';
 import React from "react";
-import Header from './Components/Header/Header';
-import Workspace from './Components/Workspace/Workspace';
-import PageRoute from './Components/Router/PageRouter'
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <div className="Main">
-      <Header />  
-      <Workspace />
+    <div className="App">
+      <Home />
     </div>
   );
 }
