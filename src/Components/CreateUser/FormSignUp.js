@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
 import "./signUp.css";
-import img from '../assets/slackLogo.png';
-
+import SideModule from '../assets/sideModule';
+import { Link } from "react-router-dom";
 
 
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
@@ -27,7 +27,8 @@ function FormSignUp(){
             ...values, 
             [name]: value
         })
-        setVerify(false)
+        setVerify(false);
+        setErrors({})
     }
 
     const handleSubmit = e => {
@@ -83,19 +84,20 @@ function FormSignUp(){
         return null
     } else {
     return (
-    <div className="SignUpPage">
+    <div className="loginRegisPage">
+        <SideModule/>
         <div className="FormSignUp">
-            <img src={img} id="slackLogo"/>
-            <h1>Create your Slack Account</h1>
+            {/* <h1>Create your Slack Account</h1> */}
             <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
         <form onSubmit={handleSubmit}>
-            {verify?<div className="catch">{`${apiCatch}`}</div>:null}
+            {verify?<div className="errorMsg catch">{`${apiCatch}`}</div>:null}
             <div className="form-inputs">
                 <label htmlFor="email" className="form-label">
                 Email
                 </label>
                 <input 
-                className={`form-input ${errors.email ? 'errorValue':null }`}
+                className={`forminput ${errors.email ? 'errorValue':null }`}
+                type="text"
                 name="email"
                 value={values.email}
                 onChange={handleChange}
@@ -109,7 +111,7 @@ function FormSignUp(){
                 Password
                 </label>
                 <input type="password" 
-                className={`form-input ${errors.password ? 'errorValue':null }`}
+                className={`forminput pwInput ${errors.password ? 'errorValue':null }`}
                 id="password" 
                 name="password" 
                 placeholder="Enter your password"
@@ -125,7 +127,7 @@ function FormSignUp(){
                 Confirm password
                 </label>
                 <input type="password" 
-                className={`form-input ${errors.password_confirmation ? 'errorValue':null }`}
+                className={`forminput pwInput ${errors.password_confirmation ? 'errorValue':null }`}
                 id="password_confirmation" 
                 name="password_confirmation" 
                 placeholder="Re-type your password"
@@ -135,7 +137,7 @@ function FormSignUp(){
                 {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
             </div>
 
-            <button  className="signUpBtn" type="submit">Continue</button>
+            <button  className="loginRegisbtn" type="submit">Continue</button>
 
             <div className="emailBox">
                 <input 
@@ -146,10 +148,16 @@ function FormSignUp(){
             By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
             </div>
             </form>
+            <hr className="line"/>
+      <div className="linktoLogInorRegister">
+          <span>Already have an account? </span>
+          <Link to="/login" className="toLogorRegislink">Sign in instead</Link>
+      </div>
         </div>
-        <span className="linktoLogin">
+
+        {/* <span className="linktoLogin">
             <p>Already have an account?</p><a href="./login" id="signinLink">Sign in instead</a> 
-        </span>
+        </span> */}
     </div>
     )};
 };
