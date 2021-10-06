@@ -41,7 +41,7 @@ export default function LoginForm(){
 
   return (
     <div className="loginRegisPage">
-    <SideModule/>
+    <SideModule isThisLogIn={true}/>
     <div className="LoginCard">
     <form onSubmit={handleSubmit} className='FormLogin'>
       {logErr ? (<div className="error">{logErr}</div>) : ""}
