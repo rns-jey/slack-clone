@@ -18,7 +18,9 @@ export default function Workspace() {
     axios
       .get(baseURL, config)
       .then((response) => {
-        setChannels(response.data.data)
+        if (response.data.errors !== "No available channels.") {
+          setChannels(response.data.data)
+        }
       })
       .catch((err) => {
         console.log(err)
