@@ -51,6 +51,7 @@ export default function GetUsers () {
                 <div className="people_search">
                     <SearchIcon />
                     <input type="text"
+                    className="people_search_input"
                     placeholder="Search by name, role or team" onChange={
                       e => setSearchTerm(e.target.value)
                     }>

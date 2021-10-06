@@ -3,7 +3,7 @@ body{
     padding: 0;
     overflow:hidden;
 }
-.loginPage{
+.loginRegisPage{
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -46,24 +46,22 @@ body{
 }
 .forminput{
     height: 35px;
+    font-size: 1.2rem;
     border-radius: 5px;
     border:1px solid rgb(194, 192, 192);
 }
-.forminput:focus{
-    outline: none !important;
-    border:1px solid blueviolet;
-    box-shadow: 0 0 10px #719ECE;
-  }
+
 .Sideheading{
     width: 75%;
-    font-size: 3rem;
+    font-size: 2rem;
 }
-.loginbtn{
+.loginRegisbtn{
     background-color: #49274b;
     border-radius: 5px;
     border: none;
     color:cornsilk;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 600;
     width: 101%;
     height: 35px;
 }
@@ -78,15 +76,15 @@ body{
     margin-top: 15px;
     margin-bottom: 15px;
 }
-.linktoCreateUser{
-    font-size: 1.5rem;
+.linktoLogInorRegister{
+    font-size: 1rem;
     align-self: center;
 }
-.toRegisterlink{
+.toLogorRegislink{
     text-decoration: none;
-    font-weight: 650;
+    font-weight: 800;
 }
-.toRegisterlink:hover{
+.toLogorRegislink:hover{
     text-decoration: underline;
 }
 .SideMod{
@@ -100,7 +98,7 @@ body{
 }
 
 @media screen and (max-width: 800px){
-.loginPage{
+.loginRegisPage{
     flex-direction: column;
     align-items: center;
     justify-content: center;
