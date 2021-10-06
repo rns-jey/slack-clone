@@ -87,7 +87,6 @@ function FormSignUp(){
     <div className="loginRegisPage">
         <SideModule isThisLogIn={false}/>
         <div className="FormSignUp">
-            {/* <h1>Create your Slack Account</h1> */}
             <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
         <form onSubmit={handleSubmit}>
             {verify?<div className="errorMsg catch">{`${apiCatch}`}</div>:null}
@@ -154,10 +153,6 @@ function FormSignUp(){
           <Link to="/login" className="toLogorRegislink">Sign in instead</Link>
       </div>
         </div>
-
-        {/* <span className="linktoLogin">
-            <p>Already have an account?</p><a href="./login" id="signinLink">Sign in instead</a> 
-        </span> */}
     </div>
     )};
 };
