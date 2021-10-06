@@ -85,7 +85,7 @@ function FormSignUp(){
     } else {
     return (
     <div className="loginRegisPage">
-        <SideModule/>
+        <SideModule isThisLogIn={false}/>
         <div className="FormSignUp">
             {/* <h1>Create your Slack Account</h1> */}
             <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
@@ -111,7 +111,7 @@ function FormSignUp(){
                 Password
                 </label>
                 <input type="password" 
-                className={`forminput pwInput ${errors.password ? 'errorValue':null }`}
+                className={`forminput ${errors.password ? 'errorValue':null }`}
                 id="password" 
                 name="password" 
                 placeholder="Enter your password"
@@ -127,7 +127,7 @@ function FormSignUp(){
                 Confirm password
                 </label>
                 <input type="password" 
-                className={`forminput pwInput ${errors.password_confirmation ? 'errorValue':null }`}
+                className={`forminput ${errors.password_confirmation ? 'errorValue':null }`}
                 id="password_confirmation" 
                 name="password_confirmation" 
                 placeholder="Re-type your password"
