@@ -6,7 +6,6 @@ import PageRoute from './Components/Router/PageRouter'
 
 function App() {
   return (
-    // <PageRoute/>
     <div className="Main">
       <Header />  
       <Workspace />
