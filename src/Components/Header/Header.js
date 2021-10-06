@@ -49,8 +49,8 @@ export default function Header() {
               <div className="user-status">Active</div>
             </div>
           </div>
-          <div className="signout-container">
-            <span id="sign-out" onClick={signOut}>Sign out</span>
+          <div className="signout-container" onClick={signOut}>
+            <span id="sign-out">Sign out</span>
           </div>
         </div>
       </HeaderComponents>
