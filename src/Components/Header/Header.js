@@ -10,6 +10,7 @@ const HeaderComponents = (props) => {
 }
 
 export default function Header() {
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
   const history = useHistory();
 
   const signOut = (e) => {
@@ -44,7 +45,7 @@ export default function Header() {
               <BsPersonFill />
             </div>
             <div className="user-name-status">
-              <div className="user-name">jmarenas@gmail.com</div>
+              <div className="user-name">{user}</div>
               <div className="user-status">Active</div>
             </div>
           </div>
