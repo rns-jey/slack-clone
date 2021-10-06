@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
 import Header from './Components/Header/Header';
-import Workspace from './Workspace/Workspace';
+import Workspace from './Components/Workspace/Workspace';
 import PageRoute from './Components/Router/PageRouter'
 
 function App() {
