@@ -2,14 +2,14 @@ import './Home.css'
 import React from "react";
 import Header from '../../Components/Header/Header'
 import Workspace from '../../Components/Workspace/Workspace'
-import PageRouting from '../../Components/Router/PageRouting'
+import { Redirect } from "react-router"
 
 function Home() {
   return (
-    <PageRouting className="Main">
+    <div className="Main">
       <Header />  
       <Workspace />
-    </PageRouting>
+    </div>
   );
 }
 
