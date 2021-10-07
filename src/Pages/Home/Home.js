@@ -4,11 +4,13 @@ import Header from '../../Components/Header/Header'
 import Workspace from '../../Components/Workspace/Workspace'
 import { Redirect } from "react-router"
 
-function Home({ User }) {
+function Home() {
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+
   return (
     <>
       {
-        User.length > 0 ?
+        user.length > 0 ?
         <div className="Main">
           <Header />  
           <Workspace />

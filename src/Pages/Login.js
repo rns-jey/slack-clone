@@ -3,16 +3,18 @@ import Bottomlinks from "../Components/assets/Bottomlinks";
 import LoginForm from "../Components/Login/LoginForm";
 import { Redirect } from "react-router"
 
-export default function LogUser({ User }){
+export default function LogUser(){
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+
   return (
     <>
       {
-        User.length > 0
-        ? <Redirect to="/home" />
-        : <>
-            <LoginForm />
-            <Bottomlinks/>
-          </>
+        user.length > 0 ?
+        <Redirect to="/home" /> :
+        <>
+          <LoginForm />
+          <Bottomlinks/>
+        </>
       }
     </>
   )
