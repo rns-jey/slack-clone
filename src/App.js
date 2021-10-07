@@ -15,7 +15,7 @@ function App() {
           <Register User={user} />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login User={user} />
         </Route>
         <Route path="/">
         { 
