@@ -20,7 +20,7 @@ function App() {
         <Route path="/">
         { 
           user.length > 0
-          ? <Home /> 
+          ? <Home User={user} /> 
           : <Redirect to="/login" />
         }
         </Route>

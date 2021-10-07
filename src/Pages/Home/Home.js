@@ -4,9 +4,7 @@ import Header from '../../Components/Header/Header'
 import Workspace from '../../Components/Workspace/Workspace'
 import { Redirect } from "react-router"
 
-function Home() {
-  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
-
+function Home({ User }) {
   return (
     <>
       {
