@@ -9,7 +9,7 @@ import ModalSuccess from "../assets/ModalSuccess";
 export default function CreateChannel({isCCModalopen}) {
     const channelNameRef = useRef(null);
     const uEmailRef = useRef(null);
-    const [success, setSuccess] = useState(true)
+    const [success, setSuccess] = useState(false)
     const [nCName, setChannelName] = useState();
     const [uEmails, setuEmails] = useState([]);
     const [emailIDs, setemailIDs] = useState([]);
