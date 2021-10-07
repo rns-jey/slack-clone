@@ -57,6 +57,7 @@
     resize: vertical;
     max-height: 4rem;
     min-height: 2rem;
+    width: 95%;
     font-family: 'Noto Sans Display', sans-serif;
 }
 .CCcloseBtn{
