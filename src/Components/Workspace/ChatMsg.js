@@ -2,7 +2,7 @@ import './ChatMsg.css'
 import TextareaAutosize from 'react-textarea-autosize';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import configAPI from '../Components/assets/config';
+import configAPI from '../assets/config';
 
 export default function ChatMsg({ type, title, convoID }) {
   const [chat, setChat] = useState([])

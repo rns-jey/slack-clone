@@ -1,15 +1,30 @@
 import './App.css';
 import React from "react";
-import Header from './Components/Header/Header';
-import Workspace from './Workspace/Workspace';
-import PageRoute from './Components/Router/PageRouter'
+import { Redirect, Route, Switch } from 'react-router';
+import Register from './Pages/Register'
+import Login from './Pages/Login'
+import Home from './Pages/Home/Home';
 
 function App() {
+  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+
   return (
-    // <PageRoute/>
-    <div className="Main">
-      <Header />  
-      <Workspace />
+    <div className="App">
+      <Switch>
+        <Route path="/register">
+          <Register User={user} />
+        </Route>
+        <Route path="/login">
+          <Login User={user} />
+        </Route>
+        <Route path="/">
+        { 
+          user.length > 0
+          ? <Home User={user} /> 
+          : <Redirect to="/login" />
+        }
+        </Route>
+      </Switch>
     </div>
   );
 }
