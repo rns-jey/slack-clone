@@ -56,6 +56,7 @@ body{
   }
 .form-label{
   font-size: 1.2rem;
+  color: rgb(12, 12, 12);
   margin-bottom: 5px;
 }
 #slackLogo{
