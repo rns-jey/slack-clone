@@ -17,7 +17,6 @@ export default function ChatBody( { Channels, Recents }) {
           <ChatMsg type="User" title={uid} convoID={id} />
         </Route>
       ))}
-      <Redirect from="/" to="/home" />
     </Switch>
   )
 }
