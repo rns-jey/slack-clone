@@ -85,18 +85,18 @@ export default function CreateChannel({isCCModalopen}) {
                 <p className="CCSubtitle">Channels are where your team communicates. They're best when organized around a topic.</p>
                 </div>
                 {nCErrMsg ? (<div className='error'>{nCErrMsg}</div>):null}
-                <div className="CCFormGroup">
-                    <label className="CCLabel">Name</label>
+                <div className="form-inputs">
+                    <label className="form-label">Name</label>
                     <input 
                     ref={channelNameRef}
-                    className={`form-input ${nCErrMsg ? 'errorValue':null }`}
+                    className={`forminput ${nCErrMsg ? 'errorValue':null }`}
                     type="text"
                     placeholder="# e.g. Code-Planning"
                     onChange={handleUserInput}
                     />
                 </div>
-                <div className="CCFormGroup">
-                    <label className="CCLabel">Add People
+                <div className="form-inputs">
+                    <label className="form-label">Add People
                     <span className="CCSubtitle"> (optional)</span> 
                     </label>
                     <textarea 
@@ -107,10 +107,10 @@ export default function CreateChannel({isCCModalopen}) {
                     placeholder="Enter their email, separated by ;"/>
                 </div>
                 <div className="CCFormGroup">
-                    <label className="CCLabel">Make Private
+                    <label className="form-label">Make Private
                     </label>
                     <div className="CCSubFormGroup">
-                        <div className="CCSubLabel">
+                        <div className="terms">
                             When a channel is set to private. It can only be viewed or joined by invitation.
                         </div>
                         <label className="slider-group">
@@ -124,7 +124,7 @@ export default function CreateChannel({isCCModalopen}) {
                         <label className="CCSubLabel noWrap">
                             Share outside
                         </label>
-                        <input type="checkbox"/>
+                        <input type="checkbox" className="addChannelCheckbox"/>
                     </div>
                 <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
