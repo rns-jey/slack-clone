@@ -76,7 +76,7 @@ export default function ChatMsg({ type, title, convoID }) {
           <GroupAddIcon className="adduserIcon"/>
           </button>
       </div>
-      {AUModal && <AddUsers isAUModalopen={setAUModal}/>}
+      {AUModal && <AddUsers isAUModalopen={setAUModal} channelID={convoID} channelTitle={title}/>}
       <div className="chat-body">
         {chat.map(({ id, body, sender }) => (
           <ChatBubble msgContent={body} sender={sender} />
