@@ -19,6 +19,8 @@
 .sidebarOption_hash {
   padding: 10px;
 }
-.sidebarOption > h3 {
+.nav_title {
+  font-size: 14px;
   font-weight: 500;
 }
+

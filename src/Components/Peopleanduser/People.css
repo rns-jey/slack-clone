@@ -4,6 +4,8 @@
 body {
     background-color: whitesmoke;
 }
+.people_container {
+}
 .people_header {
     border-bottom: 1px solid lightgray;
     display: flex;

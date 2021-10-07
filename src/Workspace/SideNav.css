@@ -13,6 +13,7 @@
   justify-content: space-around;
   align-items: center;
   border-bottom: 1px solid #49274b;
+  border-top: 1px solid #49274b;
   min-height: 50px;
 }
 
@@ -64,3 +65,6 @@
   background-color: #1164a3;
 }
 
+.sub_menu {
+  padding-top: 0;
+}

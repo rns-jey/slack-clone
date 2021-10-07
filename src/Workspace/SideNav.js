@@ -16,6 +16,7 @@ import CreateChannel from '../Components/addChannel/addChannel';
 export default function SideNav(props) {
  const [toggle, setToggle] = useState(true)
  const [CCModal, setCCModal] = useState(false)
+ const [subMenu, setSubMenu] = useState(false)
 
   return (
     <div className="sidebar">
@@ -27,12 +28,17 @@ export default function SideNav(props) {
       </div>
       <nav className="sidebar_options">
         <SidebarOption Icon={InsertCommentIcon} title="Threads"/>
-        <SidebarOption Icon={MoreVertIcon} title="More"/>
-        <ul className="sub_menu">
+        <SidebarOption Icon={MoreVertIcon} title="More" />
+
+        <div className="sub_menu" state={setToggle}>
+          {/* {toggle && (
+          <ul>
           <SidebarOption Icon={InboxIcon} title="Mentions & Reactions"/>
           <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
           <SidebarOption Icon={FileCopyIcon} title="File browser"/>
-        </ul>
+          </ul>
+          )} */}
+        </div>
         <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
         {toggle && <>{props.children}</>}
