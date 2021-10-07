@@ -59,7 +59,7 @@ export default function GetUsers () {
                 </div>
                 <div className="people_users">
                 <div className="users_container">
-                {users.slice(0,10).map(({ email }) => (
+                {users.slice(0,13).map(({ email }) => (
                       <div className="users">
                       <img src={avatar} id="avatar"/>
                       <div className="email">{email}
