@@ -1,10 +1,14 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
 import ChatMsg from './ChatMsg';
+import People from '../Peopleanduser/People'
 
 export default function ChatBody( { Channels, Recents }) {
   return ( 
     <Switch>
-      <Route path="/home">
+      <Route path="/people">
+        <People />
+      </Route>
+      <Route path="/">
         <HomePage />
       </Route>
       {Channels.map(({ id, name }) => (
