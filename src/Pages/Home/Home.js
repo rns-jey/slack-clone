@@ -8,7 +8,7 @@ function Home({ User }) {
   return (
     <>
       {
-        user.length > 0 ?
+        User.length > 0 ?
         <div className="Main">
           <Header />  
           <Workspace />
