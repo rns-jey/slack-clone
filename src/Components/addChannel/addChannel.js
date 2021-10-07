@@ -2,18 +2,20 @@ import React, { useRef, useState} from "react";
 import configAPI from "../assets/config";
 import axios from 'axios';
 import './addChannel.css';
+import ModalSuccess from "../assets/ModalSuccess";
 
 //nC -> new Channel
 //uIDs -> uIDs
 export default function CreateChannel({isCCModalopen}) {
     const channelNameRef = useRef(null);
     const uEmailRef = useRef(null);
+    const [success, setSuccess] = useState(true)
     const [nCName, setChannelName] = useState();
     const [uEmails, setuEmails] = useState([]);
     const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
+    const [pushedEmails, setpEmails] = useState([])
     const config = configAPI();
-    // const [CCModal, setCCModal] = useState(true)
 
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
@@ -37,18 +39,17 @@ export default function CreateChannel({isCCModalopen}) {
                 apiArray.find(({email, id}) =>{
                     if (email == elem){
                         setemailIDs(emailIDs.push(id))
-                    }
-                })
+                        pushedEmails.push(email)}})
             })
+            console.log(pushedEmails);
         })
-        console.log(emailIDs)
     }
 
     function idToChannel() {
         getIdfromEmail();
         setTimeout(() => {
             AddChannel()
-        }, 1000);
+        }, 5000);
     }
 
     
@@ -66,7 +67,11 @@ export default function CreateChannel({isCCModalopen}) {
             if ('errors' in resp.data){
             const {errors: [msg]} = resp.data;
             setnCEMsg(msg)} else{
-            isCCModalopen(false)
+                setSuccess(true)
+            setTimeout(() => {
+                isCCModalopen(false)
+                setSuccess(false)
+            }, 5000);
             }
         })
         .catch((err) => {
@@ -76,7 +81,8 @@ export default function CreateChannel({isCCModalopen}) {
 
     return ( 
         <div className={`CCBg ${!isCCModalopen ? 'hide': 'show' }`}>
-            <div className="CCContainer">                
+            {success &&<ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={nCName} isAdduser={false}/>}
+            <div className={`CCContainer ${success ? 'hide': 'show'}`}>              
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
                         <p className="CCTitle noWrap">Create a channel</p>
