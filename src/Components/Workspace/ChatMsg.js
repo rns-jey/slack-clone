@@ -3,8 +3,11 @@ import TextareaAutosize from 'react-textarea-autosize';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import configAPI from '../assets/config';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import AddUsers from '../AddUsers/AddUsers';
 
 export default function ChatMsg({ type, title, convoID }) {
+  const [AUModal, setAUModal] = useState(true)
   const [chat, setChat] = useState([])
   const [message, setMessage] = useState("")
   const config = configAPI();
@@ -66,7 +69,14 @@ export default function ChatMsg({ type, title, convoID }) {
 
   return (
     <div className="chat-container">
-      <div className="chat-header">{title}</div>
+      <div className="chat-header">
+        <h2>{title}</h2>
+        <button className="adduserBtn"
+        onClick={()=> setAUModal(true)}>
+          <GroupAddIcon className="adduserIcon"/>
+          </button>
+      </div>
+      {AUModal && <AddUsers isAUModalopen={setAUModal}/>}
       <div className="chat-body">
         {chat.map(({ id, body, sender }) => (
           <ChatBubble msgContent={body} sender={sender} />
