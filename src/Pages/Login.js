@@ -7,12 +7,12 @@ export default function LogUser({ User }){
   return (
     <>
       {
-        User.length > 0 ?
-        <Redirect to="/home" /> :
-        <>
-          <LoginForm />
-          <Bottomlinks/>
-        </>
+        User.length > 0
+        ? <Redirect to="/home" />
+        : <>
+            <LoginForm />
+            <Bottomlinks/>
+          </>
       }
     </>
   )
