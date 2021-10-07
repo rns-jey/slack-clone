@@ -7,9 +7,10 @@ import './addChannel.css';
 //uIDs -> uIDs
 export default function CreateChannel({isCCModalopen}) {
     const channelNameRef = useRef(null);
-    const uIDsRef = useRef(null);
+    const uEmailRef = useRef(null);
     const [nCName, setChannelName] = useState();
-    const [nCIDs, setChannelIDs] = useState([]);
+    const [uEmails, setuEmails] = useState([]);
+    const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
     const config = configAPI();
     // const [CCModal, setCCModal] = useState(true)
@@ -17,20 +18,46 @@ export default function CreateChannel({isCCModalopen}) {
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
-        const uIDsRawInput = uIDsRef.current.value;
-        const uIDsArr = uIDsRawInput.split(';');
-        const uIDsArrTrim = uIDsArr.map(ids => ids.trim())
+        const uEmailsRawInput = uEmailRef.current.value;
+        const uEmailsArr = uEmailsRawInput.split(';');
+        const uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
-        setChannelIDs(uIDsArrTrim);
+        setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
     };
 
+    function getIdfromEmail() {
+        const baseURL = 'http://206.189.91.54//api/v1/users';
+
+        axios
+        .get(baseURL, config)
+        .then((resp) => {
+            let apiArray = resp.data.data;
+            uEmails.forEach(elem =>{
+                apiArray.find(({email, id}) =>{
+                    if (email == elem){
+                        setemailIDs(emailIDs.push(id))
+                    }
+                })
+            })
+        })
+        console.log(emailIDs)
+    }
+
+    function idToChannel() {
+        getIdfromEmail();
+        setTimeout(() => {
+            AddChannel()
+        }, 1000);
+    }
+
+    
     //get tokens from local storage, add channel post to API
     function AddChannel() {
         const baseURL = 'http://206.189.91.54//api/v1/channels';
         const nCData = {
             name: nCName,
-            user_ids:nCIDs
+            user_ids:emailIDs
         }
         axios
         .post(baseURL, nCData, config)
@@ -73,7 +100,7 @@ export default function CreateChannel({isCCModalopen}) {
                     <span className="CCSubtitle"> (optional)</span> 
                     </label>
                     <textarea 
-                    ref={uIDsRef}
+                    ref={uEmailRef}
                     id="userIDsTxtbx" 
                     onChange={handleUserInput}
                     className="forminput"
@@ -99,7 +126,7 @@ export default function CreateChannel({isCCModalopen}) {
                         </label>
                         <input type="checkbox"/>
                     </div>
-                <button onClick={AddChannel} className="CreateBtn">Create</button>
+                <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
             </div>
         </div>
