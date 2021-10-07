@@ -2,35 +2,63 @@ import React, { useRef, useState} from "react";
 import configAPI from "../assets/config";
 import axios from 'axios';
 import './addChannel.css';
+import ModalSuccess from "../assets/ModalSuccess";
 
 //nC -> new Channel
 //uIDs -> uIDs
 export default function CreateChannel({isCCModalopen}) {
     const channelNameRef = useRef(null);
-    const uIDsRef = useRef(null);
+    const uEmailRef = useRef(null);
+    const [success, setSuccess] = useState(false)
     const [nCName, setChannelName] = useState();
-    const [nCIDs, setChannelIDs] = useState([]);
+    const [uEmails, setuEmails] = useState([]);
+    const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
+    const [pushedEmails, setpEmails] = useState([])
     const config = configAPI();
-    // const [CCModal, setCCModal] = useState(true)
 
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
-        const uIDsRawInput = uIDsRef.current.value;
-        const uIDsArr = uIDsRawInput.split(';');
-        const uIDsArrTrim = uIDsArr.map(ids => ids.trim())
+        const uEmailsRawInput = uEmailRef.current.value;
+        const uEmailsArr = uEmailsRawInput.split(';');
+        const uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
-        setChannelIDs(uIDsArrTrim);
+        setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
     };
 
+    function getIdfromEmail() {
+        const baseURL = 'http://206.189.91.54//api/v1/users';
+
+        axios
+        .get(baseURL, config)
+        .then((resp) => {
+            let apiArray = resp.data.data;
+            uEmails.forEach(elem =>{
+                apiArray.find(({email, id}) =>{
+                    if (email == elem){
+                        setemailIDs(emailIDs.push(id))
+                        pushedEmails.push(email)}})
+            })
+            console.log(pushedEmails);
+        })
+    }
+
+    function idToChannel() {
+        getIdfromEmail();
+        setTimeout(() => {
+            AddChannel()
+        }, 5000);
+    }
+
+    
     //get tokens from local storage, add channel post to API
     function AddChannel() {
         const baseURL = 'http://206.189.91.54//api/v1/channels';
         const nCData = {
             name: nCName,
-            user_ids:nCIDs
+            user_ids:emailIDs
         }
         axios
         .post(baseURL, nCData, config)
@@ -39,7 +67,11 @@ export default function CreateChannel({isCCModalopen}) {
             if ('errors' in resp.data){
             const {errors: [msg]} = resp.data;
             setnCEMsg(msg)} else{
-            isCCModalopen(false)
+                setSuccess(true)
+            setTimeout(() => {
+                isCCModalopen(false)
+                setSuccess(false)
+            }, 5000);
             }
         })
         .catch((err) => {
@@ -49,7 +81,8 @@ export default function CreateChannel({isCCModalopen}) {
 
     return ( 
         <div className={`CCBg ${!isCCModalopen ? 'hide': 'show' }`}>
-            <div className="CCContainer">                
+            {success &&<ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={nCName} isAdduser={false}/>}
+            <div className={`CCContainer ${success ? 'hide': 'show'}`}>              
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
                         <p className="CCTitle noWrap">Create a channel</p>
@@ -58,32 +91,32 @@ export default function CreateChannel({isCCModalopen}) {
                 <p className="CCSubtitle">Channels are where your team communicates. They're best when organized around a topic.</p>
                 </div>
                 {nCErrMsg ? (<div className='error'>{nCErrMsg}</div>):null}
-                <div className="CCFormGroup">
-                    <label className="CCLabel">Name</label>
+                <div className="form-inputs">
+                    <label className="form-label">Name</label>
                     <input 
                     ref={channelNameRef}
-                    className={`form-input ${nCErrMsg ? 'errorValue':null }`}
+                    className={`forminput ${nCErrMsg ? 'errorValue':null }`}
                     type="text"
                     placeholder="# e.g. Code-Planning"
                     onChange={handleUserInput}
                     />
                 </div>
-                <div className="CCFormGroup">
-                    <label className="CCLabel">Add People
+                <div className="form-inputs">
+                    <label className="form-label">Add People
                     <span className="CCSubtitle"> (optional)</span> 
                     </label>
                     <textarea 
-                    ref={uIDsRef}
+                    ref={uEmailRef}
                     id="userIDsTxtbx" 
                     onChange={handleUserInput}
                     className="forminput"
                     placeholder="Enter their email, separated by ;"/>
                 </div>
                 <div className="CCFormGroup">
-                    <label className="CCLabel">Make Private
+                    <label className="form-label">Make Private
                     </label>
                     <div className="CCSubFormGroup">
-                        <div className="CCSubLabel">
+                        <div className="terms">
                             When a channel is set to private. It can only be viewed or joined by invitation.
                         </div>
                         <label className="slider-group">
@@ -97,9 +130,9 @@ export default function CreateChannel({isCCModalopen}) {
                         <label className="CCSubLabel noWrap">
                             Share outside
                         </label>
-                        <input type="checkbox"/>
+                        <input type="checkbox" className="addChannelCheckbox"/>
                     </div>
-                <button onClick={AddChannel} className="CreateBtn">Create</button>
+                <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
             </div>
         </div>

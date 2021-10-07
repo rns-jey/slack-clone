@@ -11,17 +11,19 @@
     right:0;
     background-color: rgba(17, 17, 17, 0.7);
     z-index: 1000;
+    line-height: normal;
 }
 .CCTitleSubCont{
     margin:0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
 
 }
 .CCContainer{
     padding:15px;
-    width: 25%;
+    width: 30%;
     border-radius: 5px;
     background-color: white;
 }
@@ -55,6 +57,8 @@
     resize: vertical;
     max-height: 4rem;
     min-height: 2rem;
+    width: 95%;
+    font-family: 'Noto Sans Display', sans-serif;
 }
 .CCcloseBtn{
     background-color: transparent;
@@ -107,9 +111,9 @@
 }
 
 .slider-group input:checked + .slider:before {
-    -webkit-transform: translateX(15px);
-    -ms-transform: translateX(15px);
-    transform: translateX(15px);
+    -webkit-transform: translateX(9px);
+    -ms-transform: translateX(9px);
+    transform: translateX(9px);
 }
 
 .slider.round {
@@ -120,10 +124,13 @@
     border-radius: 50%;
 }
 .CCSubLabel{
-    font-size: 1.2rem;
-    color:rgb(151, 151, 151);
+    font-size: 1rem;
+    color:rgb(68, 68, 68);
     font-weight: 500;
     width: 80%;
+}
+#addChannelCheckbox{
+    margin:0;
 }
 .CCSubFormGroup, .CCBottom{
     display: flex;
@@ -143,7 +150,7 @@
     border-radius: 5px;
     border: none;
     color: cornsilk;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     width: 25%;
     height: 35px;
 }
@@ -152,6 +159,7 @@
 }
 .hide{
     visibility: hidden;
+    display: none;
 }
 .show{
     visibility: visible;
