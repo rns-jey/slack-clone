@@ -2,8 +2,10 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./loginForm.css";
-import SideModule from './sideModule';
+import SideModule from '../assets/sideModule';
 import { Link } from "react-router-dom";
+
+
 export default function LoginForm(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -38,8 +40,8 @@ export default function LoginForm(){
   }
 
   return (
-    <div className="loginPage">
-    <SideModule/>
+    <div className="loginRegisPage">
+    <SideModule isThisLogIn={true}/>
     <div className="LoginCard">
     <form onSubmit={handleSubmit} className='FormLogin'>
       {logErr ? (<div className="error">{logErr}</div>) : ""}
@@ -64,12 +66,12 @@ export default function LoginForm(){
             onChange={e => setPassword(e.target.value)} value={password}
           />
         </div>
-        <input className="loginbtn"type="submit" value="Sign in"/>
+        <input className="loginRegisbtn"type="submit" value="Sign in"/>
       </div>
       <hr className="line"/>
-      <div className="linktoCreateUser">
+      <div className="linktoLogInorRegister">
           <span>New to Slack? </span>
-          <Link to="/register" className="toRegisterlink">Create an account</Link>
+          <Link to="/register" className="toLogorRegislink">Create an account</Link>
       </div>
     </form>
     </div>
