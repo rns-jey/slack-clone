@@ -3,6 +3,10 @@
 
 .people_container {
     height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
 }
 .people_header {
     border-bottom: 1px solid lightgray;
@@ -54,19 +58,17 @@
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     border: 1px solid rgba(81, 203, 238, 1);
 }
-
 #avatar {
     height: 190px;
     width: auto;
 }
 .people_users {
-    overflow-y: scroll;
-}
-.users_container {
+    height: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     padding: 20px;
+    overflow: auto;
 }
 .users {
     display: flex;
@@ -76,6 +78,7 @@
     cursor: pointer;
     border-radius: 10px;
     outline-color: lightgray;
+    overflow: auto;
 }
 .users:hover {
     background-color: rgba(128, 128, 128, 0.308);
