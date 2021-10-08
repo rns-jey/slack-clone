@@ -10,9 +10,9 @@ import {
 import SearchIcon from "@material-ui/icons/Search"
 import avatar from "../assets/avatar.png"
 
-export default function GetUsers () {
+export default function GetUsers (props) {
   const [users,setUsers] = useState([]);
-  const [searchTerm, setSearchTerm] = useState ('');
+  const [filteredUser, filterUser] = useState(users);
   const userExpiry = localStorage.getItem('expiry');
   const userUID = localStorage.getItem('uid');
   const userAt = localStorage.getItem('at');
@@ -27,17 +27,28 @@ export default function GetUsers () {
       uid: userUID
     }
   }
+
+ const handleSearch = (event) => {
+   let value = event.target.value.toLowerCase();
+   let result = [];
+   result = users.filter((data) => {
+     return data.email.search(value) != -1;
+   });
+
+   filterUser(result);
+ }
   
   useEffect(() => {
     axios
     .get(baseURL, config)
     .then((res) => {
       setUsers(res.data.data);
+      filterUser(res.data.data);
     })
     .catch((err) => {
       console.log(err)  
     });
-  })
+  }, []);
 
     return (
         <Router>
@@ -52,14 +63,12 @@ export default function GetUsers () {
                     <SearchIcon />
                     <input type="text"
                     className="people_search_input"
-                    placeholder="Search by name, role or team" onChange={
-                      e => setSearchTerm(e.target.value)
-                    }>
+                    placeholder="Search by name, role or team" onChange={(event) =>handleSearch(event)}>
                     </input>
                 </div>
                 <div className="people_users">
                 <div className="users_container">
-                {users.slice(0,10).map(({ email }) => (
+                {filteredUser.slice(0,13).map(({ email }) => (
                       <div className="users">
                       <img src={avatar} id="avatar"/>
                       <div className="email">{email}

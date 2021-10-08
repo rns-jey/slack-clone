@@ -2,21 +2,20 @@ import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import configAPI from '../assets/config';
 
-export default function AddUsers({isAUModalopen}) {
-    const channelIDRef = useRef(null);
+export default function AddUsers({isAUModalopen, channelID, channelTitle}) {
     const uEmailRef = useRef(null);
     const [uEmails, setuEmails] = useState();
-    const [channelID, setChannelID] = useState();
+    const [emailStats, setEmailStats] = useState({
+        success: [],
+        IDs:[],
+    })
     const config = configAPI();
 
     function handleUserInput(e) {
-        const channelInput = channelIDRef.current.value;
         const uIDsRawInput = uEmailRef.current.value;
         const uIDsArr = uIDsRawInput.split(';');
         const uIDsArrTrim = uIDsArr.map(ids => ids.trim())
-        setChannelID(channelInput);
         setuEmails(uIDsArrTrim);
-        console.log(uEmails, channelID)
     };
 
     function getUserId(){
@@ -26,41 +25,45 @@ export default function AddUsers({isAUModalopen}) {
         .get(baseURL, config)
         .then((resp) => {
             let array = resp.data.data;
-            array.find(({email, id}) =>{
-                if (email == uEmails){
-                    console.log(id, email)}
-            })
+            uEmails.forEach(element => {
+                array.find(({email,id})=>{
+                    if (email == element){
+                        setEmailStats(emailStats.IDs.push(id), 
+                        emailStats.success.push(email))}
+                })
+            }); 
+            console.log(emailStats)              
+                })
+        .catch((err) =>{
+            console.log(err.data)
+        })
+        }
+    
+    function userToChannel() {
+        getUserId();
+        const baseURL = 'http://206.189.91.54//api/v1/channel/add_member'
+        const data = {
+            "id":`${channelID}`,
+            "member_id": `${emailStats.IDs}`
+        }
+        axios
+        .post(baseURL, config, data)
+        .then((resp) =>{
+            console.log(resp.data)
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     }
 
-    // function getChannelId(){
-
-    //     axios
-    //     .get(baseURL, config)
-    //     .then((resp) => {
-    //         let array = resp.data.data;
-    //         array.find(({}))
-    //     })
-    // }
-
-    function test(){
-        console.log(uEmailRef)
-    }
     return(
-        <div className={`ModalBG ${!isAUModalopen ? 'hide': 'show' }`}>
-            <div className="ModalCont">
+        <div className={`CCBg ${!isAUModalopen ? 'hide': 'show' }`}>
+            <div className="CCContainer">
                 <div className="MTitle">
                 <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
                 </div>
                 <div className="MFG">
-                    <label className="inputLabel">
-                        Channel ID:
-                    </label>
-                    <input type="text" className='MtextInput'
-                    ref={channelIDRef}
-                    onChange={handleUserInput}
-                    placeholder="Enter channel Name"/>
-                </div>
+                    <h3>{channelTitle}</h3>
                 <div className="MFG">
                     <label className="inputLabel">
                         Email:
@@ -70,7 +73,8 @@ export default function AddUsers({isAUModalopen}) {
                     onChange={handleUserInput}
                     placeholder="Enter Email address"/>
                 </div>
-                <button onClick={getUserId}>Add me</button>
+                <button onClick={userToChannel}>Add me</button>
+            </div>
             </div>
         </div>
     )
