@@ -8,7 +8,7 @@ export default function ChatBody( { Channels, Recents }) {
       <Route path="/people">
         <People />
       </Route>
-      <Route path="/">
+      <Route exact path="/">
         <HomePage />
       </Route>
       {Channels.map(({ id, name }) => (
