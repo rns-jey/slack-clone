@@ -32,29 +32,33 @@ export default function AddUsers({isAUModalopen, channelID, channelTitle}) {
                         emailStats.success.push(email))}
                 })
             }); 
-            console.log(emailStats)              
+            // console.log(emailStats,'getuserID then')              
                 })
         .catch((err) =>{
-            console.log(err.data)
+            console.log(err.data, 'getuserId catch')
         })
         }
     
     function userToChannel() {
         getUserId();
-        const baseURL = 'http://206.189.91.54//api/v1/channel/add_member'
-        const data = {
-            "id":`${channelID}`,
-            "member_id": `${emailStats.IDs}`
+        setTimeout(() => {
+            emailStats.IDs.map((eIds) =>{
+                const baseURL = 'http://206.189.91.54//api/v1/channel/add_member'
+                const data = {
+                    "id": channelID,
+                    "member_id": eIds
+                }
+                axios
+                .post(baseURL,data,config)
+                .then((resp) =>{
+                    console.log(resp.data, 'usertochannel then')
+                })
+                .catch((err)=>{
+                    console.log(err, 'usertochannel catch')
+                })
+        })
+        }, 3000);
         }
-        axios
-        .post(baseURL, config, data)
-        .then((resp) =>{
-            console.log(resp.data)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
-    }
 
     return(
         <div className={`CCBg ${!isAUModalopen ? 'hide': 'show' }`}>
