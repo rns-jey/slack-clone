@@ -35,7 +35,7 @@ export default function GetUsers (props) {
      return data.email.search(value) != -1;
    });
 
-   filterUser(result);
+   filterUser(result);  
  }
   
   useEffect(() => {
@@ -68,7 +68,7 @@ export default function GetUsers (props) {
                 </div>
                 <div className="people_users">
                 <div className="users_container">
-                {filteredUser.slice(0,13).map(({ email }) => (
+                {filteredUser.slice(0,16).map(({ email }) => (
                       <div className="users">
                       <img src={avatar} id="avatar"/>
                       <div className="email">{email}
