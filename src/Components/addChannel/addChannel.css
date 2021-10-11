@@ -23,7 +23,7 @@
 }
 .CCContainer{
     padding:15px;
-    width: 30%;
+    width: 45%;
     border-radius: 5px;
     background-color: white;
 }
@@ -41,18 +41,14 @@
     width: 50%;
 }
 .CCSubtitle{
-    font-size: 1.2rem;
+    font-size: 1rem;
     color:rgb(95, 95, 95);
     font-weight: 600;
 }
 .CCinput #userIDsTxtbx{
     height: 2rem;
 }
-.CCLabel{
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
+
 #userIDsTxtbx{
     resize: vertical;
     max-height: 4rem;
