@@ -182,11 +182,13 @@ background-color: lavender;
     overflow-y: scroll;
     min-width: min-content;
 }
+
 .success{
     color:rgb(87, 165, 9);
     font-size: 1.2rem;
     text-align: center;
 }
+
 
 
 @media screen and (max-width: 700px){
