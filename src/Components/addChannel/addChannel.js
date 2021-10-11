@@ -142,13 +142,13 @@ export default function CreateChannel({ isCCModalopen }) {
                         placeholder="Enter their email, separated by ;" />
                 </div>
 
-                {/* <div className="searchListinputCont">
+                <div className="searchListinputCont">
                     <label className="form-label">Search users</label>
                     <input type="text"
                         className="form-input"
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
-                </div> */}
+                </div>
                 <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
