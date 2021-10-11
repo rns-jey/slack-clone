@@ -55,7 +55,6 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
             .then((res) => {
                 setUsers(res.data.data)
                 filterUser(res.data.data);
-                // makeChecklist(res.data.data)
             })
             .catch((err) => {
                 console.log(err)
