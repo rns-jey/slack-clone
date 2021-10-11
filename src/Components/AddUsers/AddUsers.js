@@ -16,12 +16,6 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     // const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
 
-    // function handleUserInput(e) {
-    //     const uIDsRawInput = uEmailRef.current.value;
-    //     const uIDsArr = uIDsRawInput.split(';');
-    //     const uIDsArrTrim = uIDsArr.map(ids => ids.trim())
-    //     setuEmails(uIDsArrTrim);
-    // };
 
     // function getUserId() {
     //     const baseURL = 'http://206.189.91.54//api/v1/users';
@@ -104,7 +98,6 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                 <div className="MTitle">
                     <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
                 </div>
-
                 {errMsg ? (<div className='error'>{errMsg}</div>) : null}
                 {sucMsg ? (<div className='success'>{sucMsg}</div>) : null}
                 <div className="searchListinputCont">
