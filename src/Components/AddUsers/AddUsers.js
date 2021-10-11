@@ -6,21 +6,20 @@ import avatar from "../assets/avatar.png"
 export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
-    // const [errMsg, setErrMsg] = useState(null)
-    // const [sucMsg, setSucMsg] = useState(null)
+    const [errMsg, setErrMsg] = useState(null)
+    const [sucMsg, setSucMsg] = useState(null)
     const config = configAPI();
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
-
+    const baseURLAddMem = 'http://206.189.91.54//api/v1/channel/add_member'
 
     function userToChannel(id, email) {
 
-        const baseURL = 'http://206.189.91.54//api/v1/channel/add_member'
         const data = {
             "id": channelID,
             "member_id": id,
         }
         axios
-            .post(baseURL, data, config)
+            .post(baseURLAddMem, data, config)
             .then((resp) => {
                 if ('errors' in resp.data) {
                     const { errors: [msg] } = resp.data;
