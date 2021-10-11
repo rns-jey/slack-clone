@@ -149,42 +149,42 @@ export default function CreateChannel({ isCCModalopen }) {
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
                 </div>
-                {/* <div className="searchListCont">
+                <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
-                        <div className="usersList" id={id}
-                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email}`}>
-                            <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
-                            <div className="Email" id={`email ${id}`}>
-                                {email}
-                            </div>
+                        // <div className="usersList" id={id}
+                        //     onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email}`}>
+                        //     <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
+                        //     <div className="Email" id={`email ${id}`}>
+                        //         {email}
+                        //     </div>
                         </div>
                     ))}
-                </div> */}
+            </div>
 
-                <div className="CCFormGroup">
-                    <label className="form-label">Make Private
+            <div className="CCFormGroup">
+                <label className="form-label">Make Private
+                </label>
+                <div className="CCSubFormGroup">
+                    <div className="terms">
+                        When a channel is set to private. It can only be viewed or joined by invitation.
+                    </div>
+                    <label className="slider-group">
+                        <input type="checkbox" />
+                        <span className="slider round"></span>
                     </label>
-                    <div className="CCSubFormGroup">
-                        <div className="terms">
-                            When a channel is set to private. It can only be viewed or joined by invitation.
-                        </div>
-                        <label className="slider-group">
-                            <input type="checkbox" />
-                            <span className="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-                <div className="CCBottom">
-                    <div className="shareOthers">
-                        <label className="CCSubLabel noWrap">
-                            Share outside
-                        </label>
-                        <input type="checkbox" className="addChannelCheckbox" />
-                    </div>
-                    <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
             </div>
+            <div className="CCBottom">
+                <div className="shareOthers">
+                    <label className="CCSubLabel noWrap">
+                        Share outside
+                    </label>
+                    <input type="checkbox" className="addChannelCheckbox" />
+                </div>
+                <button onClick={idToChannel} className="CreateBtn">Create</button>
+            </div>
         </div>
+        </div >
     );
 };
 
