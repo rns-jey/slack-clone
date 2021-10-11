@@ -4,6 +4,8 @@ import configAPI from '../assets/config';
 import avatar from "../assets/avatar.png"
 
 export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
+    const [users, setUsers] = useState([]);
+    const [filteredUser, filterUser] = useState(users);
     const [errMsg, setErrMsg] = useState(null)
     const [sucMsg, setSucMsg] = useState(null)
     const config = configAPI();
@@ -35,8 +37,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
             })
     }
 
-    const [users, setUsers] = useState([]);
-    const [filteredUser, filterUser] = useState(users);
+
     const handleSearch = (event) => {
         setErrMsg(null)
         setSucMsg(null)
