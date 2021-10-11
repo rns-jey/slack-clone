@@ -17,28 +17,6 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
 
 
-    // function getUserId() {
-    //     const baseURL = 'http://206.189.91.54//api/v1/users';
-
-    //     axios
-    //         .get(baseURL, config)
-    //         .then((resp) => {
-    //             let array = resp.data.data;
-    //             uEmails.forEach(element => {
-    //                 array.find(({ email, id }) => {
-    //                     if (email == element) {
-    //                         setEmailStats(emailStats.IDs.push(id),
-    //                             emailStats.success.push(email))
-    //                     }
-    //                 })
-    //             });
-    //             // console.log(emailStats,'getuserID then')              
-    //         })
-    //         .catch((err) => {
-    //             console.log(err.data, 'getuserId catch')
-    //         })
-    // }
-
     function userToChannel(id, email) {
 
         const baseURL = 'http://206.189.91.54//api/v1/channel/add_member'
