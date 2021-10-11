@@ -4,11 +4,9 @@ import configAPI from '../assets/config';
 import avatar from "../assets/avatar.png"
 
 export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
-
     const [errMsg, setErrMsg] = useState(null)
     const [sucMsg, setSucMsg] = useState(null)
     const config = configAPI();
-    // const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
 
 
