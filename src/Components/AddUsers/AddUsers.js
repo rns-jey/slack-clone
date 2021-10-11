@@ -66,6 +66,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
         <div className={`CCBg ${!isAUModalopen ? 'hide' : 'show'}`}>
             <div className="CCContainer">
                 <div className="MTitle">
+                    <div className="title">{`Add member to #${channelTitle}`}</div>
                     <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
                 </div>
                 {errMsg ? (<div className='error'>{errMsg}</div>) : null}

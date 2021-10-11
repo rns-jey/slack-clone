@@ -128,7 +128,7 @@
 #addChannelCheckbox{
     margin:0;
 }
-.CCSubFormGroup, .CCBottom{
+.CCSubFormGroup, .CCBottom, .MTitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
