@@ -143,7 +143,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 </div>
 
                 <div className="searchListinputCont">
-                    <label className="form-label">Search users</label>
+                    {/* <label className="form-label">Search users</label> */}
                     <input type="text"
                         className="form-input"
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
