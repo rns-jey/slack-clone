@@ -4,11 +4,7 @@ import configAPI from '../assets/config';
 import avatar from "../assets/avatar.png"
 
 export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
-    // const [uEmails, setuEmails] = useState();
-    // const [emailStats, setEmailStats] = useState({
-    //     success: [],
-    //     IDs: [],
-    // })
+
     const [errMsg, setErrMsg] = useState(null)
     const [sucMsg, setSucMsg] = useState(null)
     const config = configAPI();
