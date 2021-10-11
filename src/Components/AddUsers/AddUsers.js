@@ -37,28 +37,28 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     }
 
 
-    // const handleSearch = (event) => {
-    //     setErrMsg(null)
-    //     setSucMsg(null)
-    //     let value = event.target.value.toLowerCase();
-    //     let result = [];
-    //     result = users.filter((data) => {
-    //         return data.email.search(value) != -1
-    //     });
+    const handleSearch = (event) => {
+        setErrMsg(null)
+        setSucMsg(null)
+        let value = event.target.value.toLowerCase();
+        let result = [];
+        result = users.filter((data) => {
+            return data.email.search(value) != -1
+        });
 
-    //     filterUser(result);
-    // }
-    useEffect(() => {
-        axios
-            .get(baseURLUsers, config)
-            .then((res) => {
-                setUsers(res.data.data)
-                filterUser(res.data.data);
-            })
-            .catch((err) => {
-                console.log(err)
-            });
-    }, []);
+        filterUser(result);
+    }
+    // useEffect(() => {
+    //     axios
+    //         .get(baseURLUsers, config)
+    //         .then((res) => {
+    //             setUsers(res.data.data)
+    //             filterUser(res.data.data);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         });
+    // }, []);
 
 
 
