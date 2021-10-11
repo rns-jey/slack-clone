@@ -68,8 +68,8 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                 <div className="MTitle">
                     <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
                 </div>
-                {/* {errMsg ? (<div className='error'>{errMsg}</div>) : null}
-                {sucMsg ? (<div className='success'>{sucMsg}</div>) : null} */}
+                {errMsg ? (<div className='error'>{errMsg}</div>) : null}
+                {sucMsg ? (<div className='success'>{sucMsg}</div>) : null}
                 <div className="searchListinputCont">
                     <label className="form-label">Search users</label>
                     <input type="text"
@@ -77,7 +77,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
                 </div>
-                <div className="searchListCont">
+                {/* <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
                             onClick={() => userToChannel(id, email)}>
@@ -87,7 +87,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
 
                 <button onClick={userToChannel}>Add me</button>
             </div>
