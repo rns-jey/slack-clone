@@ -48,17 +48,17 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
 
         filterUser(result);
     }
-    // useEffect(() => {
-    //     axios
-    //         .get(baseURLUsers, config)
-    //         .then((res) => {
-    //             setUsers(res.data.data)
-    //             filterUser(res.data.data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios
+            .get(baseURLUsers, config)
+            .then((res) => {
+                setUsers(res.data.data)
+                filterUser(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, []);
 
 
 
@@ -68,8 +68,8 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                 <div className="MTitle">
                     <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
                 </div>
-                {errMsg ? (<div className='error'>{errMsg}</div>) : null}
-                {sucMsg ? (<div className='success'>{sucMsg}</div>) : null}
+                {/* {errMsg ? (<div className='error'>{errMsg}</div>) : null}
+                {sucMsg ? (<div className='success'>{sucMsg}</div>) : null} */}
                 <div className="searchListinputCont">
                     <label className="form-label">Search users</label>
                     <input type="text"
