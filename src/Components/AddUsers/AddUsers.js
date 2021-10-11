@@ -21,15 +21,15 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
         axios
             .post(baseURLAddMem, data, config)
             .then((resp) => {
-                // if ('errors' in resp.data) {
-                //     const { errors: [msg] } = resp.data;
-                //     setErrMsg(`${msg}`)
-                //     setSucMsg(null)
-                // } else {
-                //     console.log(resp.data, 'usertochannel then')
-                //     setSucMsg(`${email} added`)
-                //     setErrMsg(null)
-                // }
+                if ('errors' in resp.data) {
+                    const { errors: [msg] } = resp.data;
+                    setErrMsg(`${msg}`)
+                    setSucMsg(null)
+                } else {
+                    console.log(resp.data, 'usertochannel then')
+                    setSucMsg(`${email} added`)
+                    setErrMsg(null)
+                }
             })
             .catch((err) => {
                 console.log(err, 'usertochannel catch')
@@ -37,17 +37,17 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     }
 
 
-    const handleSearch = (event) => {
-        setErrMsg(null)
-        setSucMsg(null)
-        let value = event.target.value.toLowerCase();
-        let result = [];
-        result = users.filter((data) => {
-            return data.email.search(value) != -1
-        });
+    // const handleSearch = (event) => {
+    //     setErrMsg(null)
+    //     setSucMsg(null)
+    //     let value = event.target.value.toLowerCase();
+    //     let result = [];
+    //     result = users.filter((data) => {
+    //         return data.email.search(value) != -1
+    //     });
 
-        filterUser(result);
-    }
+    //     filterUser(result);
+    // }
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
