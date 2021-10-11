@@ -85,15 +85,15 @@ export default function CreateChannel({ isCCModalopen }) {
 
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
-    const handleSearch = (event) => {
-        let value = event.target.value.toLowerCase();
-        let result = [];
-        result = users.filter((data) => {
-            return data.email.search(value) != -1
-        });
+    // const handleSearch = (event) => {
+    //     let value = event.target.value.toLowerCase();
+    //     let result = [];
+    //     result = users.filter((data) => {
+    //         return data.email.search(value) != -1
+    //     });
 
-        filterUser(result);
-    }
+    //     filterUser(result);
+    // }
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
@@ -143,7 +143,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 </div>
 
                 <div className="searchListinputCont">
-                    {/* <label className="form-label">Search users</label> */}
+                    <label className="form-label">Search users</label>
                     <input type="text"
                         className="form-input"
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
