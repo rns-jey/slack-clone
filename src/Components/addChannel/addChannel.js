@@ -94,18 +94,18 @@ export default function CreateChannel({ isCCModalopen }) {
 
         filterUser(result);
     }
-    // useEffect(() => {
-    //     axios
-    //         .get(baseURLUsers, config)
-    //         .then((res) => {
-    //             setUsers(res.data.data)
-    //             filterUser(res.data.data);
-    //             // makeChecklist(res.data.data)
-    //         })
-    //         .catch((err) => {
-    //             console.log(err)
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios
+            .get(baseURLUsers, config)
+            .then((res) => {
+                setUsers(res.data.data)
+                filterUser(res.data.data);
+                // makeChecklist(res.data.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            });
+    }, []);
 
 
     return (
@@ -149,7 +149,7 @@ export default function CreateChannel({ isCCModalopen }) {
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
                 </div>
-                <div className="searchListCont">
+                {/* <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
                             onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email}`}>
@@ -159,7 +159,7 @@ export default function CreateChannel({ isCCModalopen }) {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
 
                 <div className="CCFormGroup">
                     <label className="form-label">Make Private
