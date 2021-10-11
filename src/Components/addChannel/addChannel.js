@@ -85,27 +85,27 @@ export default function CreateChannel({ isCCModalopen }) {
 
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
-    // const handleSearch = (event) => {
-    //     let value = event.target.value.toLowerCase();
-    //     let result = [];
-    //     result = users.filter((data) => {
-    //         return data.email.search(value) != -1
-    //     });
+    const handleSearch = (event) => {
+        let value = event.target.value.toLowerCase();
+        let result = [];
+        result = users.filter((data) => {
+            return data.email.search(value) != -1
+        });
 
-    //     filterUser(result);
-    // }
-    useEffect(() => {
-        axios
-            .get(baseURLUsers, config)
-            .then((res) => {
-                setUsers(res.data.data)
-                filterUser(res.data.data);
-                // makeChecklist(res.data.data)
-            })
-            .catch((err) => {
-                console.log(err)
-            });
-    }, []);
+        filterUser(result);
+    }
+    // useEffect(() => {
+    //     axios
+    //         .get(baseURLUsers, config)
+    //         .then((res) => {
+    //             setUsers(res.data.data)
+    //             filterUser(res.data.data);
+    //             // makeChecklist(res.data.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         });
+    // }, []);
 
 
     return (
