@@ -6,8 +6,8 @@ import avatar from "../assets/avatar.png"
 export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
-    const [errMsg, setErrMsg] = useState(null)
-    const [sucMsg, setSucMsg] = useState(null)
+    // const [errMsg, setErrMsg] = useState(null)
+    // const [sucMsg, setSucMsg] = useState(null)
     const config = configAPI();
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
 
