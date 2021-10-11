@@ -148,7 +148,7 @@ export default function CreateChannel({ isCCModalopen }) {
                         className="form-input"
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
-                </div>
+                </div> */}
                 <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
@@ -159,7 +159,7 @@ export default function CreateChannel({ isCCModalopen }) {
                             </div>
                         </div>
                     ))}
-                </div> */}
+                </div>
 
                 <div className="CCFormGroup">
                     <label className="form-label">Make Private
