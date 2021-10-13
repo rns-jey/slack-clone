@@ -9,7 +9,7 @@ export default function ToPeople({Icon, title}) {
 
     return (
         <div className="toPeople" onClick={toPeople}>
-            <PeopleAltIcon/><h5>People & users group</h5>
+            <PeopleAltIcon/><h5>People & Users</h5>
         </div>
     )
 }

@@ -45,34 +45,37 @@
   cursor: pointer;
 }
 
-.sidebarOptionActive {
-  background-color: #1164a3;
-}
-
 .sidebarOption:hover {
   opacity: 0.9;
   background-color: #340e36;
 }
+
 .sidebarOption:hover {
   border-left: 5px solid cyan;
 }
 
-.sidebarOption.sidebarOptionActive:hover {
-  background-color: #1164a3;
+.toPeople:hover {
+  border-left: 5px solid cyan;
+  opacity: 0.9;
+  background-color: #340e36;
 }
 
 .toPeople {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
+
 .toPeople > .MuiSvgIcon-root{
   display: flex;
   flex-direction: row;
   padding: 6px;
-  padding-left: 10px;
+  padding-left: 15px;
   font-size: 1rem;
 }
+
 .toPeople > h5 {
   font-weight: 500;
 }
+

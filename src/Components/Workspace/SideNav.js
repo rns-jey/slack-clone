@@ -1,5 +1,4 @@
 import './SideNav.css'
-import { useHistory } from "react-router";
 import SidebarOption from '../Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
@@ -7,7 +6,6 @@ import MoreVertIcon from "@material-ui/icons/MoreVert"
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
-import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import React, {useState} from 'react';
@@ -36,7 +34,7 @@ export default function SideNav(props) {
           <ul className="sub_menu">
           <SidebarOption Icon={InboxIcon} title="Mentions & Reactions"/>
           <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
-          <SidebarOption Icon={FileCopyIcon} title="File browser"/>
+          <SidebarOption Icon={FileCopyIcon} title="File Browser"/>
         </ul>}
         <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
