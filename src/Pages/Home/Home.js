@@ -8,7 +8,8 @@ function Home() {
   const history = useHistory();
   
   useEffect(() => {
-    if (localStorage.getItem('uid')) { 
+    if (localStorage.getItem('uid')) {
+      history.push("/home");
     } else {
       history.push("/login");
     }
