@@ -43,7 +43,7 @@ export default function SideNav(props) {
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
-        {toggleDM}
+        {toggleDM && <>{props.children}</>}
       </nav>
     </div>
   )
