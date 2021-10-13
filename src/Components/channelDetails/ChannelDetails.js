@@ -32,7 +32,7 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
                     </button>
                 </div>
 
-                {/* <div className="tabCont">
+                <div className="tabCont">
                     <div className={`tab ${isAbout ? 'openTab' : null}`}
                         onClick={() => (setAbout(true), setMember(false))}>
                         About
@@ -41,10 +41,10 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
                         onClick={() => (setAbout(false), setMember(true))}>
                         Members
                     </div>
-                </div> */}
+                </div>
 
-                <AboutChannel channelTitle={channelTitle} isAbout={isAbout} />
-                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} />
+                {/* <AboutChannel channelTitle={channelTitle} isAbout={isAbout} />
+                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} /> */}
             </div>
         </div>
     )
