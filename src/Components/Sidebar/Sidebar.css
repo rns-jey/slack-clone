@@ -34,3 +34,6 @@ body {
   font-size: 18.5px;
   margin-bottom: 5px;
 }
+.sidebarOption_hash >h5 {
+  font-size: 500px;
+}

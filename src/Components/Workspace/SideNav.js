@@ -1,5 +1,5 @@
 import './SideNav.css'
-import SideNavOpt from './SideNavOpt';
+import { useHistory } from "react-router";
 import SidebarOption from '../Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
@@ -12,12 +12,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
 import React, {useState} from 'react';
 import CreateChannel from '../addChannel/addChannel';
+import ToPeople from '../Sidebar/toPeople';
 
 export default function SideNav(props) {
  const [toggle, setToggle] = useState(false);
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
- 
+ const [toggleDM, setToggleDM] = useState(false);
+
 
   return (
     <div className="sidebar">
@@ -36,12 +38,13 @@ export default function SideNav(props) {
           <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
           <SidebarOption Icon={FileCopyIcon} title="File browser"/>
         </ul>}
-        <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
+        <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
         {toggle && <>{props.children}</>}
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
-        <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages"/>
+        <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
+        {toggleDM}
       </nav>
     </div>
   )

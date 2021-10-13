@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router";
 import "./SidebarOption.css";
 
 function SidebarOption({Icon, title, id, state}) {

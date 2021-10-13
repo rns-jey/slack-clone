@@ -60,3 +60,19 @@
 .sidebarOption.sidebarOptionActive:hover {
   background-color: #1164a3;
 }
+
+.toPeople {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.toPeople > .MuiSvgIcon-root{
+  display: flex;
+  flex-direction: row;
+  padding: 6px;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+.toPeople > h5 {
+  font-weight: 500;
+}
