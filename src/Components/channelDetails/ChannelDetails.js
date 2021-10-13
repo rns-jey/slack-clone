@@ -7,6 +7,8 @@ import AboutChannel from './AboutChannel';
 import MembersTab from './MembersTab';
 
 export default function ChannelDetails({ isCDetsopen, channelID, channelTitle }) {
+
+
     const [isAbout, setAbout] = useState(true);
     const [isMembers, setMember] = useState(false);
     const [fave, setFave] = useState(false);
@@ -43,8 +45,8 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
                     </div>
                 </div>
 
-                {/* <AboutChannel channelTitle={channelTitle} isAbout={isAbout} />
-                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} /> */}
+                <AboutChannel channelTitle={channelTitle} isAbout={isAbout} />
+                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} />
             </div>
         </div>
     )
