@@ -17,6 +17,7 @@ export default function SideNav(props) {
  const [toggle, setToggle] = useState(false);
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
+ const [toggleDM, setToggleDM] = useState(false);
  
 
   return (
@@ -41,7 +42,8 @@ export default function SideNav(props) {
         {toggle && <>{props.children}</>}
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
-        <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages"/>
+        <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
+        {toggleDM}
       </nav>
     </div>
   )

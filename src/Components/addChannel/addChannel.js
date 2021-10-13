@@ -24,7 +24,7 @@ export default function CreateChannel({ isCCModalopen }) {
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
-        const uEmailsRawInput = uEmailRef.current.value;
+        const uEmailsRawInput = `${uEmailRef.current.value};`;
         const uEmailsArr = uEmailsRawInput.split(';');
         const uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
@@ -152,7 +152,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
-                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email}`}>
+                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email};`}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
