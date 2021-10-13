@@ -71,11 +71,11 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             <input ref={existRef}
                 placeholder="Find members"
             />
-            {/* <div className="addUserbtn" onClick={() => setAU(true)}>
+            <div className="addUserbtn" onClick={() => setAU(true)}>
                 <PersonAddIcon />
                 Add people
             </div>
-            <div className="searchListCont">
+            {/* <div className="searchListCont">
                 {filterExist.filter((email) => {
                     if (existRef.current.value == "") {
                         return email;
@@ -90,10 +90,10 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                             </div>
                         </div>
                     ))}
-            </div>
+            </div> */}
 
 
-            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />} */}
+            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />}
         </div>
     )
 }
