@@ -27,22 +27,22 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     //     setFilter(filtered);
     // }
 
-    function getUsersInChannel() {
-        const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
-        axios
-            .get(baseURL, config)
-            .then((resp) => {
-                let rawExist = resp.data.data.channel_members;
-                rawExist.map((info) => {
-                    setExistID(existID.push(info.user_id))
+    // function getUsersInChannel() {
+    //     const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
+    //     axios
+    //         .get(baseURL, config)
+    //         .then((resp) => {
+    //             let rawExist = resp.data.data.channel_members;
+    //             rawExist.map((info) => {
+    //                 setExistID(existID.push(info.user_id))
 
-                })
-                console.log(`thenGetID`, rawExist)
-            })
-            .catch((err) => {
-                console.log(err.data, `catch`)
-            })
-    }
+    //             })
+    //             console.log(`thenGetID`, rawExist)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.data, `catch`)
+    //         })
+    // }
 
     function getEmailfromID() {
         const baseURLUsers = 'http://206.189.91.54//api/v1/users';
