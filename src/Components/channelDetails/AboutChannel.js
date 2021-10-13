@@ -12,8 +12,8 @@ export default function AboutChannel({ channelTitle, isAbout }) {
                 <h3>Channel Name</h3>
                 <span className="chanTitle">#{channelTitle}</span>
             </div>
-            {/* <div className="subAboutCont">
-                <div className="aboutSubCont">
+            <div className="subAboutCont">
+                {/* <div className="aboutSubCont">
                     <div className="subContTitle">
                         <h3>Topic</h3>
                         <span className={isTopicEdit ? 'saveBtn' : 'editBtn'}
@@ -25,7 +25,7 @@ export default function AboutChannel({ channelTitle, isAbout }) {
                         className={`forminput ${isTopicEdit ? null : 'noEdit'}`}
                         placeholder='Add a topic'
                         readOnly={isTopicEdit ? false : true} />
-                </div>
+                </div> */}
 
                 <div className="aboutSubCont">
                     <div className="subContTitle">
@@ -38,10 +38,10 @@ export default function AboutChannel({ channelTitle, isAbout }) {
                     <input ref={topicRef}
                         className={`forminput ${isDescEdit ? null : 'noEdit'}`}
                         placeholder={initialmsg}
-                        readOnly={isDescEdit ? false : true} /> */}
-        </div>
+                        readOnly={isDescEdit ? false : true} />
+                </div>
 
-            </div >
-        </div >
+            </div>
+        </div>
     )
 }
