@@ -76,19 +76,19 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                 Add people
             </div>
             <div className="searchListCont">
-                {/* {filterExist.filter((email) => {
+                {filterExist.filter((email) => {
                     if (existRef.current.value == "") {
                         return email;
                     } else if (email.toLowerCase().includes(existRef.current.value.toLowerCase())) {
                         return email
                     }
-                }) */}
+                })
                     .map((email) => (
-                <div className="usersList" id={email}>
-                    <img src={avatar} className="listAvatar" id={`av ${email}`} />
-                    <div className="Email" id={`em ${email}`}>{email}
-                    </div>
-                </div>
+                        <div className="usersList" id={email}>
+                            <img src={avatar} className="listAvatar" id={`av ${email}`} />
+                            <div className="Email" id={`em ${email}`}>{email}
+                            </div>
+                        </div>
                     ))}
             </div>
 
