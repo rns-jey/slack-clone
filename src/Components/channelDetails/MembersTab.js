@@ -13,19 +13,19 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     const [filterExist, setFilter] = useState(existEmail);
     const config = configAPI();
 
-    function handleSearchInput() {
-        let value = existRef.current.value.toLowerCase();
-        let filtered = [];
-        filtered = existEmail.filter((data) => {
-            if (value == "") {
-                return data;
-            } else if (data.toLowerCase().includes(value)) {
-                return data
-            }
-        }
-        );
-        setFilter(filtered);
-    }
+    // function handleSearchInput() {
+    //     let value = existRef.current.value.toLowerCase();
+    //     let filtered = [];
+    //     filtered = existEmail.filter((data) => {
+    //         if (value == "") {
+    //             return data;
+    //         } else if (data.toLowerCase().includes(value)) {
+    //             return data
+    //         }
+    //     }
+    //     );
+    //     setFilter(filtered);
+    // }
 
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
