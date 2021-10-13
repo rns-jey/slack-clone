@@ -3,8 +3,11 @@ import TextareaAutosize from 'react-textarea-autosize';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import configAPI from '../assets/config';
+import GroupAddIcon from '@material-ui/icons/GroupAdd';
+import AddUsers from '../AddUsers/AddUsers';
 
 export default function ChatMsg({ type, title, convoID }) {
+  const [AUModal, setAUModal] = useState(false)
   const [chat, setChat] = useState([])
   const [message, setMessage] = useState("")
   const config = configAPI();
@@ -15,12 +18,12 @@ export default function ChatMsg({ type, title, convoID }) {
     while (arr.length > 0) {
       chatMsgs.push(arr.pop())
     }
-    
+
     return chatMsgs;
   }
 
   useEffect(() => {
-    let isMounted = true; 
+    let isMounted = true;
     const baseURL = `http://206.189.91.54//api/v1/messages?receiver_class=${type}&receiver_id=${convoID}`;
 
     axios
@@ -41,8 +44,8 @@ export default function ChatMsg({ type, title, convoID }) {
     const baseURL = "http://206.189.91.54//api/v1/messages";
 
     const data = {
-      receiver_id: convoID, 
-      receiver_class: type, 
+      receiver_id: convoID,
+      receiver_class: type,
       body: message
     }
 
@@ -66,7 +69,14 @@ export default function ChatMsg({ type, title, convoID }) {
 
   return (
     <div className="chat-container">
-      <div className="chat-header">{title}</div>
+      <div className="chat-header">
+        <h2>{title}</h2>
+        <button className="adduserBtn"
+          onClick={() => setAUModal(true)}>
+          <GroupAddIcon className="adduserIcon" />
+        </button>
+      </div>
+      {AUModal && <AddUsers isAUModalopen={setAUModal} channelID={convoID} channelTitle={title} />}
       <div className="chat-body">
         {chat.map(({ id, body, sender }) => (
           <ChatBubble msgContent={body} sender={sender} />
@@ -75,10 +85,10 @@ export default function ChatMsg({ type, title, convoID }) {
       <div className="chat-box-container">
         <div className="chat-box">
           <form>
-            <TextareaAutosize 
-            onChange={e => setMessage(e.target.value)} 
-            value={message} 
-            onKeyPress={e => handleKeyPress(e)} />
+            <TextareaAutosize
+              onChange={e => setMessage(e.target.value)}
+              value={message}
+              onKeyPress={e => handleKeyPress(e)} />
           </form>
         </div>
       </div>
@@ -91,7 +101,7 @@ function ChatBubble({ msgContent, sender }) {
   const { email } = sender;
   let bubbleClass = user === email ? "bubble you" : "bubble";
 
-  return(
+  return (
     <div className={bubbleClass}>
       <div className="msg-wrap">
         <div className="msg-sender">{email}</div>
