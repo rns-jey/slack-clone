@@ -81,3 +81,6 @@
   outline: none;
   resize: none;
 }
+.channelTitle{
+  cursor: pointer;
+}
