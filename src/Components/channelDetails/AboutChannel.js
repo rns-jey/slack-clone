@@ -4,7 +4,7 @@ export default function AboutChannel({ channelTitle, isAbout }) {
     const [isTopicEdit, setTopicEdit] = useState(false);
     const [isDescEdit, setDescEdit] = useState(false);
     const topicRef = useRef(null)
-    // const initialmsg = `This channel is for.. well, everything else. It's a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!`
+    const initialmsg = `This channel is for.. well, everything else. It's a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!`
 
     return (
         <div className={`aboutTab ${isAbout ? `show` : `hide`}`}>
