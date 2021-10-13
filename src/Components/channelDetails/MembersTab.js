@@ -61,10 +61,10 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             })
     }
 
-    // useEffect(() => {
-    //     getUsersInChannel()
-    //     getEmailfromID()
-    // }, []);
+    useEffect(() => {
+        getUsersInChannel()
+        getEmailfromID()
+    }, []);
 
     return (
         <div className={`memberTab ${isMembers ? 'show' : 'hide'}`}>
