@@ -71,7 +71,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             <input ref={existRef}
                 placeholder="Find members"
             />
-            <div className="addUserbtn" onClick={() => setAU(true)}>
+            {/* <div className="addUserbtn" onClick={() => setAU(true)}>
                 <PersonAddIcon />
                 Add people
             </div>
@@ -93,7 +93,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             </div>
 
 
-            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />}
+            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />} */}
         </div>
     )
 }
