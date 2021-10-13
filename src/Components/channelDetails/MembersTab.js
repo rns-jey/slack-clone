@@ -44,27 +44,27 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             })
     }
 
-    // function getEmailfromID() {
-    //     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
-    //     axios
-    //         .get(baseURLUsers, config)
-    //         .then((resp) => {
-    //             let allUsersArray = resp.data.data;
-    //             existID.forEach(eID => {
-    //                 allUsersArray.find(({ id, email }) => {
-    //                     if (id == eID) {
-    //                         setExistEmail(existEmail.push(email))
-    //                     }
-    //                 })
-    //             })
-    //             console.log(existEmail, `getEmailThen`)
-    //         })
-    // }
+    function getEmailfromID() {
+        const baseURLUsers = 'http://206.189.91.54//api/v1/users';
+        axios
+            .get(baseURLUsers, config)
+            .then((resp) => {
+                let allUsersArray = resp.data.data;
+                existID.forEach(eID => {
+                    allUsersArray.find(({ id, email }) => {
+                        if (id == eID) {
+                            setExistEmail(existEmail.push(email))
+                        }
+                    })
+                })
+                console.log(existEmail, `getEmailThen`)
+            })
+    }
 
-    useEffect(() => {
-        getUsersInChannel()
-        getEmailfromID()
-    }, []);
+    // useEffect(() => {
+    //     getUsersInChannel()
+    //     getEmailfromID()
+    // }, []);
 
     return (
         <div className={`memberTab ${isMembers ? 'show' : 'hide'}`}>
