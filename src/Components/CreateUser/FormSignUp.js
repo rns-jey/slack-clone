@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react'
-import {useHistory} from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import "./signUp.css";
 import SideModule from '../assets/sideModule';
@@ -9,25 +9,24 @@ import { Link } from "react-router-dom";
 const baseUrl = "http://206.189.91.54//api/v1/auth/"
 
 
-function FormSignUp(){
+function FormSignUp() {
     const history = useHistory();
     const [values, setValues] = useState({
         email: '',
         password: '',
-        password_confirmation:'',
+        password_confirmation: '',
     })
-    const [verify, setVerify] = useState(false)
+    const [apiErr, setapiErr] = useState(false)
     const [errors, setErrors] = useState({})
     const [commit, setCommit] = useState(false)
-    const apiCatch = "This email already has an account"
 
-    function handleChange(e){
-        const {name,value} = e.target
+    function handleChange(e) {
+        const { name, value } = e.target
         setValues({
-            ...values, 
+            ...values,
             [name]: value
         })
-        setVerify(false);
+        setapiErr(null);
         setErrors({})
     }
 
@@ -37,124 +36,120 @@ function FormSignUp(){
         setErrors(setofErrors)
     }
 
-//check if the input values follow correct syntax, show error on html
+    //check if the input values follow correct syntax, show error on html
     function validateInfo(values) {
         let errors = {}
-        if(!values.email){
+        if (!values.email) {
             errors.email = "Email required"
-        }else if (!/\S+@\S+\.\S+/.test(values.email)){
+        } else if (!/\S+@\S+\.\S+/.test(values.email)) {
             errors.email = "Email address is invalid"
-        }else if (!values.password){
+        } else if (!values.password) {
             errors.password = "Password is required"
-        }else if (values.password.length < 6){
+        } else if (values.password.length < 6) {
             errors.password = "Passwords needs to be 6 characters or more"
-        } else if (!values.password_confirmation){
+        } else if (!values.password_confirmation) {
             errors.password_confirmation = "Password is required"
-        } else if (values.password_confirmation !== values.password){
+        } else if (values.password_confirmation !== values.password) {
             errors.password_confirmation = "Passwords do not match"
         } else {
-            setVerify(true)
             CreateUser()
+            setapiErr(null)
         }
         return errors;
     };
-    
-    useEffect(()=>{
-        setTimeout(function() {
-            setVerify(false)
-        },8000)
-    }, [verify === true])
-    
-//post the user values to API, change value of commit to true
+
+    //post the user values to API, change value of commit to true
     function CreateUser() {
         console.log(baseUrl, values)
         axios
-        .post(baseUrl, values)
-        .then((response) =>{
-            setCommit(true)
-            console.log('then', response)
-        }).catch(error =>{
-            console.log(error, "catch");
-        });
+            .post(baseUrl, values)
+            .then((response) => {
+                setCommit(true)
+                setapiErr(null)
+                console.log('then', response)
+            }).catch(error => {
+                setapiErr(`This email already has an account`)
+            });
     };
-    
-//switch to LogIn page, once the user values pushed/posted to API
-    if (commit){
+
+    //switch to LogIn page, once the user values pushed/posted to API
+    if (commit) {
         history.push('./login')
         return null
     } else {
-    return (
-    <div className="loginRegisPage">
-        <SideModule isThisLogIn={false}/>
-        <div className="FormSignUp">
-            <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
-        <form onSubmit={handleSubmit}>
-            {verify?<div className="errorMsg catch">{`${apiCatch}`}</div>:null}
-            <div className="form-inputs">
-                <label htmlFor="email" className="form-label">
-                Email
-                </label>
-                <input 
-                className={`forminput ${errors.email ? 'errorValue':null }`}
-                type="text"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                placeholder="name@work-email.com"
-                />
-                {errors.email && <p className="errorMsg">{errors.email}</p>}
-            </div>
+        return (
+            <div className="loginRegisPage">
+                <SideModule isThisLogIn={false} />
+                <div className="FormSignUp">
+                    <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
+                    <form onSubmit={handleSubmit}>
+                        {apiErr ? <div className="errorMsg catch">{`${apiErr}`}</div> : null}
+                        <div className="form-inputs">
+                            <label htmlFor="email" className="form-label">
+                                Email
+                            </label>
+                            <input
+                                className={`forminput ${errors.email ? 'errorValue' : null}`}
+                                type="text"
+                                name="email"
+                                value={values.email}
+                                onChange={handleChange}
+                                placeholder="name@work-email.com"
+                            />
+                            {errors.email && <p className="errorMsg">{errors.email}</p>}
+                        </div>
 
-            <div className="form-inputs">
-                <label htmlFor="password" className="form-label">
-                Password
-                </label>
-                <input type="password" 
-                className={`forminput ${errors.password ? 'errorValue':null }`}
-                id="password" 
-                name="password" 
-                placeholder="Enter your password"
-                value={values.password}
-                onChange={handleChange}
-                
-                />
-                {errors.password && <p className="errorMsg">{errors.password}</p>}
-            </div>
+                        <div className="form-inputs">
+                            <label htmlFor="password" className="form-label">
+                                Password
+                            </label>
+                            <input type="password"
+                                className={`forminput ${errors.password ? 'errorValue' : null}`}
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                value={values.password}
+                                onChange={handleChange}
 
-            <div className="form-inputs">
-                <label htmlFor="password_confirmation" className="form-label">
-                Confirm password
-                </label>
-                <input type="password" 
-                className={`forminput ${errors.password_confirmation ? 'errorValue':null }`}
-                id="password_confirmation" 
-                name="password_confirmation" 
-                placeholder="Re-type your password"
-                value={values.password_confirmation}
-                onChange={handleChange}
-                />
-                {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
-            </div>
+                            />
+                            {errors.password && <p className="errorMsg">{errors.password}</p>}
+                        </div>
 
-            <button  className="loginRegisbtn" type="submit">Continue</button>
+                        <div className="form-inputs">
+                            <label htmlFor="password_confirmation" className="form-label">
+                                Confirm password
+                            </label>
+                            <input type="password"
+                                className={`forminput ${errors.password_confirmation ? 'errorValue' : null}`}
+                                id="password_confirmation"
+                                name="password_confirmation"
+                                placeholder="Re-type your password"
+                                value={values.password_confirmation}
+                                onChange={handleChange}
+                            />
+                            {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
+                        </div>
 
-            <div className="emailBox">
-                <input 
-                type='Checkbox' id="Checkbox" name="Checkbox"/>
-                <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
+                        <button className="loginRegisbtn" type="submit">Continue</button>
+
+                        <div className="emailBox">
+                            <input
+                                type='Checkbox' id="Checkbox" name="Checkbox" />
+                            <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
+                        </div>
+                        <div className="terms">
+                            By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
+                        </div>
+                    </form>
+                    <hr className="line" />
+                    <div className="linktoLogInorRegister">
+                        <span>Already have an account? </span>
+                        <Link to="/login" className="toLogorRegislink">Sign in instead</Link>
+                    </div>
+                </div>
             </div>
-            <div className="terms">
-            By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.
-            </div>
-            </form>
-            <hr className="line"/>
-      <div className="linktoLogInorRegister">
-          <span>Already have an account? </span>
-          <Link to="/login" className="toLogorRegislink">Sign in instead</Link>
-      </div>
-        </div>
-    </div>
-    )};
+        )
+    };
 };
 
 export default FormSignUp;
