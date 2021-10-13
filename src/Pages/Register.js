@@ -4,11 +4,13 @@ import FormSignUp from '../Components/CreateUser/FormSignUp';
 import { Redirect } from "react-router"
 
 
-export default function Register({User}) {
+export default function Register() {
+    const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+
     return (
         <>
             {
-                User.length > 0 ?
+                user.length > 0 ?
                 <Redirect to="/home" /> :
                 <>
                     <FormSignUp />

@@ -8,16 +8,16 @@ export default function ChatBody( { Channels, Recents }) {
       <Route path="/people">
         <People />
       </Route>
-      <Route exact path="/">
+      <Route exact path="/home">
         <HomePage />
       </Route>
       {Channels.map(({ id, name }) => (
-        <Route key={id} path={`/C${id}`}>
+        <Route key={id} path={`/Channel/${id}`}>
           <ChatMsg type="Channel" title={name} convoID={id} />
         </Route>
       ))}
       {Recents.map(({ id, uid }) => (
-        <Route key={id} exact path={`/D${id}`}>
+        <Route key={id} exact path={`/DM/${id}`}>
           <ChatMsg type="User" title={uid} convoID={id} />
         </Route>
       ))}

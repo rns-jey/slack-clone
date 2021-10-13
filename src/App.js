@@ -11,16 +11,14 @@ function App() {
   return (
     <div className="App">
       <Switch>
-        <Route path="/register">
-          <Register User={user} />
-        </Route>
-        <Route path="/login">
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/login">
           <Login User={user} />
         </Route>
         <Route path="/">
         { 
-          user.length > 0
-          ? <Home User={user} /> 
+          localStorage.getItem('uid')
+          ? <Home /> 
           : <Redirect to="/login" />
         }
         </Route>
