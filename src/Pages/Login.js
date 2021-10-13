@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Bottomlinks from "../Components/assets/Bottomlinks";
 import LoginForm from "../Components/Login/LoginForm";
-import { Redirect } from "react-router"
+import { Redirect, useHistory } from "react-router"
 
 export default function LogUser(){
-  const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
+  const history = useHistory();
+  
+  useEffect(() => {
+    if (localStorage.getItem('uid')) { 
+      history.push("/");
+    }
+  })
 
   return (
     <>
-      {
-        user.length > 0 ?
-        <Redirect to="/home" /> :
-        <>
-          <LoginForm />
-          <Bottomlinks/>
-        </>
-      }
+      <LoginForm />
+      <Bottomlinks/>
     </>
   )
 }

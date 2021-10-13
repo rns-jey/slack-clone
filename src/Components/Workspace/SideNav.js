@@ -17,7 +17,7 @@ export default function SideNav(props) {
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
  const [toggleDM, setToggleDM] = useState(false);
-
+  
 
   return (
     <div className="sidebar">

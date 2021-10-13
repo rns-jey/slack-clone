@@ -5,7 +5,7 @@ function NavLink({ type, to, activeClassName, inactiveClassName, className, ...r
   let isActive = location.pathname === to;
   let allClassNames = (isActive ? `${className} ${activeClassName}` : ` ${className}`)
 
-  return (type === "Channel" ? <Link className={allClassNames} to={`/C${to}`} {...rest} /> : <Link className={allClassNames} to={`/D${to}`} {...rest} />);
+  return (<Link className={allClassNames} to={`/${type}/${to}`} {...rest} />);
 }
 
 export default function SideNavOpt( { Channels, Recents }) {

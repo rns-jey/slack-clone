@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 
 export default function LoginForm(){
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('postman@test.com')
+  const [password, setPassword] = useState('test123456')
   const [logErr, setErr] = useState(null)
   const history = useHistory();
 
@@ -32,7 +32,7 @@ export default function LoginForm(){
         localStorage.setItem('expiry', resp.headers["expiry"]);
         localStorage.setItem('uid', resp.headers["uid"]);
         setErr(prevErr => null)
-        history.push("/home");
+        history.push("/");
       })
       .catch((err) => {
         setErr(prevErr => "Invalid username or password!")
