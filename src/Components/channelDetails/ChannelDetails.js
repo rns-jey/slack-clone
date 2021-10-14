@@ -1,53 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as UnFave } from '../assets/unFave.svg'
 import { ReactComponent as Fave } from '../assets/fave.svg'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import PhoneIcon from '@material-ui/icons/Phone';
+import './ChannelDetails.css'
 import AboutChannel from './AboutChannel';
 import MembersTab from './MembersTab';
 
 export default function ChannelDetails({ isCDetsopen, channelID, channelTitle }) {
-
-
     const [isAbout, setAbout] = useState(true);
     const [isMembers, setMember] = useState(false);
     const [fave, setFave] = useState(false);
+
+    function tabToggler(tabA, tabB) {
+        tabA(true);
+        tabB(false);
+    }
+
     return (
         <div className={`CCBg ${isCDetsopen ? `show` : `hide`}`}>
-            <div className="CCContainer">
+            <div className="tablModalCont">
 
-                <div className="MTitle">
+                <div className="MTitle padtop15">
                     <div className="title">
                         {`#${channelTitle}`}
                     </div>
                     <button className="CCcloseBtn" onClick={() => isCDetsopen(false)}>X</button>
                 </div>
 
-                <div className="decor1">
-                    {!fave ? <UnFave width="15" height="15" onClick={() => setFave(true)} /> : <Fave width="15" height="15" onClick={() => setFave(false)} />}
-                    <button className="EnNotif">
-                        <NotificationsNoneIcon />
+                <div className="decor1 padmid15">
+                    {!fave ? <UnFave width="20" height="20" className="fave" onClick={() => setFave(true)} /> : <Fave width="20" height="20" className="fave" onClick={() => setFave(false)} />}
+                    <button className="decorBtn">
+                        <NotificationsNoneIcon className="decorIcon" />
                         Enable Notifications
                     </button>
-                    <button className="callbtn deact">
-                        <PhoneIcon /> Start a Call
+                    <button className="decorBtn" disabled={true}>
+                        <PhoneIcon
+                            className="decorIcon" /> Start a Call
                     </button>
                 </div>
 
-                <div className="tabCont">
+                <div className="decor1 padmid15">
                     <div className={`tab ${isAbout ? 'openTab' : null}`}
-                        onClick={() => (setAbout(true), setMember(false))}>
+                        onClick={() => tabToggler(setAbout, setMember)}>
                         About
                     </div>
                     <div className={`tab ${isMembers ? 'openTab' : null}`}
-                        onClick={() => (setAbout(false), setMember(true))}>
+                        onClick={() => tabToggler(setMember, setAbout)}>
                         Members
                     </div>
                 </div>
 
-                <AboutChannel channelTitle={channelTitle} isAbout={isAbout} />
+                <AboutChannel channelTitle={channelTitle} isAbout={isAbout} ChanID={channelID} />
                 <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} />
             </div>
-        </div>
+        </div >
     )
 }
