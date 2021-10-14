@@ -53,15 +53,16 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     }, []);
 
     return (
-        <div className={`memberTab ${isMembers ? 'show' : 'hide'}`}>
+        <div className={`tabPage ${isMembers ? 'show' : 'hide'}`}>
             <input ref={existRef}
+                className="form-input"
                 placeholder="Find members"
             />
             <div className="addUserbtn" onClick={() => setAU(true)}>
-                <PersonAddIcon />
-                Add people
+                <PersonAddIcon className="AddUserIcon" />
+                <span>Add people</span>
             </div>
-            <div className="searchListCont">
+            <div className="existListCont">
                 {filterExist.filter((email) => {
                     if (existRef.current.value == "") {
                         return email;
