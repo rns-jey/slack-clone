@@ -71,7 +71,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                     }
                 })
                     .map((email) => (
-                        <div className="usersList" id={email}>
+                        <div className="usersList existList" id={email}>
                             <img src={avatar} className="listAvatar" id={`av ${email}`} />
                             <div className="Email" id={`em ${email}`}>{email}
                             </div>
