@@ -1,0 +1,130 @@
+.title{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.decor1{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+
+}
+.decorBtn{
+    margin:5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.tablModalCont{
+    width: 45%;
+    min-height: 65%;
+    border-radius: 5px;
+    background-color: white;
+}
+/* top right bottom left*/
+.padtop15{
+    padding: 15px 15px 0 15px;
+}
+.padmid15{
+    padding: 5px 15px 0 15px;
+}
+
+.decorIcon{
+    font-size: 15px !important;
+}
+.fave{
+    padding:5px !important;
+}
+.tab{
+    margin: 0 5px 0 5px
+}
+.openTab{
+    border-bottom: 5px solid blue;
+}
+.tabPage{
+    margin-top: 0;
+    padding: 15px;
+    height: 17.5rem;
+
+}
+.aboutTab{
+    background-color: rgb(242, 242, 242);
+}
+
+/* AboutChannel */
+.tabPage h4{
+    margin:0;
+}
+.subAboutCont{
+    padding:15px;
+    border-radius: 10px;
+    border: 1px solid rgb(147, 147, 147);
+    background-color: rgb(255, 255, 255);
+}
+.set1{
+    margin: 0px 0 15px 0;
+}
+.set2{
+ padding-bottom: 15px;
+}
+.subContTitle{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.saveBtn{
+    color:green;
+    font-weight: 700;
+    cursor: pointer;
+}
+.editBtn{
+    color:blue;
+    font-weight: 500;
+    cursor: pointer;
+}
+.tabInput{
+   width: 100%;
+}
+.noEdit{
+    cursor: default;
+    border:none;
+    background-color: inherit; 
+}
+.noEdit:focus{
+    outline:none !important;
+    border:none !important;
+}
+.tabTextArea{
+    height: 2.5rem;
+    resize: none;
+}
+
+.existListCont{
+    height: 75%;
+    overflow-y: scroll;
+}
+.addUserbtn{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.addUserbtn:hover{
+    background-color: lightblue;
+}
+.AddUserIcon{
+    font-size: 25px !important;
+    padding:5px;
+    background-color: lightblue;
+    margin-right: 5px;
+}
+
+.existList{
+    cursor: default !important;
+}
+@media screen and (max-width: 700px){
+    .tablModalCont{
+        width: 100%;
+    }
+}
