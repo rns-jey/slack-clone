@@ -108,12 +108,20 @@
     align-items: center;
     text-align: center;
     margin-top: 5px;
+    cursor: pointer;
+}
+.addUserbtn:hover{
+    background-color: lightblue;
 }
 .AddUserIcon{
     font-size: 25px !important;
     padding:5px;
     background-color: lightblue;
     margin-right: 5px;
+}
+
+.existList{
+    cursor: default !important;
 }
 @media screen and (max-width: 700px){
     .tablModalCont{
