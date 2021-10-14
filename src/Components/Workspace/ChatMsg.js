@@ -7,7 +7,7 @@ import configAPI from '../assets/config';
 import ChannelDetails from '../channelDetails/ChannelDetails';
 
 export default function ChatMsg({ type, title, convoID }) {
-  const [CDetModal, setCDetModal] = useState(true)
+  const [CDetModal, setCDetModal] = useState(false)
   const [chat, setChat] = useState([])
   const [message, setMessage] = useState("")
   const config = configAPI();
