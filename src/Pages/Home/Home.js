@@ -1,7 +1,7 @@
 import './Home.css'
 import React, { useEffect } from "react";
 import Header from '../../Components/Header/Header'
-import Workspace from '../../Components/Workspace/Workspace'
+import SideNav from '../../Components/Workspace/SideNav'
 import { Redirect, useHistory } from "react-router"
 
 function Home() {
@@ -19,7 +19,7 @@ function Home() {
     <div className="Main">
       <Header />  
       <div className="workspace">
-        
+        <SideNav />
       </div>
     </div> 
   );
