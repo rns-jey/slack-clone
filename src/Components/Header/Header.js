@@ -14,6 +14,7 @@ export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
   const history = useHistory();
   const [searchState, toggleSearch] = useState(false)
+  const [email, setEmail] = useState('');
 
   const signOut = (e) => {
     e.preventDefault();
@@ -35,7 +36,12 @@ export default function Header() {
         <FaSearch />
       </HeaderComponents>
       {
-        searchState
+        searchState &&
+        <div className="search-container">
+          <div className="search-header">
+            <input className="input-search" placeholder="Search user" type="text" onChange={e => setEmail(e.target.value)} value={email} />
+          </div>
+        </div>
       }
 
       <HeaderComponents title="right-header">
