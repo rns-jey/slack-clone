@@ -41,7 +41,7 @@ function Home() {
     <div className="Main">
       <Header />  
       <div className="workspace">
-        <SideNav Channels={userChannels} />
+        <SideNav Channels={userChannels} Recents={recentInteracted} />
       </div>
     </div> 
   );
