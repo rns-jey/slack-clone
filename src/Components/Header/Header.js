@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
 import { useHistory } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 const HeaderComponents = (props) => {
   return <div className={props.title}>{props.children}</div>
@@ -12,6 +13,7 @@ const HeaderComponents = (props) => {
 export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
   const history = useHistory();
+  const [searchState, toggleSearch] = useState(false)
 
   const signOut = (e) => {
     e.preventDefault();
