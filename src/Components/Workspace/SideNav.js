@@ -11,6 +11,7 @@ import AddIcon from "@material-ui/icons/Add";
 import React, {useState} from 'react';
 import CreateChannel from '../addChannel/addChannel';
 import ToPeople from '../Sidebar/toPeople';
+import NavLink from './NavLink';
 
 export default function SideNav({ Channels }) {
  const [toggle, setToggle] = useState(false);
@@ -37,7 +38,19 @@ export default function SideNav({ Channels }) {
         </ul>}
         <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
-        {toggle}
+        {toggle &&
+          <div className="sidebar_options">
+            {Channels.data.data
+              ?
+                Channels.data.data.map(({ id, name }) => (
+                  <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" className="sidebarOption" to={id}>
+                    {name}
+                  </NavLink>
+                ))
+              : null
+            }
+          </div>
+        }
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
