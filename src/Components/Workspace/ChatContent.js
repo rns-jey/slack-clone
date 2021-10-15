@@ -35,7 +35,24 @@ export default function ChatContent({ id, type }) {
 
   return (
     <div className="chat-body">
-      
+      {chatMsgs.map(({ id, body, sender }) => (
+        <ChatBubble key={id} msgContent={body} sender={sender} />
+      ))}
     </div>
   )
+}
+
+function ChatBubble({ msgContent, sender }) {
+  const user = localStorage.getItem("uid") ? localStorage.getItem("uid") : "";
+  const { email } = sender;
+  let bubbleClass = user === email ? "bubble you" : "bubble";
+
+  return (
+    <div className={bubbleClass}>
+      <div className="msg-wrap">
+        <div className="msg-sender">{email}</div>
+        <div className="msg-content">{msgContent}</div>
+      </div>
+    </div>
+  );
 }
