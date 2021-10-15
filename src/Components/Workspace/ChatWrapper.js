@@ -10,7 +10,7 @@ export default function ChatWrapper() {
     <div className="chat-container">
       <ChatHeader id={id} type={type} />
       <ChatContent id={id} type={type} />
-      <ChatInput />
+      <ChatInput id={id} type={type} />
     </div>
   );
 }

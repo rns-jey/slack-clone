@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { sendMessage } from "../../API/API";
 
-export default function ChatInput() {
+export default function ChatInput({ id, type }) {
   const [message, setMessage] = useState("");
 
   const chatConfig = {
@@ -33,7 +33,6 @@ export default function ChatInput() {
     <div className="chat-box-container">
       <div className="chat-box">
         <form>
-          
           <TextareaAutosize
             onChange={(e) => setMessage(e.target.value)}
             value={message}
