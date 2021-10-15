@@ -84,3 +84,6 @@
 .channelTitle{
   cursor: pointer;
 }
+.noClick{
+  cursor: default !important;
+}

@@ -38,47 +38,45 @@ export default function ChatHeader({ id, type }) {
   return (
     <>
       <div className="chat-header">
-        {/* <h2 className={`channelTitle ${type === 'Channel' ? '' : 'noClick'}`} onClick={() => type === 'Channel' ? setCDetModal(true) : null}> */}
-        {
-          chatDetails
-            ?
-            parseInt(id) === chatDetails.id
+        <h2 className={`channelTitle ${type === 'Channel' ? '' : 'noClick'}`} onClick={() => type === 'Channel' ? setCDetModal(true) : null}>
+          {
+            chatDetails
               ?
-              type === "Channel"
+              parseInt(id) === chatDetails.id
                 ?
-                chatDetails.name
+                type === "Channel"
+                  ?
+                  chatDetails.name
+                  :
+                  chatDetails.uid
                 :
-                chatDetails.uid
+                null
               :
               null
-            :
-            null
-        }
-      </h2>
-    </div>
-      {
-    CDetModal && (
-      <ChannelDetails
-        isCDetsopen={setCDetModal}
-        channelID={id}
-        channelTitle={
-          chatDetails
-            ?
-            parseInt(id) === chatDetails.id
+          }
+        </h2>
+      </div>
+      {CDetModal && (
+        <ChannelDetails
+          isCDetsopen={setCDetModal}
+          channelID={id}
+          channelTitle={
+            chatDetails
               ?
-              type === "Channel"
+              parseInt(id) === chatDetails.id
                 ?
-                chatDetails.name
+                type === "Channel"
+                  ?
+                  chatDetails.name
+                  :
+                  chatDetails.uid
                 :
-                chatDetails.uid
+                null
               :
               null
-            :
-            null
-        }
-      />
-    )
-  }
+          }
+        />
+      )}
     </>
   )
 }
