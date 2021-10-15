@@ -54,3 +54,20 @@ export const getRecents = ({ token, client, expiry, uid }) => {
     })
     .catch(error => error)
 }
+
+export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } }) => {
+  return axiosFetch.get(
+    `/api/v1/channels/${id}`,
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      },
+      
+    })
+    .then(response => response)
+    .then(result => result)
+    .catch(error => error)
+}
