@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react"
 import { getChannelDetail, getUserDetail } from "../../API/API"
+import ChannelDetails from "../channelDetails/ChannelDetails";
 
 export default function ChatHeader({ id, type }) {
   const [chatDetails, setChatDetails] = useState([]);
@@ -37,7 +38,7 @@ export default function ChatHeader({ id, type }) {
   return (
     <>
       <div className="chat-header">
-        <h2 className="channelTitle">
+        <h2 className="channelTitle" onClick={() => setCDetModal(true)}>
           {
             chatDetails
             ?
@@ -55,7 +56,27 @@ export default function ChatHeader({ id, type }) {
           }
         </h2>
       </div>
-      {CDetModal}
+      {CDetModal && (
+        <ChannelDetails
+          isCDetsopen={setCDetModal}
+          channelID={id}
+          channelTitle={
+            chatDetails
+            ?
+              parseInt(id) === chatDetails.id
+                ?
+                  type === "Channel"
+                  ?
+                    chatDetails.name
+                  :
+                    chatDetails.uid
+                :
+                  null
+            : 
+              null
+          }
+        />
+      )}
     </>
   )
 }
