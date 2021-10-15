@@ -4,6 +4,7 @@ import { getChannelDetail, getUserDetail } from "../../API/API"
 
 export default function ChatHeader({ id, type }) {
   const [chatDetails, setChatDetails] = useState([]);
+  const [CDetModal, setCDetModal] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -54,6 +55,7 @@ export default function ChatHeader({ id, type }) {
           }
         </h2>
       </div>
+      {CDetModal}
     </>
   )
 }
