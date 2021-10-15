@@ -9,13 +9,6 @@ export default function ChatWrapper() {
     <div className="chat-container">
       <ChatHeader id={id} type={type} />
       <ChatContent id={id} type={type} />
-      <div className="chat-box-container">
-        <div className="chat-box">
-          <form>
-            
-          </form>
-        </div>
-      </div>
     </div>
   );
 }
