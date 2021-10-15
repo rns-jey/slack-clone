@@ -43,6 +43,7 @@ function Home() {
       <Header />  
       <div className="workspace">
         <SideNav Channels={userChannels} Recents={recentInteracted} />
+        <ChatContainer />
       </div>
     </div> 
   );
