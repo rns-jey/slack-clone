@@ -14,13 +14,15 @@ export default function CreateChannel({ isCCModalopen }) {
     const uEmailRef = useRef(null);
     const [success, setSuccess] = useState(false)
     const [nCName, setChannelName] = useState();
-    const [emailIDs, setemailIDs] = useState([]);
+    const [uEmails, setuEmails] = useState([]);
+    // const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
     const [pushedEmails, setpEmails] = useState([])
     const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
     let uEmailsArrTrim = [];
     let config = configAPI();
+    let emailIDs = [];
 
     function updateConfig() {
         config = configAPI()
@@ -33,7 +35,9 @@ export default function CreateChannel({ isCCModalopen }) {
         const uEmailsArr = uEmailsRawInput.split(';');
         uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
+        setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
+        console.log(uEmails)
         return (uEmailsArrTrim)
     };
 
@@ -46,8 +50,9 @@ export default function CreateChannel({ isCCModalopen }) {
                 uEmailsArrTrim.forEach(elem => {
                     apiArray.find(({ email, id }) => {
                         if (email == elem) {
-                            setemailIDs(emailIDs.push(id))
+                            emailIDs.push(id)
                             pushedEmails.push(email)
+                            console.log(elem, email, id, emailIDs)
                         }
                     })
                 })
@@ -57,7 +62,10 @@ export default function CreateChannel({ isCCModalopen }) {
     function idToChannel() {
         updateConfig()
         getIdfromEmail();
-        AddChannel()
+        setTimeout(() => {
+            AddChannel()
+        }, 1000);
+
     }
 
 
