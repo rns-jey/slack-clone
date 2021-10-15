@@ -18,7 +18,9 @@ function Home() {
   return (
     <div className="Main">
       <Header />  
-      <Workspace />
+      <div className="workspace">
+        
+      </div>
     </div> 
   );
 }
