@@ -21,12 +21,12 @@ export default function CreateChannel({ isCCModalopen }) {
     const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
     let uEmailsArrTrim = [];
-    // let config = configAPI();
+    let config = configAPI();
 
-    // function updateConfig() {
-    //     config = configAPI()
-    //     return (config)
-    // }
+    function updateConfig() {
+        config = configAPI()
+        return (config)
+    }
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
