@@ -1,7 +1,8 @@
 import { useEffect } from "react"
-import { getChannelDetail } from "../../../^/untitled/Untitled-1";
+import { getChannelDetail } from "../../API/API"
 
 export default function ChatHeader({ id, type }) {
+  const [chatDetails, setChatDetails] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -18,7 +19,7 @@ export default function ChatHeader({ id, type }) {
 
     if (type === "Channel") {
       getChannelDetail(chatCredentials).then((res) => {
-        
+        if (isMounted) setChatDetails(res.data.data);
       });
     }
 
