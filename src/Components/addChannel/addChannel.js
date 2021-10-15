@@ -14,7 +14,6 @@ export default function CreateChannel({ isCCModalopen }) {
     const uEmailRef = useRef(null);
     const [success, setSuccess] = useState(false)
     const [nCName, setChannelName] = useState();
-    const [uEmails, setuEmails] = useState([]);
     const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
     const [pushedEmails, setpEmails] = useState([])
@@ -34,9 +33,7 @@ export default function CreateChannel({ isCCModalopen }) {
         const uEmailsArr = uEmailsRawInput.split(';');
         uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
-        setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
-        console.log(uEmails)
         return (uEmailsArrTrim)
     };
 
