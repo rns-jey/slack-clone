@@ -71,3 +71,21 @@ export const getChannelDetail = ({ id, headers:{ token, client, expiry, uid } })
     .then(result => result)
     .catch(error => error)
 }
+
+export const getUserDetail = ({ id, headers:{token, client, expiry, uid }}) => {
+  return axiosFetch.get(
+    "/api/v1/users",
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      }
+    })
+    .then(response => response)
+    .then(result => {
+      return result.data.data.filter(data => data.id === id)
+    })
+    .catch(error => error)
+}
