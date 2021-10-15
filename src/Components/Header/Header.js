@@ -3,8 +3,10 @@ import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { searchUser } from '../../API/API';
 
 const HeaderComponents = ({ title, state, children }) => {
   return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>
@@ -33,14 +35,25 @@ export default function Header() {
   }
 
   useEffect(() => {
-    axios
-    .get(baseURL, config)
-    .then((res) => {
-      setUsers(res.data.data.filter(user => user.email.includes(email)));
-    })
-    .catch((err) => {
-      console.log(err)  
+    let isMounted = true;
+
+    const chatCredentials = {
+      email: email,
+      headers: {
+        token: localStorage.getItem("at"),
+        client: localStorage.getItem("client"),
+        expiry: localStorage.getItem("expiry"),
+        uid: localStorage.getItem("uid"),
+      },
+    };
+
+    searchUser(chatCredentials).then((data) => {
+      if (isMounted) setUsers(data)
     });
+
+    return () => {
+      isMounted = false;
+    };
   }, [email]);
 
   return (
@@ -59,6 +72,17 @@ export default function Header() {
           <div className="search-header">
             <input className="input-search" placeholder="Search user" type="text" onChange={e => setEmail(e.target.value)} value={email} />
             <span className="close-search" onClick={closeSearchBox}>X</span>
+          </div>
+          <div className="search-body" onClick={closeSearchBox}>
+            {
+              users.length > 0 && email.length > 0
+              ?
+                users.slice(0, 10).map(({ id, email }) => (
+                  <Link key={id} to={`/User/${id}`}>{email}</Link>
+                ))
+              :
+                <></>
+            }
           </div>
         </div>
       }
