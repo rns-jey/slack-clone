@@ -34,26 +34,21 @@ export default function Header() {
     toggleSearch(prevState => !prevState)
   }
 
+  const chatCredentials = {
+    email: email,
+    headers: {
+      token: localStorage.getItem("at"),
+      client: localStorage.getItem("client"),
+      expiry: localStorage.getItem("expiry"),
+      uid: localStorage.getItem("uid"),
+    },
+  };
+
   useEffect(() => {
-    let isMounted = true;
-
-    const chatCredentials = {
-      email: email,
-      headers: {
-        token: localStorage.getItem("at"),
-        client: localStorage.getItem("client"),
-        expiry: localStorage.getItem("expiry"),
-        uid: localStorage.getItem("uid"),
-      },
-    };
-
     searchUser(chatCredentials).then((data) => {
-      if (isMounted) setUsers(data)
+      setUsers(data)
     });
 
-    return () => {
-      isMounted = false;
-    };
   }, [email]);
 
   return (
