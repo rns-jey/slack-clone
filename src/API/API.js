@@ -126,9 +126,6 @@ export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, c
       "expiry": expiry,
       "uid": uid,
     }
-  },
-  {
-    timeout: 1000
   }
   )
   .then(response => response)
