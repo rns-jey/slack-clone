@@ -109,3 +109,29 @@ export const getMessage = ({ receiverID, receiverType, headers:{ token, client, 
     .then(result => result)
     .catch(error => error)
 }
+
+export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, client, expiry, uid } }) => {
+  console.log(receiverID)
+  return axiosFetch.post(
+    "/api/v1/messages", 
+  {
+    "receiver_id": parseInt(receiverID),
+    "receiver_class": receiverType,
+    "body": body
+  },
+  {
+    headers:{
+      "access-token": token,
+      "client": client,
+      "expiry": expiry,
+      "uid": uid,
+    }
+  },
+  {
+    timeout: 1000
+  }
+  )
+  .then(response => response)
+  .then(result => result)
+  .catch(error => error)
+}
