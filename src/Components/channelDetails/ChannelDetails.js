@@ -30,7 +30,7 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
 
                 <div className="decor1 padmid15">
                     {!fave ? <UnFave width="20" height="20" className="fave" onClick={() => setFave(true)} /> : <Fave width="20" height="20" className="fave" onClick={() => setFave(false)} />}
-                    <button className="decorBtn">
+                    <button className="decorBtn ablebtn">
                         <NotificationsNoneIcon className="decorIcon" />
                         Enable Notifications
                     </button>

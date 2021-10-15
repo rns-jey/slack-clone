@@ -19,6 +19,7 @@
     min-height: 65%;
     border-radius: 5px;
     background-color: white;
+    cursor: default;
 }
 /* top right bottom left*/
 .padtop15{
@@ -33,12 +34,14 @@
 }
 .fave{
     padding:5px !important;
+    cursor: pointer;
 }
 .tab{
-    margin: 0 5px 0 5px
+    margin: 0 5px 0 5px;
+    cursor: pointer;
 }
 .openTab{
-    border-bottom: 5px solid blue;
+    border-bottom: 2px solid rgb(1, 121, 25);
 }
 .tabPage{
     margin-top: 0;
@@ -49,7 +52,20 @@
 .aboutTab{
     background-color: rgb(242, 242, 242);
 }
+.decorBtn{
+    background-color: inherit;
+    font-weight: 500;
+    border-radius: 3px;
+    border: 1px solid rgb(176, 176, 176);
+    padding:3px;
+}
+.ablebtn{
+    cursor: pointer;
+}
+.decorBtn:active{
+    border: 1px solid black;
 
+}
 /* AboutChannel */
 .tabPage h4{
     margin:0;
