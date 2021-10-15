@@ -22,6 +22,7 @@ export default function CreateChannel({ isCCModalopen }) {
     let config = configAPI();
     let emailIDs = [];
 
+    //updates headers for API
     function updateConfig() {
         config = configAPI()
         return (config)
@@ -37,6 +38,7 @@ export default function CreateChannel({ isCCModalopen }) {
         return (uEmailsArrTrim)
     };
 
+    //checks the emails from textbox one by one to get ID from API
     function getIdfromEmail() {
         handleUserInput()
         axios
@@ -55,6 +57,7 @@ export default function CreateChannel({ isCCModalopen }) {
             })
     }
 
+    //createChannel button function: updates config, setTimeout as Async 
     function idToChannel() {
         updateConfig()
         getIdfromEmail();
@@ -63,7 +66,6 @@ export default function CreateChannel({ isCCModalopen }) {
         }, 1000);
 
     }
-
 
     //get tokens from local storage, add channel post to API
     function AddChannel() {
@@ -91,6 +93,7 @@ export default function CreateChannel({ isCCModalopen }) {
             });
     };
 
+    // function of searchbar, find the emails that passes the criteria of searched value
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
     const handleSearch = (event) => {
@@ -102,6 +105,8 @@ export default function CreateChannel({ isCCModalopen }) {
 
         filterUser(result);
     }
+
+    //renders the emails that passes the search value realtime
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
