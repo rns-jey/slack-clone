@@ -1,9 +1,9 @@
 import { Route, Switch } from "react-router";
 import People from '../Peopleanduser/People'
+import ChatWrapper from "./ChatWrapper";
 
 export default function ChatContainer() {
   return (
-    
     <Switch>
       <Route path="/people">
         <People />
@@ -12,7 +12,7 @@ export default function ChatContainer() {
         <HomePage />
       </Route>
       <Route path={"/:type/:id"}>
-        
+        <ChatWrapper />
       </Route>
     </Switch>
   )
