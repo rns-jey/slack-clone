@@ -8,54 +8,64 @@ import avatar from "../assets/avatar.png"
 
 //nC -> new Channel
 //uIDs -> uIDs
-const config = configAPI();
-const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
-const baseURLUsers = 'http://206.189.91.54//api/v1/users';
+
 export default function CreateChannel({ isCCModalopen }) {
     const channelNameRef = useRef(null);
     const uEmailRef = useRef(null);
     const [success, setSuccess] = useState(false)
     const [nCName, setChannelName] = useState();
-    const [uEmails, setuEmails] = useState([]);
-    const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
     const [pushedEmails, setpEmails] = useState([])
+    const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
+    const baseURLUsers = 'http://206.189.91.54//api/v1/users';
+    let uEmailsArrTrim = [];
+    let config = configAPI();
+    let emailIDs = [];
 
+    //updates headers for API
+    function updateConfig() {
+        config = configAPI()
+        return (config)
+    }
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
-        const uEmailsRawInput = `${uEmailRef.current.value};`;
+        const uEmailsRawInput = `${uEmailRef.current.value}`;
         const uEmailsArr = uEmailsRawInput.split(';');
-        const uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
+        uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
-        setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
+        return (uEmailsArrTrim)
     };
 
+    //checks the emails from textbox one by one to get ID from API
     function getIdfromEmail() {
+        handleUserInput()
         axios
             .get(baseURLUsers, config)
             .then((resp) => {
                 let apiArray = resp.data.data;
-                uEmails.forEach(elem => {
+                uEmailsArrTrim.forEach(elem => {
                     apiArray.find(({ email, id }) => {
                         if (email == elem) {
-                            setemailIDs(emailIDs.push(id))
+                            emailIDs.push(id)
                             pushedEmails.push(email)
+                            console.log(elem, email, id, emailIDs)
                         }
                     })
                 })
-                console.log(pushedEmails);
             })
     }
 
+    //createChannel button function: updates config, setTimeout as Async 
     function idToChannel() {
+        updateConfig()
         getIdfromEmail();
         setTimeout(() => {
             AddChannel()
         }, 1000);
-    }
 
+    }
 
     //get tokens from local storage, add channel post to API
     function AddChannel() {
@@ -83,6 +93,7 @@ export default function CreateChannel({ isCCModalopen }) {
             });
     };
 
+    // function of searchbar, find the emails that passes the criteria of searched value
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
     const handleSearch = (event) => {
@@ -94,13 +105,14 @@ export default function CreateChannel({ isCCModalopen }) {
 
         filterUser(result);
     }
+
+    //renders the emails that passes the search value realtime
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
             .then((res) => {
                 setUsers(res.data.data)
                 filterUser(res.data.data);
-                // makeChecklist(res.data.data)
             })
             .catch((err) => {
                 console.log(err)
@@ -152,7 +164,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
-                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email};`}>
+                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value}${email};`}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
