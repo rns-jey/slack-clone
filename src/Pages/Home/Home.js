@@ -30,7 +30,7 @@ function Home() {
         setChannels(data);
       })
       .catch((err) => console.log("Error :", err));
-  })
+  }, [])
 
   return (
     <div className="Main">
