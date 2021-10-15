@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { getMessage } from "../../API/API";
 
 export default function ChatContent({ id, type }) {
+  const [chatMsgs, setMsgs] = useState([]);
 
   const chatConfig = {
     receiverID: id,
