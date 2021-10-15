@@ -31,6 +31,9 @@ export default function ChatHeader({ id, type }) {
 
   return (
     <>
+      <div className="chat-header">
+        <h2 className="channelTitle"></h2>
+      </div>
     </>
   )
 }
