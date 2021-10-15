@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./loginForm.css";
 import SideModule from '../assets/sideModule';
 import { Link } from "react-router-dom";
-
+import configAPI from '../assets/config';
 
 export default function LoginForm(){
   const [email, setEmail] = useState('postman@test.com')
@@ -32,6 +32,7 @@ export default function LoginForm(){
         localStorage.setItem('expiry', resp.headers["expiry"]);
         localStorage.setItem('uid', resp.headers["uid"]);
         setErr(prevErr => null)
+        configAPI();
         history.push("/");
       })
       .catch((err) => {

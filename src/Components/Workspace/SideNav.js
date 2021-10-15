@@ -11,14 +11,14 @@ import AddIcon from "@material-ui/icons/Add";
 import React, {useState} from 'react';
 import CreateChannel from '../addChannel/addChannel';
 import ToPeople from '../Sidebar/toPeople';
+import NavLink from './NavLink';
 
-export default function SideNav(props) {
+export default function SideNav({ Channels, Recents }) {
  const [toggle, setToggle] = useState(false);
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
  const [toggleDM, setToggleDM] = useState(false);
   
-
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -38,11 +38,36 @@ export default function SideNav(props) {
         </ul>}
         <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
-        {toggle && <>{props.children}</>}
+        {toggle &&
+          <div className="sidebar_options">
+            {Channels.data.data
+              ?
+                Channels.data.data.map(({ id, name }) => (
+                  <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" className="sidebarOption" to={id}>
+                    {name}
+                  </NavLink>
+                ))
+              : null
+            }
+          </div>
+        }
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
-        {toggleDM}
+        {toggleDM &&
+          <div className="sidebar_options">
+            {
+              Recents
+              ?
+                Recents.map(({ id, email }) => (
+                  <NavLink key={id} type="User" activeClassName="sidebarOptionActive" className="sidebarOption" to={id}>
+                    {email}
+                  </NavLink>
+                ))
+              : null
+            }
+          </div>
+        }
       </nav>
     </div>
   )

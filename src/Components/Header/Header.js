@@ -3,15 +3,21 @@ import { FaRegClock } from 'react-icons/fa';
 import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { searchUser } from '../../API/API';
 
-const HeaderComponents = (props) => {
-  return <div className={props.title}>{props.children}</div>
+const HeaderComponents = ({ title, state, children }) => {
+  return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>
 }
 
 export default function Header() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
   const history = useHistory();
+  const [searchState, toggleSearch] = useState(false)
+  const [email, setEmail] = useState('');
+  const [users, setUsers] = useState([]);
 
   const signOut = (e) => {
     e.preventDefault();
@@ -22,16 +28,59 @@ export default function Header() {
     history.push("/login");
   }
 
+  const closeSearchBox = (e) => {
+    e.preventDefault();
+    setEmail('')
+    toggleSearch(prevState => !prevState)
+  }
+
+  const chatCredentials = {
+    email: email,
+    headers: {
+      token: localStorage.getItem("at"),
+      client: localStorage.getItem("client"),
+      expiry: localStorage.getItem("expiry"),
+      uid: localStorage.getItem("uid"),
+    },
+  };
+
+  useEffect(() => {
+    searchUser(chatCredentials).then((data) => {
+      setUsers(data)
+    });
+
+  }, [email]);
+
   return (
     <div className="header-container">
       <HeaderComponents title="left-header">
         <FaRegClock />
       </HeaderComponents>
 
-      <HeaderComponents title="mid-header">
+      <HeaderComponents title="mid-header" state={toggleSearch}>
         <div>Search</div>
         <FaSearch />
       </HeaderComponents>
+      {
+        searchState &&
+        <div className="search-container">
+          <div className="search-header">
+            <input className="input-search" placeholder="Search user" type="text" onChange={e => setEmail(e.target.value)} value={email} />
+            <span className="close-search" onClick={closeSearchBox}>X</span>
+          </div>
+          <div className="search-body" onClick={closeSearchBox}>
+            {
+              users.length > 0 && email.length > 0
+              ?
+                users.slice(0, 10).map(({ id, email }) => (
+                  <Link key={id} to={`/User/${id}`}>{email}</Link>
+                ))
+              :
+                <></>
+            }
+          </div>
+        </div>
+      }
 
       <HeaderComponents title="right-header">
         <FaRegQuestionCircle />
