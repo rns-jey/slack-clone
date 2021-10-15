@@ -12,13 +12,12 @@ import React, {useState} from 'react';
 import CreateChannel from '../addChannel/addChannel';
 import ToPeople from '../Sidebar/toPeople';
 
-export default function SideNav(props) {
+export default function SideNav({ Channels }) {
  const [toggle, setToggle] = useState(false);
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
  const [toggleDM, setToggleDM] = useState(false);
   
-
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -38,7 +37,7 @@ export default function SideNav(props) {
         </ul>}
         <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
-        {toggle && <>{props.children}</>}
+        {toggle}
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
         {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>

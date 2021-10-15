@@ -35,7 +35,7 @@ function Home() {
     <div className="Main">
       <Header />  
       <div className="workspace">
-        <SideNav />
+        <SideNav Channels={userChannels} />
       </div>
     </div> 
   );
