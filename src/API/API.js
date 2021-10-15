@@ -131,3 +131,21 @@ export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, c
   .then(result => result)
   .catch(error => error)
 }
+
+export const searchUser = ({ email, headers:{token, client, expiry, uid }}) => {
+  return axiosFetch.get(
+    "/api/v1/users",
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      }
+    })
+    .then(response => response)
+    .then(result => {
+      return result.data.data.filter(data => data.email.includes(email))
+    })
+    .catch(error => error)
+}
