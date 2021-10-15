@@ -25,6 +25,12 @@ export default function Header() {
     history.push("/login");
   }
 
+  const closeSearchBox = (e) => {
+    e.preventDefault();
+    setEmail('')
+    toggleSearch(prevState => !prevState)
+  }
+
   return (
     <div className="header-container">
       <HeaderComponents title="left-header">
@@ -40,6 +46,7 @@ export default function Header() {
         <div className="search-container">
           <div className="search-header">
             <input className="input-search" placeholder="Search user" type="text" onChange={e => setEmail(e.target.value)} value={email} />
+            <span className="close-search" onClick={closeSearchBox}>X</span>
           </div>
         </div>
       }
