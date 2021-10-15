@@ -89,3 +89,23 @@ export const getUserDetail = ({ id, headers:{token, client, expiry, uid }}) => {
     })
     .catch(error => error)
 }
+
+export const getMessage = ({ receiverID, receiverType, headers:{ token, client, expiry, uid } }) => {
+  return axiosFetch.get(
+    "/api/v1/messages",
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      },
+      params: {
+        "receiver_class": receiverType,
+        "receiver_id": receiverID
+      }
+    })
+    .then(response => response)
+    .then(result => result)
+    .catch(error => error)
+}
