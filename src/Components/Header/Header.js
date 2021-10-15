@@ -15,6 +15,7 @@ export default function Header() {
   const history = useHistory();
   const [searchState, toggleSearch] = useState(false)
   const [email, setEmail] = useState('');
+  const [users, setUsers] = useState([]);
 
   const signOut = (e) => {
     e.preventDefault();
@@ -30,6 +31,17 @@ export default function Header() {
     setEmail('')
     toggleSearch(prevState => !prevState)
   }
+
+  useEffect(() => {
+    axios
+    .get(baseURL, config)
+    .then((res) => {
+      setUsers(res.data.data.filter(user => user.email.includes(email)));
+    })
+    .catch((err) => {
+      console.log(err)  
+    });
+  }, [email]);
 
   return (
     <div className="header-container">
