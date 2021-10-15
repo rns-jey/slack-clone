@@ -2,6 +2,7 @@ import './Home.css'
 import React, { useEffect, useState } from "react";
 import Header from '../../Components/Header/Header'
 import SideNav from '../../Components/Workspace/SideNav'
+import ChatContainer from '../../Components/Workspace/ChatContainer';
 import { Redirect, useHistory } from "react-router"
 import { getChannels, getRecents } from '../../API/API';
 
