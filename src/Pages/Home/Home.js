@@ -23,6 +23,12 @@ function Home() {
       expiry: localStorage.getItem('expiry'),
       uid: localStorage.getItem('uid'),
     };
+
+    getChannels(headers)
+      .then((data) => {
+        setChannels(data);
+      })
+      .catch((err) => console.log("Error :", err));
   })
 
   return (
