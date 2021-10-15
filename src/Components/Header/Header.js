@@ -6,8 +6,8 @@ import { BsPersonFill } from 'react-icons/bs';
 import { useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
-const HeaderComponents = (props) => {
-  return <div className={props.title}>{props.children}</div>
+const HeaderComponents = ({ title, state, children }) => {
+  return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>
 }
 
 export default function Header() {
