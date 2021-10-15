@@ -111,7 +111,6 @@ export const getMessage = ({ receiverID, receiverType, headers:{ token, client, 
 }
 
 export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, client, expiry, uid } }) => {
-  console.log(receiverID)
   return axiosFetch.post(
     "/api/v1/messages", 
   {

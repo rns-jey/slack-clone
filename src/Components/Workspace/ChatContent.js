@@ -21,9 +21,7 @@ export default function ChatContent({ id, type }) {
     getMessage(chatConfig)
       .then((convo) => {
         if (isMounted) {
-          if (convo.data.data.reverse() !== chatMsgs) {
-            setMsgs(convo.data.data.reverse());  
-          }
+          setMsgs(convo.data.data.reverse());
         }
       })
       .catch((err) => console.log(err));
