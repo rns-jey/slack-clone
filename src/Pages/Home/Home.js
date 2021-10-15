@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from '../../Components/Header/Header'
 import SideNav from '../../Components/Workspace/SideNav'
 import { Redirect, useHistory } from "react-router"
-import { getChannels } from '../../API/API';
+import { getChannels, getRecents } from '../../API/API';
 
 function Home() {
   const history = useHistory();
@@ -29,6 +29,10 @@ function Home() {
       .then((data) => {
         setChannels(data);
       })
+      .catch((err) => console.log("Error :", err));
+    
+    getRecents(headers)
+      .then((data) => setRecents(data))
       .catch((err) => console.log("Error :", err));
   }, [])
 
