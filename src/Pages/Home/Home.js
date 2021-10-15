@@ -8,6 +8,7 @@ import { getChannels, getRecents } from '../../API/API';
 function Home() {
   const history = useHistory();
   const [userChannels, setChannels] = useState([]);
+  const [recentInteracted, setRecents] = useState([]);
   
   useEffect(() => {
     if (localStorage.getItem('uid')) {
