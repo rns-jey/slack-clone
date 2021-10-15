@@ -32,7 +32,23 @@ export default function ChatHeader({ id, type }) {
   return (
     <>
       <div className="chat-header">
-        <h2 className="channelTitle"></h2>
+        <h2 className="channelTitle">
+          {
+            chatDetails
+            ?
+              parseInt(id) === chatDetails.id
+                ?
+                  type === "Channel"
+                  ?
+                    chatDetails.name
+                  :
+                    chatDetails.uid
+                :
+                  null
+            : 
+              null
+          }
+        </h2>
       </div>
     </>
   )
