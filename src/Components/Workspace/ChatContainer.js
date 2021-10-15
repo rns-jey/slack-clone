@@ -1,3 +1,4 @@
+import "./ChatContainer.css"
 import { Route, Switch } from "react-router";
 import People from '../Peopleanduser/People'
 import ChatWrapper from "./ChatWrapper";
