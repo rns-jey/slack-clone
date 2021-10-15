@@ -30,10 +30,13 @@ export default function Header() {
         <FaRegClock />
       </HeaderComponents>
 
-      <HeaderComponents title="mid-header">
+      <HeaderComponents title="mid-header" state={toggleSearch}>
         <div>Search</div>
         <FaSearch />
       </HeaderComponents>
+      {
+        searchState
+      }
 
       <HeaderComponents title="right-header">
         <FaRegQuestionCircle />
