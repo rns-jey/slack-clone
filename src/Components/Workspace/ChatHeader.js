@@ -26,7 +26,7 @@ export default function ChatHeader({ id, type }) {
     return () => {
       isMounted = false;
     };
-  })
+  }, [])
 
   return (
     <>
