@@ -8,9 +8,7 @@ import avatar from "../assets/avatar.png"
 
 //nC -> new Channel
 //uIDs -> uIDs
-const config = configAPI();
-const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
-const baseURLUsers = 'http://206.189.91.54//api/v1/users';
+
 export default function CreateChannel({ isCCModalopen }) {
     const channelNameRef = useRef(null);
     const uEmailRef = useRef(null);
@@ -20,24 +18,35 @@ export default function CreateChannel({ isCCModalopen }) {
     const [emailIDs, setemailIDs] = useState([]);
     const [nCErrMsg, setnCEMsg] = useState(false);
     const [pushedEmails, setpEmails] = useState([])
+    const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
+    const baseURLUsers = 'http://206.189.91.54//api/v1/users';
+    let uEmailsArrTrim = [];
+    // let config = configAPI();
 
+    // function updateConfig() {
+    //     config = configAPI()
+    //     return (config)
+    // }
     //take user inputs, remove spaces, convert to array, sent to state, remove API error
     function handleUserInput(e) {
         const userNameInput = channelNameRef.current.value;
-        const uEmailsRawInput = `${uEmailRef.current.value};`;
+        const uEmailsRawInput = `${uEmailRef.current.value}`;
         const uEmailsArr = uEmailsRawInput.split(';');
-        const uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
+        uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
         setChannelName(userNameInput);
         setuEmails(uEmailsArrTrim);
         setnCEMsg(false);
+        console.log(uEmails)
+        return (uEmailsArrTrim)
     };
 
     function getIdfromEmail() {
+        handleUserInput()
         axios
             .get(baseURLUsers, config)
             .then((resp) => {
                 let apiArray = resp.data.data;
-                uEmails.forEach(elem => {
+                uEmailsArrTrim.forEach(elem => {
                     apiArray.find(({ email, id }) => {
                         if (email == elem) {
                             setemailIDs(emailIDs.push(id))
@@ -45,15 +54,13 @@ export default function CreateChannel({ isCCModalopen }) {
                         }
                     })
                 })
-                console.log(pushedEmails);
             })
     }
 
     function idToChannel() {
+        updateConfig()
         getIdfromEmail();
-        setTimeout(() => {
-            AddChannel()
-        }, 1000);
+        AddChannel()
     }
 
 
@@ -152,7 +159,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 <div className="searchListCont">
                     {filteredUser.slice(0, 5).map(({ email, id }) => (
                         <div className="usersList" id={id}
-                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value};${email};`}>
+                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value}${email};`}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
