@@ -36,15 +36,15 @@ test('Email invalid', () => {
   expect(errormsg).toBeInTheDocument()
 });
 
-//   test('Password is required', () => {
-//     render(<Router><FormSignUp /></Router>);
-//     const emailInput = screen.queryByPlaceholderText('name@work-email.com');
-//     const continuebtn = screen.queryByRole("button", { name: 'Continue' })
-//     fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
-//     fireEvent.click(continuebtn);
-//     const errormsg = screen.getByText('Password is required');
-//     expect(errormsg).toBeInTheDocument()
-//   })
+test('Password is required', () => {
+  render(<Router><FormSignUp /></Router>);
+  const emailInput = screen.queryByPlaceholderText('name@work-email.com');
+  const continuebtn = screen.queryByRole("button", { name: 'Continue' })
+  fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
+  fireEvent.click(continuebtn);
+  const errormsg = screen.getByText('Password is required');
+  expect(errormsg).toBeInTheDocument()
+})
 
 //   test('Passwords needs to be 6+ chars ', () => {
 //     render(<Router><FormSignUp /></Router>);
