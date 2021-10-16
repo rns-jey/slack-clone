@@ -70,19 +70,19 @@ test('Re-Password required ', () => {
   expect(errormsg).toBeInTheDocument()
 })
 
-//   test('Psswords do not match', () => {
-//     render(<Router><FormSignUp /></Router>);
-//     const emailInput = screen.queryByPlaceholderText('name@work-email.com');
-//     fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
-//     const continuebtn = screen.queryByRole("button", { name: 'Continue' })
-//     const pwInput1 = screen.queryByPlaceholderText('Enter your password');
-//     fireEvent.change(pwInput1, { target: { value: '12345678' } })
-//     const pwInput2 = screen.queryByPlaceholderText('Re-type your password');
-//     fireEvent.change(pwInput2, { target: { value: '123abc' } })
-//     fireEvent.click(continuebtn);
-//     const errormsg = screen.getByText('Passwords do not match');
-//     expect(errormsg).toBeInTheDocument()
-//   })
+test('Psswords do not match', () => {
+  render(<Router><FormSignUp /></Router>);
+  const emailInput = screen.queryByPlaceholderText('name@work-email.com');
+  fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
+  const continuebtn = screen.queryByRole("button", { name: 'Continue' })
+  const pwInput1 = screen.queryByPlaceholderText('Enter your password');
+  fireEvent.change(pwInput1, { target: { value: '12345678' } })
+  const pwInput2 = screen.queryByPlaceholderText('Re-type your password');
+  fireEvent.change(pwInput2, { target: { value: '123abc' } })
+  fireEvent.click(continuebtn);
+  const errormsg = screen.getByText('Passwords do not match');
+  expect(errormsg).toBeInTheDocument()
+})
 
   // test('Email already has an account', async () => {
   //   render(<Router><FormSignUp /></Router>);
