@@ -161,3 +161,8 @@
     transform: translatey(0px);
   }
 }
+
+.noClick{
+  cursor: default !important;
+}
+
