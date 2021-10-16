@@ -18,13 +18,13 @@ test('Registration Form renders', () => {
 
 // describe('Registration Errors', () => {
 
-//   test('Email required', () => {
-//     render(<Router><FormSignUp /></Router>);
-//     const continuebtn = screen.queryByRole("button", { name: 'Continue' });
-//     fireEvent.click(continuebtn);
-//     const errormsg = screen.getByText('Email required');
-//     expect(errormsg).toBeInTheDocument()
-//   })
+test('Email required', () => {
+  render(<Router><FormSignUp /></Router>);
+  const continuebtn = screen.queryByRole("button", { name: 'Continue' });
+  fireEvent.click(continuebtn);
+  const errormsg = screen.getByText('Email required');
+  expect(errormsg).toBeInTheDocument()
+})
 
 //   test('Email invalid', () => {
 //     render(<Router><FormSignUp /></Router>);
