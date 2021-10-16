@@ -79,4 +79,9 @@
   font-weight: 500;
 }
 
+.sub_menu {
+  padding-left: 3px;
+  border-bottom: 1px solid #49274b;
+  border-top: 1px solid #49274b;
+}
 

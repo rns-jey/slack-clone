@@ -31,11 +31,11 @@ export default function SideNav({ Channels, Recents }) {
         <SidebarOption Icon={InsertCommentIcon} title="Threads"/>
         <SidebarOption Icon={MoreVertIcon} title="More" state={setToggleSubmenu}/>
           {toggleSubmenu && 
-          <ul className="sub_menu">
+          <div className="sub_menu">
           <SidebarOption Icon={InboxIcon} title="Mentions & Reactions"/>
           <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
           <SidebarOption Icon={FileCopyIcon} title="File Browser"/>
-        </ul>}
+        </div>}
         <ToPeople />
         <SidebarOption Icon={ExpandMoreIcon} title="Channels" state={setToggle}/>
         {toggle &&
