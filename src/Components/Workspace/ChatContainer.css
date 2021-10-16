@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&display=swap');
+
 .chat-container {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-radius: 30px;
 }
 
 .chat-header {
@@ -84,6 +87,82 @@
 .channelTitle{
   cursor: pointer;
 }
+
+.home-page {
+  flex-grow: 1;
+  background: linear-gradient(to right, rgb(125, 248, 238) 50%, rgb(243, 243, 160) 50%);
+  display: grid;
+  place-items: center;
+  font: 2vw system-ui;
+}
+
+.home-page h1 {
+  color: black;
+  transform: translatey(0px);
+  animation: float 5s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  background: #ece5ce;
+  padding: 50px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px #83af9b;
+  font-family: "Baloo 2", cursive;
+}
+
+.home-page h1:after {
+  transform: translatey(0px);
+  animation: float2 5s ease-in-out infinite;
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: #ece5ce;
+  text-shadow: 22px 22px #83af9b;
+  text-align: left;
+  font-size: 2rem;
+  border-radius: 11px;
+  background-color: #ece5ce;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+  left: 0;
+  box-shadow: 22px 22px #83af9b;
+  z-index: -2;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+  55% {
+    transform: translatey(-20px);
+  }
+  60% {
+    line-height: 10px;
+  }
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}
+
 .noClick{
   cursor: default !important;
 }
+

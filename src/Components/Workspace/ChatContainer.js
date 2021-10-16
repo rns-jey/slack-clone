@@ -22,7 +22,7 @@ export default function ChatContainer() {
 function HomePage() {
   return (
     <div className="home-page">
-      <h1>Slack App</h1>
+      <h1>Hi. Welcome to your digital HQ.</h1>
     </div>
   )
 }
