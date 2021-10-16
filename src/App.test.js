@@ -26,15 +26,15 @@ test('Email required', () => {
   expect(errormsg).toBeInTheDocument()
 })
 
-//   test('Email invalid', () => {
-//     render(<Router><FormSignUp /></Router>);
-//     const emailInput = screen.queryByPlaceholderText('name@work-email.com');
-//     const continuebtn = screen.queryByRole("button", { name: 'Continue' })
-//     fireEvent.change(emailInput, { target: { value: 'as' } })
-//     fireEvent.click(continuebtn);
-//     const errormsg = screen.getByText('Email address is invalid');
-//     expect(errormsg).toBeInTheDocument()
-//   });
+test('Email invalid', () => {
+  render(<Router><FormSignUp /></Router>);
+  const emailInput = screen.queryByPlaceholderText('name@work-email.com');
+  const continuebtn = screen.queryByRole("button", { name: 'Continue' })
+  fireEvent.change(emailInput, { target: { value: 'as' } })
+  fireEvent.click(continuebtn);
+  const errormsg = screen.getByText('Email address is invalid');
+  expect(errormsg).toBeInTheDocument()
+});
 
 //   test('Password is required', () => {
 //     render(<Router><FormSignUp /></Router>);
