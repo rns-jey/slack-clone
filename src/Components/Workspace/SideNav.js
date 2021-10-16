@@ -23,7 +23,7 @@ export default function SideNav({ Channels, Recents }) {
     <div className="sidebar">
       <div className="sidebar_header">
           <div className="sidebar_info">
-              <h2>Avion School</h2>
+              <h3>Avion School</h3>
           </div>
           <CreateIcon />
       </div>
