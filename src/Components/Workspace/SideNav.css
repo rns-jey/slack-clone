@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
 .sidebar {
   background-color: #3f0e40;
   height: 100%;
@@ -6,6 +8,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  font-family: 'Baloo 2', cursive;
 }
 
 .sidebar_header {
@@ -17,7 +20,7 @@
 }
 
 .sidebar_info > h2 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin: 0;
 }
 
@@ -77,11 +80,17 @@
 
 .toPeople > h5 {
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .sub_menu {
-  padding-left: 3px;
+  padding: -10px;
   border-bottom: 1px solid #49274b;
   border-top: 1px solid #49274b;
+  font-size: 0.1rem;
+}
+
+ul{
+  padding-left: 0px;
 }
 

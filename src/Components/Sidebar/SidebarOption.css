@@ -4,6 +4,7 @@
   font-size: 12px;
   padding-left: 2px;
   cursor: pointer;
+  font-size: 0.8rem;
 }
 .sidebarOption:hover {
   opacity: 0.9;
