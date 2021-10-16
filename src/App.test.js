@@ -46,17 +46,17 @@ test('Password is required', () => {
   expect(errormsg).toBeInTheDocument()
 })
 
-//   test('Passwords needs to be 6+ chars ', () => {
-//     render(<Router><FormSignUp /></Router>);
-//     const emailInput = screen.queryByPlaceholderText('name@work-email.com');
-//     fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
-//     const continuebtn = screen.queryByRole("button", { name: 'Continue' })
-//     const pwInput1 = screen.queryByPlaceholderText('Enter your password');
-//     fireEvent.change(pwInput1, { target: { value: '123' } })
-//     fireEvent.click(continuebtn);
-//     const errormsg = screen.getByText('Passwords needs to be 6 characters or more');
-//     expect(errormsg).toBeInTheDocument()
-//   })
+test('Passwords needs to be 6+ chars ', () => {
+  render(<Router><FormSignUp /></Router>);
+  const emailInput = screen.queryByPlaceholderText('name@work-email.com');
+  fireEvent.change(emailInput, { target: { value: 'rifam@pavir.com' } })
+  const continuebtn = screen.queryByRole("button", { name: 'Continue' })
+  const pwInput1 = screen.queryByPlaceholderText('Enter your password');
+  fireEvent.change(pwInput1, { target: { value: '123' } })
+  fireEvent.click(continuebtn);
+  const errormsg = screen.getByText('Passwords needs to be 6 characters or more');
+  expect(errormsg).toBeInTheDocument()
+})
 
 //   test('Re-Password required ', () => {
 //     render(<Router><FormSignUp /></Router>);
