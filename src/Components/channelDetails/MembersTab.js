@@ -12,6 +12,8 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     const [existEmail, setExistEmail] = useState([])
     const [filterExist, setFilter] = useState(existEmail);
     const config = configAPI();
+
+    //get all channel members (only IDs available) from API
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
         axios
@@ -28,6 +30,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             })
     }
 
+    //get all emails of the channel members from API
     function getEmailfromID() {
         const baseURLUsers = 'http://206.189.91.54//api/v1/users';
         axios
@@ -43,11 +46,13 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                 })
             })
     }
+    //set the user search Input
     function getvalue(event) {
         let value = event.target.value.toLowerCase()
         setSearch(value);
     }
 
+    //load all API getters upon open of Channel Details
     useEffect(() => {
         getUsersInChannel()
         getEmailfromID()
