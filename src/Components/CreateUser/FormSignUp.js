@@ -20,6 +20,7 @@ function FormSignUp() {
     const [errors, setErrors] = useState({})
     const [commit, setCommit] = useState(false)
 
+    //handle the user inputs in forms
     function handleChange(e) {
         const { name, value } = e.target
         setValues({
@@ -30,6 +31,7 @@ function FormSignUp() {
         setErrors({})
     }
 
+    //on submit, run validateInfo for the user inputs
     const handleSubmit = e => {
         e.preventDefault();
         let setofErrors = validateInfo(values)

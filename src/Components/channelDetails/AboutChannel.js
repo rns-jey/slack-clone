@@ -12,6 +12,7 @@ export default function AboutChannel({ channelTitle, isAbout, ChanID }) {
     const initialmsg = `This channel is for.. well, everything else. It's a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!`
     let userID;
 
+    //gets channel information from API, date Channel created, owner/creator ID
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
         axios
@@ -27,6 +28,7 @@ export default function AboutChannel({ channelTitle, isAbout, ChanID }) {
             })
     }
 
+    //get the email of the owner (via creator ID) from all Users in API
     function getEmailfromID() {
         const baseURLUsers = 'http://206.189.91.54//api/v1/users';
         axios
@@ -45,7 +47,7 @@ export default function AboutChannel({ channelTitle, isAbout, ChanID }) {
             })
     }
 
-
+    //run API getters upon open of AboutChannel Modal
     useEffect(() => {
         getUsersInChannel()
         getEmailfromID()
