@@ -43,8 +43,8 @@ export default function SideNav({ Channels, Recents }) {
             {Channels.data.data
               ?
                 Channels.data.data.map(({ id, name }) => (
-                  <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" className="sidebarOption" to={id}>
-                    {name}
+                  <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" className="sidebarChannel" to={id}>
+                    {'# '}{name}
                   </NavLink>
                 ))
               : null
@@ -60,7 +60,7 @@ export default function SideNav({ Channels, Recents }) {
               Recents
               ?
                 Recents.map(({ id, email }) => (
-                  <NavLink key={id} type="User" activeClassName="sidebarOptionActive" className="sidebarOption" to={id}>
+                  <NavLink key={id} type="User" activeClassName="sidebarOptionActive" className="sidebarChannel" to={id}>
                     {email}
                   </NavLink>
                 ))
