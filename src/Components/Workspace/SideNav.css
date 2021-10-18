@@ -51,7 +51,7 @@
 }
 
 .sidebarChannel.sidebarOptionActive {
-  background: #C589E8;
+  background: rgba(190, 229, 191, 0.911);
 }
 
 .sidebarChannel > .MuiSvgIcon-root {
