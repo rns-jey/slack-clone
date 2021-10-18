@@ -3,7 +3,7 @@ import checkLogo from './check-circle-bold.png'
 import './ModalSuccess.css';
 import avatar from "../assets/avatar.png"
 
-export default function ModalSuccess({ emails, channelName, modalopen, isAdduser }) {
+export default function ModalSuccess({ emails, channelName, modalopen }) {
 
     return (
         <div className="CCContainer">
@@ -25,9 +25,7 @@ export default function ModalSuccess({ emails, channelName, modalopen, isAdduser
                             </div>
                         </div>)}
                 </div>
-
             </div>
         </div>
-
     )
 }
