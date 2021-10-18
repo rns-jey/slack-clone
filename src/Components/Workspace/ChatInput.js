@@ -2,7 +2,7 @@ import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { sendMessage } from "../../API/API";
 
-export default function ChatInput({ id, type }) {
+export default function ChatInput({ id, type, Recents, RefreshSideNav }) {
   const [message, setMessage] = useState("");
 
   const chatConfig = {
@@ -23,6 +23,7 @@ export default function ChatInput({ id, type }) {
     if (key === "Enter") {
       sendMessage(chatConfig)
         .then((res) => {
+          if(Recents.filter(data => data.id === id).length === 0) RefreshSideNav()
           setMessage("");
         })
         .catch((err) => console.log("Error Sending Message: ", err));

@@ -5,12 +5,14 @@ import SideNav from '../../Components/Workspace/SideNav'
 import ChatContainer from '../../Components/Workspace/ChatContainer';
 import { Redirect, useHistory } from "react-router"
 import { getChannels, getRecents } from '../../API/API';
+import { FaGalacticSenate } from 'react-icons/fa';
 
 function Home() {
   const history = useHistory();
   const [userChannels, setChannels] = useState([]);
   const [recentInteracted, setRecents] = useState([]);
-  const [renderHandler, toggleRender] = useState(true)
+  const [renderHandler, toggleRender] = useState(true);
+  const [newInteraction, toggleInteraction] = useState(false);
   
   useEffect(() => {
     if (localStorage.getItem('uid')) {
@@ -18,11 +20,16 @@ function Home() {
     } else {
       history.push("/login");
     }
-  })
+  },[])
 
   const refreshSideNav = () => {
-    console.log("add channel toggle")
+    console.log("Toggle side nav refresh")
     toggleRender(!renderHandler);
+  };
+
+  const toggleNewInteraction = () => {
+    console.log("Toggle new user interaction")
+    toggleInteraction(!newInteraction);
   };
 
   useEffect(() => {
@@ -46,14 +53,19 @@ function Home() {
 
   return (
     <div className="Main">
-      <Header />  
+      <Header
+        ToggleNewInteraction={toggleNewInteraction}
+      />  
       <div className="workspace">
         <SideNav 
           Channels={userChannels}
           Recents={recentInteracted}
           RefreshSideNav={refreshSideNav}
         />
-        <ChatContainer />
+        <ChatContainer
+          Recents={recentInteracted}
+          RefreshSideNav={refreshSideNav}
+        />
       </div>
     </div> 
   );
