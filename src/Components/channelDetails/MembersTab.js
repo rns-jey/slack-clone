@@ -5,24 +5,30 @@ import configAPI from '../assets/config';
 import axios from 'axios';
 import avatar from "../assets/avatar.png"
 
-export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
+export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
     const [AUopen, setAU] = useState(false)
-    const [existRef, setSearch] = useState(null)
+    const [existRef, setSearch] = useState('')
     const [existID, setExistID] = useState([]);
     const [existEmail, setExistEmail] = useState([])
     const [filterExist, setFilter] = useState(existEmail);
     const [refreshState, refreshMember] = useState(true)
+    const [members, setMembers] = useState([]);
+    const [filteredMembers, filterMembers] = useState([]);
 
     const config = configAPI();
+
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
+
+        setMembers([])
+        
         axios
             .get(baseURL, config)
             .then((resp) => {
                 let rawExist = resp.data.data.channel_members;
+                
                 rawExist.map((info) => {
-                    setExistID(existID.push(info.user_id))
-
+                    setMembers(oldArray => [...oldArray, Users.filter(data => data.id === info.user_id)[0]])
                 })
             })
             .catch((err) => {
@@ -30,24 +36,10 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             })
     }
 
-    function getEmailfromID() {
-        const baseURLUsers = 'http://206.189.91.54//api/v1/users';
-        axios
-            .get(baseURLUsers, config)
-            .then((resp) => {
-                let allUsersArray = resp.data.data;
-                existID.forEach(eID => {
-                    allUsersArray.find(({ id, email }) => {
-                        if (id == eID) {
-                            setExistEmail(existEmail.push(email))
-                        }
-                    })
-                })
-            })
-    }
     function getvalue(event) {
         let value = event.target.value.toLowerCase()
         setSearch(value);
+        filterMembers(members.filter(data => data.email.includes(value)))
     }
 
     function refreshMemberList() {
@@ -57,7 +49,6 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
 
     useEffect(() => {
         getUsersInChannel()
-        getEmailfromID()
     }, [refreshState]);
 
     return (
@@ -72,19 +63,27 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                 <span>Add people</span>
             </div>
             <div className="existListCont">
-                {filterExist.filter((email) => {
-                    if (existRef == "" || existRef == null) {
-                        return email;
-                    } else if (email.toLowerCase().includes(existRef)) {
-                        return email
-                    }
-                }).map((email) => (
-                    <div className="usersList existList" id={email}>
-                        <img src={avatar} className="listAvatar" id={`av ${email}`} />
-                        <div className="Email" id={`em ${email}`}>{email}
-                        </div>
-                    </div>
-                ))}
+                {   
+                    existRef.length > 0
+                    ?
+                        filteredMembers.map(({ id, uid }) => (
+                            <div className="usersList existList" id={id}>
+                                <img src={avatar} className="listAvatar" id={`av ${uid}`} />
+                                <div className="Email" id={`em ${uid}`}>
+                                    {uid}
+                                </div>
+                            </div>
+                        ))
+                    :
+                        members.map(({ id, uid }) => (
+                            <div className="usersList existList" id={id}>
+                                <img src={avatar} className="listAvatar" id={`av ${uid}`} />
+                                <div className="Email" id={`em ${uid}`}>
+                                    {uid}
+                                </div>
+                            </div>
+                    )) 
+                }
             </div>
             {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} RefreshMemberList={refreshMemberList} />}
         </div>
