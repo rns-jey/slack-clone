@@ -35,13 +35,12 @@
     flex-direction: column;
     width: 100%;
     margin-top: 15px;
-    margin-bottom: 15px;
     padding-top: 5px;
     border-top: 3px solid rgb(63, 5, 78);
 }
 
 .CCTitle{
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     margin:0;
     width: 50%;
@@ -53,11 +52,15 @@
     font-weight: 600;
     background: rgb(243, 243, 160);
     border-radius: 20px;
+    margin:0;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .terms {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 550;
+    margin:0;
     
 }
 

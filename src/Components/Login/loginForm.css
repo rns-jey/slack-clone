@@ -13,8 +13,8 @@ body{
 }
 .error{
     color:darkred;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 800;
     margin-top:5px;
     margin-bottom: 0;
     text-align: center;
@@ -62,7 +62,7 @@ body{
     color:cornsilk;
     font-size: 1.4rem;
     font-weight: 600;
-    width: 101%;
+    width: 100%;
     height: 35px;
 }
 .loginRegisbtn:hover{
@@ -95,6 +95,9 @@ body{
 }
 #slacklogo{
     width: 25rem;
+}
+.w-100{
+    width: 99% !important;
 }
 
 @media screen and (max-width: 800px){
