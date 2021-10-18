@@ -60,7 +60,6 @@ function FormSignUp() {
 
     //post the user values to API, change value of commit to true
     function CreateUser() {
-        console.log(baseUrl, values)
         axios
             .post(baseUrl, values)
             .then((response) => {
@@ -81,7 +80,7 @@ function FormSignUp() {
             <div className="loginRegisPage">
                 <SideModule isThisLogIn={false} />
                 <div className="FormSignUp">
-                    <p className="subheading">We suggest using the <b>email address you use at work.</b></p>
+                    <p className="subheading mb-15">We suggest using the <b>email address you use at work.</b></p>
                     <form onSubmit={handleSubmit}>
                         {apiErr ? <div className="errorMsg catch">{`${apiErr}`}</div> : null}
                         <div className="form-inputs">
@@ -89,14 +88,14 @@ function FormSignUp() {
                                 Email
                             </label>
                             <input
-                                className={`forminput ${errors.email ? 'errorValue' : null}`}
+                                className={`form-input w-100 ${errors.email ? 'errorValue' : null}`}
                                 type="text"
                                 name="email"
                                 value={values.email}
                                 onChange={handleChange}
                                 placeholder="name@work-email.com"
                             />
-                            {errors.email && <p className="errorMsg">{errors.email}</p>}
+                            {errors.email && <p className="error alignLeft">{errors.email}</p>}
                         </div>
 
                         <div className="form-inputs">
@@ -104,7 +103,7 @@ function FormSignUp() {
                                 Password
                             </label>
                             <input type="password"
-                                className={`forminput ${errors.password ? 'errorValue' : null}`}
+                                className={`form-input w-100 ${errors.password ? 'errorValue' : null}`}
                                 id="password"
                                 name="password"
                                 placeholder="Enter your password"
@@ -112,7 +111,7 @@ function FormSignUp() {
                                 onChange={handleChange}
 
                             />
-                            {errors.password && <p className="errorMsg">{errors.password}</p>}
+                            {errors.password && <p className="error alignLeft">{errors.password}</p>}
                         </div>
 
                         <div className="form-inputs">
@@ -120,14 +119,14 @@ function FormSignUp() {
                                 Confirm password
                             </label>
                             <input type="password"
-                                className={`forminput ${errors.password_confirmation ? 'errorValue' : null}`}
+                                className={`form-input w-100  mb-15 ${errors.password_confirmation ? 'errorValue' : null}`}
                                 id="password_confirmation"
                                 name="password_confirmation"
                                 placeholder="Re-type your password"
                                 value={values.password_confirmation}
                                 onChange={handleChange}
                             />
-                            {errors.password_confirmation && <p className="errorMsg">{errors.password_confirmation}</p>}
+                            {errors.password_confirmation && <p className="error alignLeft">{errors.password_confirmation}</p>}
                         </div>
 
                         <button className="loginRegisbtn" type="submit">Continue</button>
@@ -135,7 +134,7 @@ function FormSignUp() {
                         <div className="emailBox">
                             <input
                                 type='Checkbox' id="Checkbox" name="Checkbox" />
-                            <label htmlFor="Checkbox">  It's okay to send me email about Slack</label>
+                            <label htmlFor="Checkbox" className="form-label">  It's okay to send me email about Slack</label>
                         </div>
                         <div className="terms">
                             By continuing, you're agreeing to our Customer Terms of Service, Privacy Policy, and Cookie Policy.

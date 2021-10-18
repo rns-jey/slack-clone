@@ -22,7 +22,6 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                     setExistID(existID.push(info.user_id))
 
                 })
-                console.log(`thenGetID`, rawExist)
             })
             .catch((err) => {
                 console.log(err.data, `catch`)
@@ -42,13 +41,13 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                         }
                     })
                 })
-                console.log(existEmail, `getEmailThen`)
             })
     }
     function getvalue(event) {
         let value = event.target.value.toLowerCase()
         setSearch(value);
     }
+
     useEffect(() => {
         getUsersInChannel()
         getEmailfromID()
@@ -81,8 +80,6 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                     </div>
                 ))}
             </div>
-
-
             {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />}
         </div>
     )
