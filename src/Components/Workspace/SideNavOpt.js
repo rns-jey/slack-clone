@@ -2,7 +2,7 @@ import { useLocation, Link } from 'react-router-dom';
 
 function NavLink({ type, to, activeClassName, inactiveClassName, className, ...rest }) {
   let location = useLocation();
-  let isActive = location.pathname === to;
+  let isActive = location.pathname === `/${type}/${to}`;
   let allClassNames = (isActive ? `${className} ${activeClassName}` : ` ${className}`)
 
   return (<Link className={allClassNames} to={`/${type}/${to}`} {...rest} />);

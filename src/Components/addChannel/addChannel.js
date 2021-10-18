@@ -144,7 +144,7 @@ export default function CreateChannel({ isCCModalopen }) {
                 </div>
                 <div className="form-inputs">
                     <label className="form-label">Add People
-                        <span className="CCSubtitle"> (optional)</span>
+                        <span> (optional)</span>
                     </label>
                     <textarea
                         ref={uEmailRef}

@@ -13,6 +13,7 @@
     z-index: 1000;
     line-height: normal;
 }
+
 .CCTitleSubCont{
     margin:0;
     display: flex;
@@ -21,12 +22,14 @@
     color: black;
 
 }
+
 .CCContainer{
     padding:15px;
     width: 45%;
     border-radius: 5px;
-    background-color: rgba(91, 224, 184, 0.582);
+    background-color: rgb(190, 229, 191);
 }
+
 .CCFormGroup{
     display: flex;
     flex-direction: column;
@@ -36,17 +39,28 @@
     padding-top: 5px;
     border-top: 3px solid rgb(243, 243, 160);
 }
+
 .CCTitle{
     font-size: 2rem;
     font-weight: 700;
     margin:0;
     width: 50%;
 }
+
 .CCSubtitle{
     font-size: 1rem;
     color:rgb(95, 95, 95);
     font-weight: 600;
+    background: rgb(243, 243, 160);
+    border-radius: 20px;
 }
+
+.terms {
+    font-size: 1rem;
+    font-weight: 600;
+    
+}
+
 .CCinput #userIDsTxtbx{
     height: 2rem;
 }
@@ -58,6 +72,7 @@
     width: 95%;
     font-family: 'Noto Sans Display', sans-serif;
 }
+
 .CCcloseBtn{
     background-color: transparent;
     border: none;
@@ -65,12 +80,14 @@
     color:maroon;
     cursor: pointer;
 }
+
 .slider-group{
     position: relative;
     display: inline-block;
     width: 40px;
     height: 25px;
 }
+
 .slider-group input {
     opacity: 0;
     width: 0;
@@ -99,7 +116,7 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
+}
 
 .slider-group input:checked + .slider {
     background-color: #2196F3;
@@ -122,28 +139,34 @@
 .slider.round:before {
     border-radius: 50%;
 }
+
 .CCSubLabel{
     font-size: 1rem;
     color:rgb(68, 68, 68);
     font-weight: 500;
     width: 80%;
 }
+
 #addChannelCheckbox{
     margin:0;
 }
+
 .CCSubFormGroup, .CCBottom, .MTitle{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .shareOthers{
     display: flex;
     flex-direction: row-reverse;
     width: 30%;
 }
+
 .noWrap{
     white-space: nowrap;
 }
+
 .CreateBtn{
     background-color: #49274b;
     border-radius: 5px;
@@ -153,20 +176,25 @@
     width: 25%;
     height: 35px;
 }
+
 .CreateBtn:hover{
     background-color: #611f69;
 }
+
 .hide{
     visibility: hidden;
     display: none;
 }
+
 .show{
     visibility: visible;
 }
+
 .listAvatar{
 width: 25px;
 height: 25px;
 }
+
 .usersList{
     display: flex;
     flex-direction: row-reverse;
@@ -177,9 +205,11 @@ height: 25px;
     cursor: pointer;
     color: black;
 }
+
 .usersList:hover{
 background-color: lavender;
 }
+
 .searchListCont{
     max-height: 10rem;
     overflow-y: scroll;
