@@ -6,8 +6,8 @@ export default function AboutChannel({ channelTitle, isAbout, ChanID }) {
     const [isTopicEdit, setTopicEdit] = useState(false);
     const [isDescEdit, setDescEdit] = useState(false);
     const topicRef = useRef(null)
-    const [userEmail, setUserEmail] = useState();
-    const [datemade, setdate] = useState()
+    const [userEmail, setUserEmail] = useState('Loading...');
+    const [datemade, setdate] = useState('Loading...')
     const config = configAPI()
     const initialmsg = `This channel is for.. well, everything else. It's a place for team jokes, spur-of-the-moment ideas, and funny GIFs. Go wild!`
     let userID;
