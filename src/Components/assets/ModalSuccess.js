@@ -1,6 +1,7 @@
 import React from "react";
 import checkLogo from './check-circle-bold.png'
 import './ModalSuccess.css';
+import avatar from "../assets/avatar.png"
 
 export default function ModalSuccess({ emails, channelName, modalopen, isAdduser }) {
 
@@ -13,11 +14,16 @@ export default function ModalSuccess({ emails, channelName, modalopen, isAdduser
             <div className="modalSuccessCont">
                 <img src={checkLogo} className="checkLogo" />
                 <div className="SuccessMsgName">
-                    <span className="channelName">{channelName}</span> {isAdduser ? 'users added' : 'channel created'}
+                    <span className="channelName">#{channelName}</span> channel created
                 </div>
-                <div className="SuccessEmails">
+                <span className="form-label">Members:</span>
+                <div className="existListCont">
                     {emails.map((elem) =>
-                        <span className="userEmails" id={elem}>{elem}<br /></span>)}
+                        <div className="usersList existList" id={elem}>
+                            <img src={avatar} className="listAvatar" id={`a${elem}`} />
+                            <div className="Email" id={`e${elem}`}>{elem}
+                            </div>
+                        </div>)}
                 </div>
 
             </div>
