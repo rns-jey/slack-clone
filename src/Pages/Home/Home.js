@@ -4,7 +4,7 @@ import Header from '../../Components/Header/Header'
 import SideNav from '../../Components/Workspace/SideNav'
 import ChatContainer from '../../Components/Workspace/ChatContainer';
 import { Redirect, useHistory } from "react-router"
-import { getChannels, getRecents } from '../../API/API';
+import { getAllUsers, getChannels, getRecents } from '../../API/API';
 import { FaGalacticSenate } from 'react-icons/fa';
 
 function Home() {
@@ -13,6 +13,7 @@ function Home() {
   const [recentInteracted, setRecents] = useState([]);
   const [renderHandler, toggleRender] = useState(true);
   const [newInteraction, toggleInteraction] = useState(false);
+  const [users, setUsers] = useState([]);
   
   useEffect(() => {
     if (localStorage.getItem('uid')) {
@@ -49,11 +50,17 @@ function Home() {
     getRecents(headers)
       .then((data) => setRecents(data))
       .catch((err) => console.log("Error :", err));
+    
+    getAllUsers(headers)
+      .then((data) => {
+        setUsers(data)
+      });
   }, [renderHandler])
 
   return (
     <div className="Main">
       <Header
+        Users={users}
         ToggleNewInteraction={toggleNewInteraction}
       />  
       <div className="workspace">

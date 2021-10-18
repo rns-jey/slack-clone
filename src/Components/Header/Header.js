@@ -6,18 +6,16 @@ import { BsPersonFill } from 'react-icons/bs';
 import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { getAllUsers } from '../../API/API';
 
 const HeaderComponents = ({ title, state, children }) => {
   return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>
 }
 
-export default function Header() {
+export default function Header({ Users }) {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
   const history = useHistory();
   const [searchState, toggleSearch] = useState(false)
   const [email, setEmail] = useState('');
-  const [users, setUsers] = useState([]);
   const [filteredUsers, filterUsers] = useState([]);
 
   const signOut = (e) => {
@@ -46,16 +44,10 @@ export default function Header() {
     },
   };
 
-  useEffect(() => {
-    getAllUsers(chatCredentials).then((data) => {
-      setUsers(data)
-    });
-  }, []);
-
   function searchUsers(e) {
     setEmail(e.target.value)
     if (e.target.value.length > 0) {
-      filterUsers(users.filter(data => data.email.includes(e.target.value))) 
+      filterUsers(Users.filter(data => data.email.includes(e.target.value))) 
     } else {
       filterUsers([])
     }

@@ -132,7 +132,7 @@ export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, c
   .catch(error => error)
 }
 
-export const getAllUsers = ({ headers:{token, client, expiry, uid }}) => {
+export const getAllUsers = ({token, client, expiry, uid }) => {
   return axiosFetch.get(
     "/api/v1/users",
     {
