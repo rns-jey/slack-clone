@@ -54,7 +54,11 @@ export default function Header() {
 
   function searchUsers(e) {
     setEmail(e.target.value)
-    filterUsers(users.filter(data => data.email.includes(e.target.value)))
+    if (e.target.value.length > 0) {
+      filterUsers(users.filter(data => data.email.includes(e.target.value))) 
+    } else {
+      filterUsers([])
+    }
   }
 
   return (
