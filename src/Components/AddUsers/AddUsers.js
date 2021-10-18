@@ -79,7 +79,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                     </input>
                 </div>
                 <div className="searchListContAddUser">
-                    {filteredUser.slice(0, 5).map(({ email, id }) => (
+                    {filteredUser.map(({ email, id }) => (
                         <div className="usersList" id={id}
                             onClick={() => userToChannel(id, email)}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
