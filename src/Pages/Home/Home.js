@@ -10,6 +10,7 @@ function Home() {
   const history = useHistory();
   const [userChannels, setChannels] = useState([]);
   const [recentInteracted, setRecents] = useState([]);
+  const [renderHandler, toggleRender] = useState(true)
   
   useEffect(() => {
     if (localStorage.getItem('uid')) {
@@ -18,6 +19,11 @@ function Home() {
       history.push("/login");
     }
   })
+
+  const refreshSideNav = () => {
+    console.log("add channel toggle")
+    toggleRender(!renderHandler);
+  };
 
   useEffect(() => {
     const headers = {
@@ -36,13 +42,17 @@ function Home() {
     getRecents(headers)
       .then((data) => setRecents(data))
       .catch((err) => console.log("Error :", err));
-  }, [])
+  }, [renderHandler])
 
   return (
     <div className="Main">
       <Header />  
       <div className="workspace">
-        <SideNav Channels={userChannels} Recents={recentInteracted} />
+        <SideNav 
+          Channels={userChannels}
+          Recents={recentInteracted}
+          RefreshSideNav={refreshSideNav}
+        />
         <ChatContainer />
       </div>
     </div> 

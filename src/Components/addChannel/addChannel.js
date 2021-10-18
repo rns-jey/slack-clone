@@ -9,7 +9,7 @@ import avatar from "../assets/avatar.png"
 //nC -> new Channel
 //uIDs -> uIDs
 
-export default function CreateChannel({ isCCModalopen }) {
+export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
     const channelNameRef = useRef(null);
     const uEmailRef = useRef(null);
     const [success, setSuccess] = useState(false)
@@ -87,6 +87,7 @@ export default function CreateChannel({ isCCModalopen }) {
                         setSuccess(false)
                     }, 5000);
                 }
+                RefreshSideNav()
             })
             .catch((err) => {
                 console.log('catch', err)
