@@ -34,16 +34,6 @@ export default function Header({ Users }) {
     toggleSearch(prevState => !prevState)
   }
 
-  const chatCredentials = {
-    email: email,
-    headers: {
-      token: localStorage.getItem("at"),
-      client: localStorage.getItem("client"),
-      expiry: localStorage.getItem("expiry"),
-      uid: localStorage.getItem("uid"),
-    },
-  };
-
   function searchUsers(e) {
     setEmail(e.target.value)
     if (e.target.value.length > 0) {
