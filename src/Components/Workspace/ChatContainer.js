@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 import People from '../Peopleanduser/People'
 import ChatWrapper from "./ChatWrapper";
 
-export default function ChatContainer({ Recents, RefreshSideNav }) {
+export default function ChatContainer({ Users, Recents, RefreshSideNav }) {
   return (
     <Switch>
       <Route path="/people">
@@ -14,6 +14,7 @@ export default function ChatContainer({ Recents, RefreshSideNav }) {
       </Route>
       <Route path={"/:type/:id"}>
         <ChatWrapper
+          Users={Users}
           Recents={Recents}
           RefreshSideNav={RefreshSideNav}
         />

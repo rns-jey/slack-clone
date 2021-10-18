@@ -70,6 +70,7 @@ function Home() {
           RefreshSideNav={refreshSideNav}
         />
         <ChatContainer
+          Users={users}
           Recents={recentInteracted}
           RefreshSideNav={refreshSideNav}
         />
