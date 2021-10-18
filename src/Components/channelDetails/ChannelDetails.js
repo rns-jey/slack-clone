@@ -12,6 +12,7 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
     const [isMembers, setMember] = useState(false);
     const [fave, setFave] = useState(false);
 
+    //show and hide, tabs
     function tabToggler(tabA, tabB) {
         tabA(true);
         tabB(false);
