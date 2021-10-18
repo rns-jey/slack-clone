@@ -11,15 +11,17 @@ export default function LoginForm() {
   const [password, setPassword] = useState('test123456')
   const [logErr, setErr] = useState(null)
   const history = useHistory();
-
   const baseURL = "http://206.189.91.54//api/v1/auth/sign_in";
 
+
+  //Error will return to null after 8 seconds
   useEffect(() => {
     setTimeout(function () {
       setErr(prevErr => null)
     }, 8000)
   }, [logErr == true])
 
+  //on submit, if success all headers info are place at localStorage else show Error
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { email: email, password: password }

@@ -170,6 +170,11 @@
   }
 }
 
+.home-page .lottie {
+  height: 65vh;
+  width: auto;
+}
+
 .noClick{
   cursor: default !important;
 }

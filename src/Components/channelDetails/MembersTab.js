@@ -47,6 +47,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
         refreshMember(!refreshState);
     }
 
+    //load all API getters upon open of Channel Details
     useEffect(() => {
         getUsersInChannel()
     }, [refreshState]);
