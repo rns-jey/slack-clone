@@ -85,7 +85,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                     setTimeout(() => {
                         isCCModalopen(false)
                         setSuccess(false)
-                    }, 5000);
+                    }, 8000);
                 }
                 RefreshSideNav()
             })
@@ -123,7 +123,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
 
     return (
         <div className={`CCBg ${!isCCModalopen ? 'hide' : 'show'}`}>
-            {success && <ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={nCName} isAdduser={false} />}
+            {success && <ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={nCName} />}
             <div className={`CCContainer ${success ? 'hide' : 'show'}`}>
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
