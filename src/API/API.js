@@ -132,6 +132,24 @@ export const sendMessage = ({ receiverID, receiverType, body, headers:{ token, c
   .catch(error => error)
 }
 
+export const getAllUsers = ({ headers:{token, client, expiry, uid }}) => {
+  return axiosFetch.get(
+    "/api/v1/users",
+    {
+      headers:{
+        "access-token": token,
+        "client": client,
+        "expiry": expiry,
+        "uid": uid,
+      }
+    })
+    .then(response => response)
+    .then(result => {
+      return result.data.data
+    })
+    .catch(error => error)
+}
+
 export const searchUser = ({ email, headers:{token, client, expiry, uid }}) => {
   return axiosFetch.get(
     "/api/v1/users",

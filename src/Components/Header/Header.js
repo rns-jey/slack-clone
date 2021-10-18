@@ -6,7 +6,7 @@ import { BsPersonFill } from 'react-icons/bs';
 import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { searchUser } from '../../API/API';
+import { getAllUsers } from '../../API/API';
 
 const HeaderComponents = ({ title, state, children }) => {
   return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>
@@ -18,6 +18,7 @@ export default function Header() {
   const [searchState, toggleSearch] = useState(false)
   const [email, setEmail] = useState('');
   const [users, setUsers] = useState([]);
+  const [filteredUsers, filterUsers] = useState([]);
 
   const signOut = (e) => {
     e.preventDefault();
@@ -45,11 +46,15 @@ export default function Header() {
   };
 
   useEffect(() => {
-    searchUser(chatCredentials).then((data) => {
+    getAllUsers(chatCredentials).then((data) => {
       setUsers(data)
     });
+  }, []);
 
-  }, [email]);
+  function searchUsers(e) {
+    setEmail(e.target.value)
+    filterUsers(users.filter(data => data.email.includes(e.target.value)))
+  }
 
   return (
     <div className="header-container">
@@ -65,14 +70,20 @@ export default function Header() {
         searchState &&
         <div className="search-container">
           <div className="search-header">
-            <input className="input-search" placeholder="Search user" type="text" onChange={e => setEmail(e.target.value)} value={email} />
+            <input 
+              className="input-search" 
+              placeholder="Search user" 
+              type="text" 
+              onChange={e => searchUsers(e)} 
+              value={email}
+            />
             <span className="close-search" onClick={closeSearchBox}>X</span>
           </div>
           <div className="search-body" onClick={closeSearchBox}>
             {
-              users.length > 0 && email.length > 0
+              filteredUsers.length > 0
               ?
-                users.slice(0, 10).map(({ id, email }) => (
+                filteredUsers.slice(0, 10).map(({ id, email }) => (
                   <Link key={id} to={`/User/${id}`}>{email}</Link>
                 ))
               :
