@@ -8,6 +8,8 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import FileCopyIcon from "@material-ui/icons/FileCopy";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import React, {useState} from 'react';
 import CreateChannel from '../addChannel/addChannel';
 import ToPeople from '../Sidebar/toPeople';
@@ -44,7 +46,7 @@ export default function SideNav({ Channels, Recents, RefreshSideNav }) {
               ?
                 Channels.data.data.map(({ id, name }) => (
                   <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" className="sidebarChannel" to={id}>
-                    {'# '}{name}
+                    <LockOutlinedIcon /> {name}
                   </NavLink>
                 ))
               : null
@@ -61,7 +63,7 @@ export default function SideNav({ Channels, Recents, RefreshSideNav }) {
               ?
                 Recents.map(({ id, email }) => (
                   <NavLink key={id} type="User" activeClassName="sidebarOptionActive" className="sidebarChannel" to={id}>
-                    {email}
+                    <AccountCircleIcon /> {email}
                   </NavLink>
                 ))
               : null

@@ -45,10 +45,18 @@
   cursor: pointer;
   padding-left: 7px;
   font-size: 13.8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .sidebarChannel.sidebarOptionActive {
   background: #C589E8;
+}
+
+.sidebarChannel > .MuiSvgIcon-root {
+  font-size: 1rem;
+  padding-right: 2px;
 }
 
 .sidebarOption:hover, .sidebarChannel:hover {

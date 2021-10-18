@@ -7,12 +7,11 @@ import avatar from "../assets/avatar.png"
 
 export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     const [AUopen, setAU] = useState(false)
-    const existRef = useRef(null)
-    const [existID, setExistID] = useState([])
+    const [existRef, setSearch] = useState(null)
+    const [existID, setExistID] = useState([]);
     const [existEmail, setExistEmail] = useState([])
     const [filterExist, setFilter] = useState(existEmail);
     const config = configAPI();
-
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
         axios
@@ -46,17 +45,22 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                 console.log(existEmail, `getEmailThen`)
             })
     }
-
+    function getvalue(event) {
+        let value = event.target.value.toLowerCase()
+        setSearch(value);
+    }
     useEffect(() => {
         getUsersInChannel()
         getEmailfromID()
     }, []);
 
+
     return (
         <div className={`tabPage ${isMembers ? 'show' : 'hide'}`}>
-            <input ref={existRef}
+            <input
                 className="form-input"
                 placeholder="Find members"
+                onChange={getvalue}
             />
             <div className="addUserbtn" onClick={() => setAU(true)}>
                 <PersonAddIcon className="AddUserIcon" />
@@ -64,19 +68,18 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
             </div>
             <div className="existListCont">
                 {filterExist.filter((email) => {
-                    if (existRef.current.value == "") {
+                    if (existRef == "" || existRef == null) {
                         return email;
-                    } else if (email.toLowerCase().includes(existRef.current.value.toLowerCase())) {
+                    } else if (email.toLowerCase().includes(existRef)) {
                         return email
                     }
-                })
-                    .map((email) => (
-                        <div className="usersList existList" id={email}>
-                            <img src={avatar} className="listAvatar" id={`av ${email}`} />
-                            <div className="Email" id={`em ${email}`}>{email}
-                            </div>
+                }).map((email) => (
+                    <div className="usersList existList" id={email}>
+                        <img src={avatar} className="listAvatar" id={`av ${email}`} />
+                        <div className="Email" id={`em ${email}`}>{email}
                         </div>
-                    ))}
+                    </div>
+                ))}
             </div>
 
 
