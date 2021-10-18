@@ -10,6 +10,7 @@ import {
 import SearchIcon from "@material-ui/icons/Search"
 import avatar from "../assets/avatar.png"
 
+//get keys from localstorage
 export default function GetUsers (props) {
   const [users,setUsers] = useState([]);
   const [filteredUser, filterUser] = useState(users);
@@ -28,6 +29,7 @@ export default function GetUsers (props) {
     }
   }
 
+  //filter database to search users upon typing on searchbox
  const handleSearch = (event) => {
    let value = event.target.value.toLowerCase();
    let result = [];
@@ -37,7 +39,7 @@ export default function GetUsers (props) {
 
    filterUser(result);  
  }
-  
+  //access to database and lets data results appear
   useEffect(() => {
     axios
     .get(baseURL, config)

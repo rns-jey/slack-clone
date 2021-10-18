@@ -136,7 +136,7 @@ export default function CreateChannel({ isCCModalopen }) {
                     <label className="form-label">Name</label>
                     <input
                         ref={channelNameRef}
-                        className={`forminput ${nCErrMsg ? 'errorValue' : null}`}
+                        className="form-input"
                         type="text"
                         placeholder="# e.g. Code-Planning"
                         onChange={handleUserInput}
@@ -150,7 +150,7 @@ export default function CreateChannel({ isCCModalopen }) {
                         ref={uEmailRef}
                         id="userIDsTxtbx"
                         onChange={handleUserInput}
-                        className="forminput"
+                        className="form-input"
                         placeholder="Enter their email, separated by ;" />
                 </div>
 
