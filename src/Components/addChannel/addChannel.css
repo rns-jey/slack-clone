@@ -221,10 +221,16 @@ background-color: lavender;
 
 .success{
     color:rgb(87, 165, 9);
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: 550;
 }
-
+.searchListContAddUser{
+    height:15rem;
+    overflow-y: scroll;
+}
 .form-input {
     font-size: 13px;
 }
