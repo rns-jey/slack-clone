@@ -3,11 +3,9 @@ import configAPI from "../assets/config";
 import axios from 'axios';
 import './addChannel.css';
 import ModalSuccess from "../assets/ModalSuccess";
-import SearchIcon from "@material-ui/icons/Search";
 import avatar from "../assets/avatar.png"
 
 //nC -> new Channel
-//uIDs -> uIDs
 
 export default function CreateChannel({ isCCModalopen }) {
     const channelNameRef = useRef(null);
