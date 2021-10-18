@@ -47,8 +47,8 @@
   font-size: 13.8px;
 }
 
-.sidebarOption.sidebarOptionActive {
-  background: #e1d89fbe;
+.sidebarChannel.sidebarOptionActive {
+  background: #C589E8;
 }
 
 .sidebarOption:hover, .sidebarChannel:hover {

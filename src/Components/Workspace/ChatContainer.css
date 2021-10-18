@@ -6,7 +6,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: rgba(190, 229, 191, 0.849);
+  background: #ECFFF8;
 }
 
 .chat-header {
@@ -42,7 +42,7 @@
 .msg-content {
   padding: 5px;
   border-radius: 10px;
-  background-color: rgb(206, 125, 165);
+  background-color: #C589E8;
   color: black;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .bubble.you > .msg-wrap > .msg-content {
-  background-color: #dff3e3;
+  background-color: #EEF4D4;
   color: rgb(14, 15, 19);
   font-family: 'Quicksand', sans-serif;
 
@@ -81,7 +81,7 @@
   position: absolute;
   bottom: 0;
   width: calc(100% - 300px);
-  background: rgb(243, 243, 160);
+  background: #E3DAFF;
 }
 
 .chat-box textarea {
@@ -89,7 +89,7 @@
   border: none!important;
   outline: none!important;
   resize: none;
-  background: rgb(243, 243, 160);
+  background: #E3DAFF;
   font-family: 'Quicksand', sans-serif;
 }
 .channelTitle{
