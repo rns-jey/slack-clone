@@ -11,6 +11,8 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
     const [existID, setExistID] = useState([]);
     const [existEmail, setExistEmail] = useState([])
     const [filterExist, setFilter] = useState(existEmail);
+    const [refreshState, refreshMember] = useState(true)
+
     const config = configAPI();
     function getUsersInChannel() {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
@@ -48,11 +50,15 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
         setSearch(value);
     }
 
+    function refreshMemberList() {
+        console.log("Toggle side nav refresh")
+        refreshMember(!refreshState);
+    }
+
     useEffect(() => {
         getUsersInChannel()
         getEmailfromID()
-    }, []);
-
+    }, [refreshState]);
 
     return (
         <div className={`tabPage ${isMembers ? 'show' : 'hide'}`}>
@@ -80,7 +86,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers }) {
                     </div>
                 ))}
             </div>
-            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} />}
+            {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} RefreshMemberList={refreshMemberList} />}
         </div>
     )
 }

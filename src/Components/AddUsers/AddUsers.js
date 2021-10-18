@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import configAPI from '../assets/config';
 import avatar from "../assets/avatar.png"
 
-export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
+export default function AddUsers({ isAUModalopen, channelID, channelTitle, RefreshMemberList }) {
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
     const [errMsg, setErrMsg] = useState(null)
@@ -30,6 +30,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle }) {
                     setSucMsg(`${email} added`)
                     setErrMsg(null)
                 }
+                RefreshMemberList()
             })
             .catch((err) => {
                 console.log(err, 'usertochannel catch')
