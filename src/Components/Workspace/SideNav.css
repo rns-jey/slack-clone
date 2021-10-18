@@ -38,19 +38,25 @@
   line-height: 10px;
 }
 
-.sidebarOption {
+.sidebarChannel {
   color: white;
   padding: 6px;
   text-decoration: none;
   cursor: pointer;
+  padding-left: 7px;
+  font-size: 13.8px;
 }
 
-.sidebarOption:hover {
+.sidebarOption.sidebarOptionActive {
+  background: #e1d89fbe;
+}
+
+.sidebarOption:hover, .sidebarChannel:hover {
   opacity: 0.9;
   background-color: rgba(108, 51, 122, 0.514);
 }
 
-.sidebarOption:hover {
+.sidebarOption:hover, .sidebarChannel:hover {
   border-left: 5px solid rgb(238, 238, 137);
 }
 

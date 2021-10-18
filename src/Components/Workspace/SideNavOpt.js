@@ -12,13 +12,13 @@ export default function SideNavOpt( { Channels, Recents }) {
   return (
     <div className="sidebar_options">
       {Channels.map(({ id, name }) => (
-        <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to={id}>
+        <NavLink key={id} type="Channel" activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarChannel" to={id}>
           {name}
         </NavLink>
       ))}
 
       {Recents.map(({ id, uid }) => (
-        <NavLink key={id} type="DM" activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarOption" to={id}>
+        <NavLink key={id} type="DM" activeClassName="sidebarOptionActive" inactiveClassName="sidebarOptionInActive" className="sidebarChannel" to={id}>
           {uid}
         </NavLink>
       ))}
