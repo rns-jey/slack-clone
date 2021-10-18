@@ -17,7 +17,7 @@ export default function ModalSuccess({ emails, channelName, modalopen, isAdduser
                     <span className="channelName">#{channelName}</span> channel created
                 </div>
                 <span className="form-label">Members:</span>
-                <div className="existListCont">
+                <div className="searchListContAddUser">
                     {emails.map((elem) =>
                         <div className="usersList existList" id={elem}>
                             <img src={avatar} className="listAvatar" id={`a${elem}`} />

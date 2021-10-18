@@ -160,7 +160,7 @@ export default function CreateChannel({ isCCModalopen }) {
                     </input>
                 </div>
                 <div className="searchListCont">
-                    {filteredUser.slice(0, 5).map(({ email, id }) => (
+                    {filteredUser.map(({ email, id }) => (
                         <div className="usersList" id={id}
                             onClick={() => uEmailRef.current.value = `${uEmailRef.current.value}${email};`}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
