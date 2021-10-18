@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 .people_container {
     height: 100%;
@@ -12,8 +13,9 @@
 .people_header {
     border-bottom: 1px solid lightgray;
     display: flex;
-    padding: 4.2px;
+    padding: 2px;
     padding-left: 10px;
+    font-family: 'Baloo 2', cursive;
 }
 .people_subheader {
     border-bottom: 1px solid lightgray;
