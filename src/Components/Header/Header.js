@@ -32,6 +32,7 @@ export default function Header() {
   const closeSearchBox = (e) => {
     e.preventDefault();
     setEmail('')
+    filterUsers([])
     toggleSearch(prevState => !prevState)
   }
 
