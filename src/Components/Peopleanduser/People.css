@@ -44,7 +44,7 @@
     width: 90%;
 }
 .people_search_input {
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     border-radius: 5px;
     border: 3px solid rgb(129, 70, 129);
 }
@@ -89,7 +89,8 @@
     background-color: rgba(87, 226, 212, 0.671);
 }
 .email{
-    font-family: 'Noto Sans Display', sans-serif;
-    font-size: 13px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 13.5px;
     padding-top: 10px;
+    font-weight: 500;
 }
