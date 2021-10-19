@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react";
 import Header from '../../Components/Header/Header'
 import SideNav from '../../Components/Workspace/SideNav'
 import ChatContainer from '../../Components/Workspace/ChatContainer';
-import { Redirect, useHistory } from "react-router"
+import { useHistory } from "react-router"
 import { getAllUsers, getChannels, getRecents } from '../../API/API';
-import { FaGalacticSenate } from 'react-icons/fa';
 
 function Home() {
   const history = useHistory();
