@@ -15,7 +15,7 @@ import CreateChannel from '../addChannel/addChannel';
 import ToPeople from '../Sidebar/toPeople';
 import NavLink from './NavLink';
 
-export default function SideNav({ Channels, Recents }) {
+export default function SideNav({ Channels, Recents, RefreshSideNav }) {
  const [toggle, setToggle] = useState(false);
  const [CCModal, setCCModal] = useState(false);
  const [toggleSubmenu, setToggleSubmenu] = useState(false);
@@ -54,7 +54,7 @@ export default function SideNav({ Channels, Recents }) {
           </div>
         }
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal}/>
-        {CCModal && <CreateChannel isCCModalopen={setCCModal}/>}
+        {CCModal && <CreateChannel isCCModalopen={setCCModal} RefreshSideNav={RefreshSideNav} />}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM}/>
         {toggleDM &&
           <div className="sidebar_options">

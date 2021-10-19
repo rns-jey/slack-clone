@@ -5,7 +5,7 @@ import ChatWrapper from './ChatWrapper';
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
-export default function ChatContainer() {
+export default function ChatContainer({ Users, Recents, RefreshSideNav }) {
   return (
     <Switch>
       <Route path="/people">
@@ -15,7 +15,11 @@ export default function ChatContainer() {
         <HomePage />
       </Route>
       <Route path={"/:type/:id"}>
-        <ChatWrapper />
+        <ChatWrapper
+          Users={Users}
+          Recents={Recents}
+          RefreshSideNav={RefreshSideNav}
+        />
       </Route>
     </Switch>
   )
