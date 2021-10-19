@@ -1,5 +1,5 @@
 import './SideNav.css'
-import SidebarOption from '../Sidebar/SidebarOption';
+import SidebarOption from '../../Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
@@ -11,9 +11,9 @@ import AddIcon from "@material-ui/icons/Add";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import React, {useState} from 'react';
-import CreateChannel from '../addChannel/addChannel';
-import ToPeople from '../Sidebar/toPeople';
-import NavLink from './NavLink';
+import CreateChannel from '../../addChannel/addChannel';
+import ToPeople from '../toPeople';
+import NavLink from '../NavLink';
 
 export default function SideNav({ Channels, Recents, RefreshSideNav }) {
  const [toggle, setToggle] = useState(false);

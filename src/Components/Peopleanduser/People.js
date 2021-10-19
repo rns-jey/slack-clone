@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./People.css"
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search"
 import avatar from "../assets/avatar.png"
 
@@ -53,33 +47,31 @@ export default function GetUsers (props) {
   }, []);
 
     return (
-        <Router>
-            <div className="people_container">
-                <div className="people_header">
-                    <h1>People</h1>
+      <div className="people_container">
+          <div className="people_header">
+              <h1>People</h1>
+          </div>
+          <div className="people_subheader">
+              <h3>Members</h3>
+          </div>
+          <div className="people_search">
+              <SearchIcon />
+              <input type="text"
+              className="people_search_input"
+              placeholder="Search by name, role or team" onChange={(event) =>handleSearch(event)}>
+              </input>
+          </div>
+          <div className="people_users">
+          <div className="users_container">
+          {filteredUser.slice(0,16).map(({ email }) => (
+                <div className="users">
+                <img src={avatar} id="avatar"/>
+                <div className="email">{email}
                 </div>
-                <div className="people_subheader">
-                    <h3>Members</h3>
-                </div>
-                <div className="people_search">
-                    <SearchIcon />
-                    <input type="text"
-                    className="people_search_input"
-                    placeholder="Search by name, role or team" onChange={(event) =>handleSearch(event)}>
-                    </input>
-                </div>
-                <div className="people_users">
-                <div className="users_container">
-                {filteredUser.slice(0,16).map(({ email }) => (
-                      <div className="users">
-                      <img src={avatar} id="avatar"/>
-                      <div className="email">{email}
-                      </div>
-                    </div>
-                    ))}
-                </div>
-                </div>
-            </div>
-        </Router>
+              </div>
+              ))}
+          </div>
+          </div>
+      </div>
     );
 }

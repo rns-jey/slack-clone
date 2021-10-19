@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import Bottomlinks from "../Components/assets/Bottomlinks";
-import LoginForm from "../Components/Login/LoginForm";
+import Bottomlinks from "../assets/Bottomlinks";
+import LoginForm from "./LoginForm/LoginForm";
 import { useHistory } from "react-router"
 
 export default function LogUser(){
