@@ -4,8 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { FaRegQuestionCircle } from 'react-icons/fa';
 import { BsPersonFill } from 'react-icons/bs';
 import { Link, useHistory } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 
 const HeaderComponents = ({ title, state, children }) => {
   return <div className={title} onClick={() => state ? state(prev => !prev) : null}>{children}</div>

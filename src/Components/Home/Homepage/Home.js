@@ -1,11 +1,10 @@
 import './Home.css'
 import React, { useEffect, useState } from "react";
-import Header from '../../Components/Header/Header'
-import SideNav from '../../Components/Workspace/SideNav'
-import ChatContainer from '../../Components/Workspace/ChatContainer';
-import { Redirect, useHistory } from "react-router"
-import { getAllUsers, getChannels, getRecents } from '../../API/API';
-import { FaGalacticSenate } from 'react-icons/fa';
+import Header from '../../Header/Header'
+import SideNav from '../../Workspace/SideNav/SideNav'
+import ChatContainer from '../../Workspace/ChatContainer/ChatContainer';
+import { useHistory } from "react-router"
+import { getAllUsers, getChannels, getRecents } from '../../../API/API';
 
 function Home() {
   const history = useHistory();
