@@ -28,7 +28,7 @@ export default function GetUsers (props) {
    let value = event.target.value.toLowerCase();
    let result = [];
    result = users.filter((data) => {
-     return data.email.search(value) != -1;
+     return data.email.search(value) !== -1;
    });
 
    filterUser(result);  

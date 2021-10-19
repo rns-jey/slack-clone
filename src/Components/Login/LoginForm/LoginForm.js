@@ -18,7 +18,7 @@ export default function LoginForm() {
     setTimeout(function () {
       setErr(prevErr => null)
     }, 8000)
-  }, [logErr == true])
+  }, [logErr === true])
 
   //on submit, if success all headers info are place at localStorage else show Error
   const handleSubmit = (e) => {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import configAPI from '../assets/config';
 import avatar from "../assets/avatar.png"
 
@@ -44,11 +44,12 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle, Refre
         let value = event.target.value.toLowerCase();
         let result = [];
         result = users.filter((data) => {
-            return data.email.search(value) != -1
+            return data.email.search(value) !== -1
         });
 
         filterUser(result);
     }
+    
     useEffect(() => {
         axios
             .get(baseURLUsers, config)

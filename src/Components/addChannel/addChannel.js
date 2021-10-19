@@ -45,7 +45,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                 let apiArray = resp.data.data;
                 uEmailsArrTrim.forEach(elem => {
                     apiArray.find(({ email, id }) => {
-                        if (email == elem) {
+                        if (email === elem) {
                             emailIDs.push(id)
                             pushedEmails.push(email)
                             console.log(elem, email, id, emailIDs)
