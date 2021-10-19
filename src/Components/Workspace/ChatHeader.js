@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { getChannelDetail, getUserDetail } from "../../API/API"
 import ChannelDetails from "../channelDetails/ChannelDetails";
 
-export default function ChatHeader({ id, type }) {
+export default function ChatHeader({ id, type, Users }) {
   const [chatDetails, setChatDetails] = useState([]);
   const [CDetModal, setCDetModal] = useState(false);
 
@@ -58,6 +58,7 @@ export default function ChatHeader({ id, type }) {
       </div>
       {CDetModal && (
         <ChannelDetails
+          Users={Users}
           isCDetsopen={setCDetModal}
           channelID={id}
           channelTitle={

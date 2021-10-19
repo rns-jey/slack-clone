@@ -1,5 +1,5 @@
 import './SideNav.css'
-import SidebarOption from '../Sidebar/SidebarOption';
+import SidebarOption from '../../Sidebar/SidebarOption';
 import CreateIcon from "@material-ui/icons/Create";
 import InsertCommentIcon from "@material-ui/icons/InsertComment"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
@@ -11,16 +11,15 @@ import AddIcon from "@material-ui/icons/Add";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import React, { useState } from 'react';
-import CreateChannel from '../addChannel/addChannel';
-import ToPeople from '../Sidebar/toPeople';
-import NavLink from './NavLink';
+import CreateChannel from '../../addChannel/addChannel';
+import ToPeople from '../toPeople';
+import NavLink from '../NavLink';
 
-export default function SideNav({ Channels, Recents }) {
+export default function SideNav({ Channels, Recents, RefreshSideNav }) {
   const [toggle, setToggle] = useState(false);
   const [CCModal, setCCModal] = useState(false);
   const [toggleSubmenu, setToggleSubmenu] = useState(false);
   const [toggleDM, setToggleDM] = useState(false);
-
 
   return (
     <div className="sidebar">
@@ -55,9 +54,10 @@ export default function SideNav({ Channels, Recents }) {
           </div>
         }
         <SidebarOption Icon={AddIcon} title="Add Channels" state={setCCModal} />
-        {CCModal && <CreateChannel isCCModalopen={setCCModal} />}
+        {CCModal && <CreateChannel isCCModalopen={setCCModal} RefreshSideNav={RefreshSideNav} />}
         <SidebarOption Icon={ExpandMoreIcon} title="Direct Messages" state={setToggleDM} />
-        {toggleDM &&
+        {
+          toggleDM &&
           <div className="sidebar_options">
             {
               Recents
@@ -71,7 +71,7 @@ export default function SideNav({ Channels, Recents }) {
             }
           </div>
         }
-      </nav>
-    </div>
+      </nav >
+    </div >
   )
 }

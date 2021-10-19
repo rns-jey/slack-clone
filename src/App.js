@@ -1,9 +1,9 @@
 import './App.css';
 import React from "react";
 import { Redirect, Route, Switch } from 'react-router';
-import Register from './Pages/Register'
-import Login from './Pages/Login'
-import Home from './Pages/Home/Home';
+import Register from './Components/Register/RegisterPage/Register'
+import Login from './Components/Login/Login'
+import Home from './Components/Home/Homepage/Home';
 
 function App() {
   const user = (localStorage.getItem('uid') ? localStorage.getItem('uid') : '')
