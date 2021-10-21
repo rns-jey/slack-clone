@@ -16,7 +16,6 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
     const [pushedEmails, setpEmails] = useState([])
     const [emailIDs, setemailIDs] = useState([])
     const [removed, setRemove] = useState([]);
-    const [refreshState, refresh] = useState(true)
     const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
     let config = configAPI();
@@ -27,7 +26,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         return (config)
     }
 
-
+    //on click of email in searchlist, add to the ff states: pushedemails,EmailIds,removed; then removed at the filter arrays
     function getEmailsIDs(id, email, item) {
         if (!pushedEmails.includes(email)) {
             let filterArray = [...filteredUser];
@@ -43,6 +42,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         }
     }
 
+    //onclick of cancel icon, remove the user data in "removed" state, add it to "filteredUser", remove datas from states: pushedemails and emailIds
     function removeFromList(index) {
         let addfilter = [...filteredUser];
         let reclicked = [...pushedEmails];
@@ -96,7 +96,6 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
     const [users, setUsers] = useState([]);
     const [filteredUser, filterUser] = useState(users);
     const handleSearch = (event) => {
-        refresh(!refreshState)
         let value = event.target.value.toLowerCase();
         let result = [];
         result = users.filter((data) => {
@@ -169,39 +168,39 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                     {filteredUser.map(({ email, id }, item) => (
                         <div className="usersList" id={id} value={item}
                             onClick={() => getEmailsIDs(id, email, item)}
-                            // onMouseEnter={() => setnCEMsg(false)}>
+                            onMouseEnter={() => setnCEMsg(false)}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
                             </div>
                         </div>
                     ))}
-            </div>
+                </div>
 
-            <div className="CCFormGroup">
-                <label className="form-label">Make Private
-                </label>
-                <div className="CCSubFormGroup">
-                    <div className="terms">
-                        When a channel is set to private. It can only be viewed or joined by invitation.
+                <div className="CCFormGroup">
+                    <label className="form-label">Make Private
+                    </label>
+                    <div className="CCSubFormGroup">
+                        <div className="terms">
+                            When a channel is set to private. It can only be viewed or joined by invitation.
+                        </div>
+                        <label className="slider-group">
+                            <input type="checkbox" />
+                            <span className="slider round"></span>
+                        </label>
                     </div>
-                    <label className="slider-group">
-                        <input type="checkbox" />
-                        <span className="slider round"></span>
-                    </label>
                 </div>
-            </div>
-            <div className="CCBottom">
-                <div className="shareOthers">
-                    <label className="CCSubLabel noWrap">
-                        Share outside
-                    </label>
-                    <input type="checkbox" className="addChannelCheckbox" />
+                <div className="CCBottom">
+                    <div className="shareOthers">
+                        <label className="CCSubLabel noWrap">
+                            Share outside
+                        </label>
+                        <input type="checkbox" className="addChannelCheckbox" />
+                    </div>
+                    <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
-                <button onClick={idToChannel} className="CreateBtn">Create</button>
             </div>
         </div>
-        </div >
     );
 };
 
