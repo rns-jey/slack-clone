@@ -25,6 +25,9 @@
 .padtop15{
     padding: 15px 15px 0 15px;
 }
+.mtop15{
+    margin-top: 5px;
+}
 .padmid15{
     padding: 5px 15px 0 15px;
 }
@@ -126,7 +129,7 @@
     margin-top: 5px;
     cursor: pointer;
 }
-.addUserbtn:hover{
+.activeadduser, .addUserbtn:hover{
     background-color: lightblue;
 }
 .AddUserIcon{
@@ -135,7 +138,9 @@
     background-color: lightblue;
     margin-right: 5px;
 }
-
+.msgList{
+    height: 60% !important;
+}
 .existList{
     cursor: default !important;
 }
