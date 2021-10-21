@@ -28,20 +28,20 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
     }
 
 
-    // function getEmailsIDs(id, email, item) {
-    //     if (!pushedEmails.includes(email)) {
-    //         let filterArray = [...filteredUser];
-    //         let clicked = pushedEmails.concat(email);
-    //         let eIDS = emailIDs.concat(id)
-    //         let remove = removed.concat(filterArray.splice(item, 1))
-    //         setpEmails(clicked)
-    //         setemailIDs(eIDS)
-    //         filterUser(filterArray)
-    //         setRemove(remove);
-    //     } else {
-    //         setnCEMsg(`${email} is already on the list`)
-    //     }
-    // }
+    function getEmailsIDs(id, email, item) {
+        if (!pushedEmails.includes(email)) {
+            let filterArray = [...filteredUser];
+            let clicked = pushedEmails.concat(email);
+            let eIDS = emailIDs.concat(id)
+            let remove = removed.concat(filterArray.splice(item, 1))
+            // setpEmails(clicked)
+            // setemailIDs(eIDS)
+            // filterUser(filterArray)
+            // setRemove(remove);
+        } else {
+            setnCEMsg(`${email} is already on the list`)
+        }
+    }
 
     // function removeFromList(index) {
     //     let addfilter = [...filteredUser];
