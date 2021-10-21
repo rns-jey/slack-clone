@@ -30,7 +30,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle, Refre
                     setSucMsg(`${email} added`)
                     setErrMsg(null)
                 }
-                RefreshMemberList()
+
             })
             .catch((err) => {
                 console.log(err, 'usertochannel catch')
@@ -39,8 +39,7 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle, Refre
 
 
     const handleSearch = (event) => {
-        setErrMsg(null)
-        setSucMsg(null)
+        clearMsgs()
         let value = event.target.value.toLowerCase();
         let result = [];
         result = users.filter((data) => {
@@ -49,7 +48,11 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle, Refre
 
         filterUser(result);
     }
-    
+    function clearMsgs() {
+        setErrMsg(null)
+        setSucMsg(null)
+    }
+
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
@@ -65,33 +68,26 @@ export default function AddUsers({ isAUModalopen, channelID, channelTitle, Refre
 
 
     return (
-        <div className={`CCBg ${!isAUModalopen ? 'hide' : 'show'}`}>
-            <div className="CCContainer">
-                <div className="MTitle">
-                    <div className="title">{`Add member to #${channelTitle}`}</div>
-                    <button className="CCcloseBtn" onClick={() => isAUModalopen(false)}>X</button>
-                </div>
-                {errMsg ? (<div className='error'>{errMsg}</div>) : null}
-                {sucMsg ? (<div className='success'>{sucMsg}</div>) : null}
-                <div className="searchListinputCont">
-                    <label className="form-label">Search users</label>
-                    <input type="text"
-                        className="form-input"
-                        placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
-                    </input>
-                </div>
-                <div className="searchListContAddUser">
-                    {filteredUser.map(({ email, id }) => (
-                        <div className="usersList" id={id}
-                            onClick={() => userToChannel(id, email)}>
-                            <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
-                            <div className="Email" id={`email ${id}`}>
-                                {email}
-                            </div>
-                        </div>
-                    ))}
-                </div>
+        <>
+            {errMsg ? (<div className='error'>{errMsg}</div>) : null}
+            {sucMsg ? (<div className='success'>{sucMsg}</div>) : null}
+            <div className="searchListinputCont">
+                <input type="text"
+                    className="form-input mtop15"
+                    placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
+                </input>
             </div>
-        </div>
+            <div className={`existListCont ${errMsg || sucMsg ? 'msgList' : ''}`}>
+                {filteredUser.map(({ email, id }) => (
+                    <div className="usersList" id={id}
+                        onClick={() => userToChannel(id, email)}>
+                        <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
+                        <div className="Email" id={`email ${id}`}>
+                            {email}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </>
     )
 }

@@ -4,6 +4,7 @@ import { ReactComponent as Fave } from '../assets/fave.svg'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import PhoneIcon from '@material-ui/icons/Phone';
 import './ChannelDetails.css'
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
 import AboutChannel from './AboutChannel';
 import MembersTab from './MembersTab';
 
@@ -26,7 +27,7 @@ export default function ChannelDetails({ Users, isCDetsopen, channelID, channelT
                     <div className="title">
                         {`#${channelTitle}`}
                     </div>
-                    <button className="CCcloseBtn" onClick={() => isCDetsopen(false)}>X</button>
+                    <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCDetsopen(false)} />
                 </div>
 
                 <div className="decor1 padmid15">
