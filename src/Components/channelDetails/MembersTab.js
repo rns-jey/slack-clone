@@ -21,12 +21,12 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
 
         setMembers([])
-        
+
         axios
             .get(baseURL, config)
             .then((resp) => {
                 let rawExist = resp.data.data.channel_members;
-                
+
                 rawExist.map((info) => {
                     setMembers(oldArray => [...oldArray, Users.filter(data => data.id === info.user_id)[0]])
                 })
@@ -64,9 +64,9 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
                 <span>Add people</span>
             </div>
             <div className="existListCont">
-                {   
+                {
                     existRef.length > 0
-                    ?
+                        ?
                         filteredMembers.map(({ id, uid }) => (
                             <div className="usersList existList" id={id}>
                                 <img src={avatar} className="listAvatar" id={`av ${uid}`} />
@@ -75,7 +75,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
                                 </div>
                             </div>
                         ))
-                    :
+                        :
                         members.map(({ id, uid }) => (
                             <div className="usersList existList" id={id}>
                                 <img src={avatar} className="listAvatar" id={`av ${uid}`} />
@@ -83,7 +83,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
                                     {uid}
                                 </div>
                             </div>
-                    )) 
+                        ))
                 }
             </div>
             {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} RefreshMemberList={refreshMemberList} />}
