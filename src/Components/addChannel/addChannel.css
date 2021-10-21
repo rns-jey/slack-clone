@@ -216,7 +216,7 @@ background-color: lavender;
 .searchListCont{
     max-height: 10rem;
     overflow-y: scroll;
-    min-width: min-content;
+    width: 95%;
 }
 
 .success{
@@ -233,6 +233,13 @@ background-color: lavender;
 }
 .form-input {
     font-size: 13px;
+}
+.clickedCont{
+    display: flex;
+    width: 100%;
+    color: black;
+    height: 1.5rem;
+    justify-content: space-between;
 }
 
 @media screen and (max-width: 700px){
