@@ -4,71 +4,71 @@ import axios from 'axios';
 import './addChannel.css';
 import ModalSuccess from "../assets/ModalSuccess";
 import avatar from "../assets/avatar.png"
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 
 //nC -> new Channel
 
 export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
     const channelNameRef = useRef(null);
-    const uEmailRef = useRef(null);
     const [success, setSuccess] = useState(false)
-    const [nCName, setChannelName] = useState();
     const [nCErrMsg, setnCEMsg] = useState(false);
     const [pushedEmails, setpEmails] = useState([])
+    const [emailIDs, setemailIDs] = useState([])
+    const [removed, setRemove] = useState([]);
     const baseURLChannels = 'http://206.189.91.54//api/v1/channels';
     const baseURLUsers = 'http://206.189.91.54//api/v1/users';
-    let uEmailsArrTrim = [];
     let config = configAPI();
-    let emailIDs = [];
 
     //updates headers for API
     function updateConfig() {
         config = configAPI()
         return (config)
     }
-    //take user inputs, remove spaces, convert to array, sent to state, remove API error
-    function handleUserInput(e) {
-        const userNameInput = channelNameRef.current.value;
-        const uEmailsRawInput = `${uEmailRef.current.value}`;
-        const uEmailsArr = uEmailsRawInput.split(';');
-        uEmailsArrTrim = uEmailsArr.map(ids => ids.trim())
-        setChannelName(userNameInput);
-        setnCEMsg(false);
-        return (uEmailsArrTrim)
-    };
 
-    //checks the emails from textbox one by one to get ID from API
-    function getIdfromEmail() {
-        handleUserInput()
-        axios
-            .get(baseURLUsers, config)
-            .then((resp) => {
-                let apiArray = resp.data.data;
-                uEmailsArrTrim.forEach(elem => {
-                    apiArray.find(({ email, id }) => {
-                        if (email === elem) {
-                            emailIDs.push(id)
-                            pushedEmails.push(email)
-                            console.log(elem, email, id, emailIDs)
-                        }
-                    })
-                })
-            })
+    //on click of email in searchlist, add to the ff states: pushedemails,EmailIds,removed; then removed at the filter arrays
+    function getEmailsIDs(id, email, item) {
+        if (!pushedEmails.includes(email)) {
+            let filterArray = [...filteredUser];
+            let clicked = pushedEmails.concat(email);
+            let eIDS = emailIDs.concat(id)
+            let remove = removed.concat(filterArray.splice(item, 1))
+            setpEmails(clicked)
+            setemailIDs(eIDS)
+            filterUser(filterArray)
+            setRemove(remove);
+        } else {
+            setnCEMsg(`${email} is already on the list`)
+        }
+    }
+
+    //onclick of cancel icon, remove the user data in "removed" state, add it to "filteredUser", remove datas from states: pushedemails and emailIds
+    function removeFromList(index) {
+        let addfilter = [...filteredUser];
+        let reclicked = [...pushedEmails];
+        let reeIDS = [...emailIDs];
+        let readd = [...removed];
+        let adding = addfilter.concat(readd.splice(index, 1))
+        reclicked.splice(index, 1);
+        reeIDS.splice(index, 1);
+        setpEmails(reclicked)
+        setemailIDs(reeIDS)
+        filterUser(adding)
+        setRemove(readd);
     }
 
     //createChannel button function: updates config, setTimeout as Async 
     function idToChannel() {
         updateConfig()
-        getIdfromEmail();
         setTimeout(() => {
             AddChannel()
         }, 1000);
-
     }
 
     //get tokens from local storage, add channel post to API
     function AddChannel() {
         const nCData = {
-            name: nCName,
+            name: channelNameRef.current.value,
             user_ids: emailIDs
         }
         axios
@@ -101,11 +101,18 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         result = users.filter((data) => {
             return data.email.search(value) != -1
         });
-
-        filterUser(result);
+        removed.forEach(({ email }) => {
+            result.forEach(({ uid }, index) => {
+                if (email == uid) {
+                    return result.splice(index, 1)
+                }
+            })
+        })
+        filterUser(result)
     }
 
     //renders the emails that passes the search value realtime
+
     useEffect(() => {
         axios
             .get(baseURLUsers, config)
@@ -121,12 +128,12 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
 
     return (
         <div className={`CCBg ${!isCCModalopen ? 'hide' : 'show'}`}>
-            {success && <ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={nCName} />}
+            {success && <ModalSuccess modalopen={isCCModalopen} emails={pushedEmails} channelName={channelNameRef.current.value} />}
             <div className={`CCContainer ${success ? 'hide' : 'show'}`}>
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
                         <p className="CCTitle noWrap">Create a channel</p>
-                        <button className="CCcloseBtn" onClick={() => isCCModalopen(false)}>X</button>
+                        <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCCModalopen(false)} />
                     </div>
                     <p className="CCSubtitle">Channels are where your team communicates. They're best when organized around a topic.</p>
                 </div>
@@ -138,32 +145,30 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                         className="form-input"
                         type="text"
                         placeholder="# e.g. Code-Planning"
-                        onChange={handleUserInput}
                     />
                 </div>
-                <div className="form-inputs">
+                <div className="searchListinputCont">
                     <label className="form-label">Add People
                         <span> (optional)</span>
                     </label>
-                    <textarea
-                        ref={uEmailRef}
-                        id="userIDsTxtbx"
-                        onChange={handleUserInput}
-                        className="form-input"
-                        placeholder="Enter their email, separated by ;" />
-                </div>
-
-                <div className="searchListinputCont">
-                    <label className="form-label">Search users</label>
                     <input type="text"
                         className="form-input"
                         placeholder="Search by name, role or team" onChange={(event) => handleSearch(event)}>
                     </input>
                 </div>
                 <div className="searchListCont">
-                    {filteredUser.map(({ email, id }) => (
-                        <div className="usersList" id={id}
-                            onClick={() => uEmailRef.current.value = `${uEmailRef.current.value}${email};`}>
+                    {pushedEmails.map((email, index) => {
+                        return (<div className="usersList">
+                            <RemoveCircleOutlineIcon className="CCcloseBtn"
+                                onClick={() => removeFromList(index)}
+                            />
+                            <div className="cEmail">{email}</div>
+                        </div>)
+                    })}
+                    {filteredUser.map(({ email, id }, item) => (
+                        <div className="usersList" id={id} value={item}
+                            onClick={() => getEmailsIDs(id, email, item)}
+                            onMouseEnter={() => setnCEMsg(false)}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
