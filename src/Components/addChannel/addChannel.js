@@ -43,19 +43,19 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         }
     }
 
-    // function removeFromList(index) {
-    //     let addfilter = [...filteredUser];
-    //     let reclicked = [...pushedEmails];
-    //     let reeIDS = [...emailIDs];
-    //     let readd = [...removed];
-    //     let adding = addfilter.concat(readd.splice(index, 1))
-    //     reclicked.splice(index, 1);
-    //     reeIDS.splice(index, 1);
-    //     setpEmails(reclicked)
-    //     setemailIDs(reeIDS)
-    //     filterUser(adding)
-    //     setRemove(readd);
-    // }
+    function removeFromList(index) {
+        let addfilter = [...filteredUser];
+        let reclicked = [...pushedEmails];
+        let reeIDS = [...emailIDs];
+        let readd = [...removed];
+        let adding = addfilter.concat(readd.splice(index, 1))
+        // reclicked.splice(index, 1);
+        // reeIDS.splice(index, 1);
+        // setpEmails(reclicked)
+        // setemailIDs(reeIDS)
+        // filterUser(adding)
+        // setRemove(readd);
+    }
 
     //createChannel button function: updates config, setTimeout as Async 
     function idToChannel() {
