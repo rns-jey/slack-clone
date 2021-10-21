@@ -102,13 +102,13 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         result = users.filter((data) => {
             return data.email.search(value) != -1
         });
-        removed.forEach(({ email }) => {
-            result.forEach(({ uid }, index) => {
-                if (email == uid) {
-                    return result.splice(index, 1)
-                }
-            })
-        })
+        // removed.forEach(({ email }) => {
+        //     result.forEach(({ uid }, index) => {
+        //         if (email == uid) {
+        //             return result.splice(index, 1)
+        //         }
+        //     })
+        // })
         filterUser(result)
     }
 
