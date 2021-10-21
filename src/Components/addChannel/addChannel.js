@@ -4,8 +4,8 @@ import axios from 'axios';
 import './addChannel.css';
 import ModalSuccess from "../assets/ModalSuccess";
 import avatar from "../assets/avatar.png"
-// import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
-// import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 
 //nC -> new Channel
 
@@ -134,7 +134,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
                         <p className="CCTitle noWrap">Create a channel</p>
-                        {/* <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCCModalopen(false)} /> */}
+                        <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCCModalopen(false)} />
                     </div>
                     <p className="CCSubtitle">Channels are where your team communicates. They're best when organized around a topic.</p>
                 </div>
@@ -160,48 +160,48 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                 <div className="searchListCont">
                     {pushedEmails.map((email, index) => {
                         return (<div className="usersList">
-                            {/* <RemoveCircleOutlineIcon className="CCcloseBtn"
+                            <RemoveCircleOutlineIcon className="CCcloseBtn"
                                 onClick={() => removeFromList(index)}
-                            /> */}
+                            />
                             <div className="cEmail">{email}</div>
                         </div>)
                     })}
                     {filteredUser.map(({ email, id }, item) => (
                         <div className="usersList" id={id} value={item}
                             onClick={() => getEmailsIDs(id, email, item)}
-                            onMouseEnter={() => setnCEMsg(false)}>
+                            // onMouseEnter={() => setnCEMsg(false)}>
                             <img src={avatar} className='listAvatar' id={`avatar ${id}`} />
                             <div className="Email" id={`email ${id}`}>
                                 {email}
                             </div>
                         </div>
                     ))}
-                </div>
+            </div>
 
-                <div className="CCFormGroup">
-                    <label className="form-label">Make Private
+            <div className="CCFormGroup">
+                <label className="form-label">Make Private
+                </label>
+                <div className="CCSubFormGroup">
+                    <div className="terms">
+                        When a channel is set to private. It can only be viewed or joined by invitation.
+                    </div>
+                    <label className="slider-group">
+                        <input type="checkbox" />
+                        <span className="slider round"></span>
                     </label>
-                    <div className="CCSubFormGroup">
-                        <div className="terms">
-                            When a channel is set to private. It can only be viewed or joined by invitation.
-                        </div>
-                        <label className="slider-group">
-                            <input type="checkbox" />
-                            <span className="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-                <div className="CCBottom">
-                    <div className="shareOthers">
-                        <label className="CCSubLabel noWrap">
-                            Share outside
-                        </label>
-                        <input type="checkbox" className="addChannelCheckbox" />
-                    </div>
-                    <button onClick={idToChannel} className="CreateBtn">Create</button>
                 </div>
             </div>
+            <div className="CCBottom">
+                <div className="shareOthers">
+                    <label className="CCSubLabel noWrap">
+                        Share outside
+                    </label>
+                    <input type="checkbox" className="addChannelCheckbox" />
+                </div>
+                <button onClick={idToChannel} className="CreateBtn">Create</button>
+            </div>
         </div>
+        </div >
     );
 };
 
