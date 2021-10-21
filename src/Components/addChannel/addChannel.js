@@ -4,8 +4,8 @@ import axios from 'axios';
 import './addChannel.css';
 import ModalSuccess from "../assets/ModalSuccess";
 import avatar from "../assets/avatar.png"
-import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+// import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
+// import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 
 //nC -> new Channel
 
@@ -102,13 +102,13 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
         result = users.filter((data) => {
             return data.email.search(value) != -1
         });
-        // removed.forEach(({ email }) => {
-        //     result.forEach(({ uid }, index) => {
-        //         if (email == uid) {
-        //             return result.splice(index, 1)
-        //         }
-        //     })
-        // })
+        removed.forEach(({ email }) => {
+            result.forEach(({ uid }, index) => {
+                if (email == uid) {
+                    return result.splice(index, 1)
+                }
+            })
+        })
         filterUser(result)
     }
 
@@ -134,7 +134,7 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                 <div className="CCTitleCont">
                     <div className="CCTitleSubCont">
                         <p className="CCTitle noWrap">Create a channel</p>
-                        <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCCModalopen(false)} />
+                        {/* <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCCModalopen(false)} /> */}
                     </div>
                     <p className="CCSubtitle">Channels are where your team communicates. They're best when organized around a topic.</p>
                 </div>
@@ -160,9 +160,9 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
                 <div className="searchListCont">
                     {pushedEmails.map((email, index) => {
                         return (<div className="usersList">
-                            <RemoveCircleOutlineIcon className="CCcloseBtn"
+                            {/* <RemoveCircleOutlineIcon className="CCcloseBtn"
                                 onClick={() => removeFromList(index)}
-                            />
+                            /> */}
                             <div className="cEmail">{email}</div>
                         </div>)
                     })}
