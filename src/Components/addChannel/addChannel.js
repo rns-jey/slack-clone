@@ -34,10 +34,10 @@ export default function CreateChannel({ isCCModalopen, RefreshSideNav }) {
             let clicked = pushedEmails.concat(email);
             let eIDS = emailIDs.concat(id)
             let remove = removed.concat(filterArray.splice(item, 1))
-            // setpEmails(clicked)
-            // setemailIDs(eIDS)
-            // filterUser(filterArray)
-            // setRemove(remove);
+            setpEmails(clicked)
+            setemailIDs(eIDS)
+            filterUser(filterArray)
+            setRemove(remove);
         } else {
             setnCEMsg(`${email} is already on the list`)
         }
