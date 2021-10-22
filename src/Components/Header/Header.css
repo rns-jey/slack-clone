@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
 .header-container {
   width: 100%;
-  background-color:rgb(63, 5, 78);
+  background-color: rgb(63, 5, 78);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 40px;
   user-select: none;
-  font-family: 'Baloo 2', cursive;
+  font-family: "Baloo 2", cursive;
 }
 
 .left-header {
@@ -53,6 +53,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .search-header {

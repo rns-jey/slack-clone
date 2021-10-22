@@ -68,7 +68,7 @@ export default function LoginForm() {
                 onChange={e => setPassword(e.target.value)} value={password}
               />
             </div>
-            <input className="loginRegisbtn" type="submit" value="Sign in" />
+            <input className="loginRegisbtn" data-testid="btn-submit" type="submit" value="Sign in" />
           </div>
           <hr className="line" />
           <div className="linktoLogInorRegister">
