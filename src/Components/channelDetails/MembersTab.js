@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import AddUsers from '../AddUsers/AddUsers'
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import configAPI from '../assets/config';
 import axios from 'axios';
 import avatar from "../assets/avatar.png"
@@ -21,12 +22,12 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
         const baseURL = `http://206.189.91.54//api/v1/channels/${ChanID}`
 
         setMembers([])
-        
+
         axios
             .get(baseURL, config)
             .then((resp) => {
                 let rawExist = resp.data.data.channel_members;
-                
+
                 rawExist.map((info) => {
                     setMembers(oldArray => [...oldArray, Users.filter(data => data.id === info.user_id)[0]])
                 })
@@ -47,6 +48,11 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
         refreshMember(!refreshState);
     }
 
+    function addUserBtn() {
+        setAU(!AUopen)
+        refreshMemberList()
+    }
+
     //load all API getters upon open of Channel Details
     useEffect(() => {
         getUsersInChannel()
@@ -55,18 +61,19 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
     return (
         <div className={`tabPage ${isMembers ? 'show' : 'hide'}`}>
             <input
-                className="form-input"
+                className={`form-input ${!AUopen ? 'show' : 'hide'}`}
                 placeholder="Find members"
                 onChange={getvalue}
             />
-            <div className="addUserbtn" onClick={() => setAU(true)}>
+            <div className={`addUserbtn ${AUopen ? 'activeadduser' : ''}`}
+                onClick={() => addUserBtn()}>
                 <PersonAddIcon className="AddUserIcon" />
                 <span>Add people</span>
             </div>
-            <div className="existListCont">
-                {   
+            <div className={`existListCont ${!AUopen ? "show" : "hide"}`}>
+                {
                     existRef.length > 0
-                    ?
+                        ?
                         filteredMembers.map(({ id, uid }) => (
                             <div className="usersList existList" id={id}>
                                 <img src={avatar} className="listAvatar" id={`av ${uid}`} />
@@ -75,7 +82,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
                                 </div>
                             </div>
                         ))
-                    :
+                        :
                         members.map(({ id, uid }) => (
                             <div className="usersList existList" id={id}>
                                 <img src={avatar} className="listAvatar" id={`av ${uid}`} />
@@ -83,7 +90,7 @@ export default function MembersTab({ ChanID, ChanTitle, isMembers, Users }) {
                                     {uid}
                                 </div>
                             </div>
-                    )) 
+                        ))
                 }
             </div>
             {AUopen && <AddUsers isAUModalopen={setAU} channelID={ChanID} channelTitle={ChanTitle} RefreshMemberList={refreshMemberList} />}
