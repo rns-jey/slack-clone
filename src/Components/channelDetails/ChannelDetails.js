@@ -4,10 +4,11 @@ import { ReactComponent as Fave } from '../assets/fave.svg'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import PhoneIcon from '@material-ui/icons/Phone';
 import './ChannelDetails.css'
+import HighlightOffOutlinedIcon from '@material-ui/icons/HighlightOffOutlined';
 import AboutChannel from './AboutChannel';
 import MembersTab from './MembersTab';
 
-export default function ChannelDetails({ isCDetsopen, channelID, channelTitle }) {
+export default function ChannelDetails({ Users, isCDetsopen, channelID, channelTitle }) {
     const [isAbout, setAbout] = useState(true);
     const [isMembers, setMember] = useState(false);
     const [fave, setFave] = useState(false);
@@ -26,7 +27,7 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
                     <div className="title">
                         {`#${channelTitle}`}
                     </div>
-                    <button className="CCcloseBtn" onClick={() => isCDetsopen(false)}>X</button>
+                    <HighlightOffOutlinedIcon className="CCcloseBtn" onClick={() => isCDetsopen(false)} />
                 </div>
 
                 <div className="decor1 padmid15">
@@ -53,7 +54,7 @@ export default function ChannelDetails({ isCDetsopen, channelID, channelTitle })
                 </div>
 
                 <AboutChannel channelTitle={channelTitle} isAbout={isAbout} ChanID={channelID} />
-                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} />
+                <MembersTab ChanID={channelID} isMembers={isMembers} ChanTitle={channelTitle} Users={Users} />
             </div>
         </div >
     )

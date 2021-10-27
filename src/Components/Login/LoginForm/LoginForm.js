@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import "./loginForm.css";
-import SideModule from '../assets/sideModule';
+import SideModule from '../../assets/sideModule';
 import { Link } from "react-router-dom";
-import configAPI from '../assets/config';
+import configAPI from '../../assets/config';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('postman@test.com')
@@ -13,13 +13,12 @@ export default function LoginForm() {
   const history = useHistory();
   const baseURL = "http://206.189.91.54//api/v1/auth/sign_in";
 
-
   //Error will return to null after 8 seconds
   useEffect(() => {
     setTimeout(function () {
       setErr(prevErr => null)
     }, 8000)
-  }, [logErr == true])
+  }, [logErr === true])
 
   //on submit, if success all headers info are place at localStorage else show Error
   const handleSubmit = (e) => {

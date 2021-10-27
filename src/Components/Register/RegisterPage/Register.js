@@ -1,6 +1,6 @@
 import React from 'react';
-import Bottomlinks from '../Components/assets/Bottomlinks';
-import FormSignUp from '../Components/CreateUser/FormSignUp';
+import Bottomlinks from '../../assets/Bottomlinks';
+import FormSignUp from '../../CreateUser/FormSignUp';
 import { Redirect } from "react-router"
 
 
