@@ -77,6 +77,17 @@ textarea:focus {
   flex-wrap: wrap;
 }
 .users {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    outline-color: rgba(211, 211, 211, 0.87);
+    overflow: auto;
+}
+.users:hover {
+  background-color: rgb(226, 224, 224);
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -85,9 +96,6 @@ textarea:focus {
   border-radius: 10px;
   outline-color: lightgray;
   overflow: auto;
-}
-.users:hover {
-  background-color: rgba(87, 226, 212, 0.671);
 }
 .email {
   font-family: "Quicksand", sans-serif;

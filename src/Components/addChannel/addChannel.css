@@ -27,7 +27,7 @@
     padding:15px;
     width: 45%;
     border-radius: 5px;
-    background-color: #ECFFF8;
+    background-color: white;
 }
 
 .CCFormGroup{
@@ -178,6 +178,7 @@
     font-size: 1.2rem;
     width: 25%;
     height: 35px;
+    margin-top: 15px;
 }
 
 .CreateBtn:hover{
@@ -207,6 +208,7 @@ height: 25px;
     padding: 5px;
     cursor: pointer;
     color: black;
+    padding-top: 10px;
 }
 
 .usersList:hover{
@@ -233,6 +235,7 @@ background-color: lavender;
 }
 .form-input {
     font-size: 13px;
+    margin-bottom: 10px;
 }
 .clickedCont{
     display: flex;
